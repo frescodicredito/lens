@@ -22,10 +22,10 @@ def format_perspective_card(
 
     meta_parts = []
     if constraint_types:
-        meta_parts.append(f"Vincoli: {', '.join(constraint_types)}")
+        meta_parts.append(f"Constraints: {', '.join(constraint_types)}")
     if topic:
         meta_parts.append(f"Topic: {topic}")
-    meta_parts.append(f"Generato: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    meta_parts.append(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
 
     meta = " | ".join(meta_parts)
 
@@ -44,22 +44,22 @@ def format_field_map(
     parts = ["# Field Map"]
     if topic:
         parts.append(f"\n> Topic: {topic}")
-    parts.append(f"> Agenti: {len(agent_outputs)}")
-    parts.append(f"> Generato: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    parts.append(f"> Agents: {len(agent_outputs)}")
+    parts.append(f"> Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     parts.append("")
 
     # Individual perspectives
     parts.append("---")
     parts.append("")
-    parts.append("## Prospettive individuali")
+    parts.append("## Individual perspectives")
     parts.append("")
 
     for i, agent in enumerate(agent_outputs, 1):
-        label = agent.get("persona") or f"Agente {i}"
+        label = agent.get("persona") or f"Agent {i}"
         constraints_str = ", ".join(agent.get("constraints", []))
         parts.append(f"### {label}")
         if constraints_str:
-            parts.append(f"> Vincoli: {constraints_str}")
+            parts.append(f"> Constraints: {constraints_str}")
         parts.append("")
         parts.append(agent["output"])
         parts.append("")
@@ -68,7 +68,7 @@ def format_field_map(
     if synthesis:
         parts.append("---")
         parts.append("")
-        parts.append("## Sintesi")
+        parts.append("## Synthesis")
         parts.append("")
         parts.append(synthesis)
 
@@ -86,38 +86,38 @@ def format_delta_report(
         "# Delta Report",
         "",
         f"> Topic: {topic}" if topic else "",
-        f"> Vincoli applicati: {', '.join(constraint_types)}",
-        f"> Generato: {datetime.now().strftime('%Y-%m-%d %H:%M')}",
+        f"> Constraints applied: {', '.join(constraint_types)}",
+        f"> Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}",
         "",
         "---",
         "",
-        "## Baseline (senza vincoli)",
+        "## Baseline (unconstrained)",
         "",
         baseline_output,
         "",
         "---",
         "",
-        "## Output Lens (con vincoli)",
+        "## Lens output (constrained)",
         "",
         lens_output,
         "",
         "---",
         "",
-        "## Analisi Delta",
+        "## Delta Analysis",
         "",
-        "### Insight presenti SOLO nell'output Lens",
-        "[Da compilare in fase di valutazione]",
+        "### Insights present ONLY in the Lens output",
+        "[To be filled in during evaluation]",
         "",
-        "### Insight presenti in entrambi",
-        "[Da compilare in fase di valutazione]",
+        "### Insights present in both",
+        "[To be filled in during evaluation]",
         "",
-        "### Insight presenti SOLO nel baseline",
-        "[Da compilare in fase di valutazione]",
+        "### Insights present ONLY in the baseline",
+        "[To be filled in during evaluation]",
         "",
-        "### Valutazione",
-        "- Insight unici Lens: [conteggio]",
-        "- Preferenza cieca: [baseline / lens]",
-        "- Valore aggiunto: [alto / medio / basso]",
+        "### Evaluation",
+        "- Unique Lens insights: [count]",
+        "- Blind preference: [baseline / lens]",
+        "- Added value: [high / medium / low]",
     ]
 
     return "\n".join(parts)
@@ -139,7 +139,7 @@ def format_cascade_output(
     if topic:
         parts.append(f"> Topic: {topic}")
     parts.append(f"> Round: {len(rounds)}")
-    parts.append(f"> Generato: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    parts.append(f"> Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     parts.append("")
 
     for r in rounds:
@@ -151,7 +151,7 @@ def format_cascade_output(
         parts.append("")
         parts.append(f"## Round {round_num} — {role}")
         if constraints_str:
-            parts.append(f"> Vincoli: {constraints_str}")
+            parts.append(f"> Constraints: {constraints_str}")
         parts.append("")
         parts.append(r["agent_output"])
         parts.append("")
@@ -159,7 +159,7 @@ def format_cascade_output(
     if surviving_core:
         parts.append("---")
         parts.append("")
-        parts.append("## Nucleo sopravvissuto")
+        parts.append("## Surviving core")
         parts.append("")
         parts.append(surviving_core)
 
@@ -183,8 +183,8 @@ def format_chain_output(
         parts.append(f"> Topic: {topic}")
 
     constraint_names = [r.get("constraint", "?") for r in rounds]
-    parts.append(f"> Round: {len(rounds)} | Vincoli: {', '.join(constraint_names)}")
-    parts.append(f"> Generato: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    parts.append(f"> Round: {len(rounds)} | Constraints: {', '.join(constraint_names)}")
+    parts.append(f"> Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     parts.append("")
 
     for r in rounds:
@@ -201,7 +201,7 @@ def format_chain_output(
     if final_position:
         parts.append("---")
         parts.append("")
-        parts.append("## Posizione finale")
+        parts.append("## Final position")
         parts.append("")
         parts.append(final_position)
 
@@ -218,7 +218,7 @@ def format_executive_extract(
         "",
         "## Executive Extract",
         "",
-        f"> Da: analisi Lens su \"{topic}\"",
+        f"> From: Lens analysis of \"{topic}\"",
         "",
         full_output,
     ]
@@ -240,25 +240,25 @@ def format_decision_brief(
     ]
     if topic:
         parts.append(f"> Topic: {topic}")
-    parts.append(f"> Generato: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    parts.append(f"> Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     parts.append("")
-    parts.append(f"## Raccomandazione")
+    parts.append(f"## Recommendation")
     parts.append("")
     parts.append(recommendation)
     parts.append("")
-    parts.append(f"## Confidenza: {confidence}")
+    parts.append(f"## Confidence: {confidence}")
     parts.append("")
-    parts.append("## Argomenti a favore")
+    parts.append("## Arguments in favor")
     parts.append("")
     for i, arg in enumerate(arguments_for, 1):
         parts.append(f"{i}. {arg}")
     parts.append("")
-    parts.append("## Rischi")
+    parts.append("## Risks")
     parts.append("")
     for i, risk in enumerate(risks, 1):
         parts.append(f"{i}. {risk}")
     parts.append("")
-    parts.append("## Cosa verificare prima di procedere")
+    parts.append("## What to verify before proceeding")
     parts.append("")
     for i, v in enumerate(verifications, 1):
         parts.append(f"{i}. {v}")

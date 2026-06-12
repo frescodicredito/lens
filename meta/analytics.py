@@ -42,7 +42,7 @@ def constraint_efficacy() -> dict:
     sessions = _load_sessions()
 
     if not sessions:
-        return {"message": "Nessuna sessione disponibile.", "constraints": []}
+        return {"message": "No sessions available.", "constraints": []}
 
     constraint_stats: dict[str, dict] = defaultdict(
         lambda: {"total": 0, "rated": 0, "useful": 0, "surprising": 0}
@@ -97,7 +97,7 @@ def topology_efficacy() -> dict:
     sessions = _load_sessions()
 
     if not sessions:
-        return {"message": "Nessuna sessione disponibile.", "topologies": []}
+        return {"message": "No sessions available.", "topologies": []}
 
     topology_stats: dict[str, dict] = defaultdict(
         lambda: {"total": 0, "rated": 0, "useful": 0, "surprising": 0,
@@ -160,7 +160,7 @@ def pattern_mining() -> dict:
     sessions = _load_sessions()
 
     if not sessions:
-        return {"message": "Nessuna sessione disponibile.", "patterns": []}
+        return {"message": "No sessions available.", "patterns": []}
 
     # Track co-occurrences in successful sessions
     successful_pairs: Counter = Counter()
@@ -336,7 +336,7 @@ def sequence_efficacy() -> dict:
 
     if not chain_sessions:
         return {
-            "message": "Nessuna sessione sequential_chain disponibile.",
+            "message": "No sequential_chain sessions available.",
             "sequences": [],
         }
 
@@ -417,12 +417,12 @@ TOPOLOGY_TO_SKILL = {
 }
 
 GOAL_PATTERNS = [
-    (r"stress|attacca|verifica|testa", {"skill": "/lens-adversarial", "topology": "cascade", "mode": "QUICK"}),
-    (r"creativ|innova|ide|nuov", {"skill": "/lens", "topology": "bisociation_engine", "mode": "QUICK"}),
-    (r"rischi|premortem|falliment|pericol", {"skill": "/lens-premortem", "topology": "cascade", "mode": "QUICK"}),
-    (r"assunzion|assumption|nascost|blind", {"skill": "/lens-assumptions", "topology": "assumption_inversion", "mode": "QUICK"}),
-    (r"decision|scelt|dilemma|equilibr", {"skill": "/lens", "topology": "wise_mind_topology", "mode": "QUICK"}),
-    (r"argoment|convinc|robust|forte", {"skill": "/lens-steelman", "topology": "steelman_chain", "mode": "QUICK"}),
+    (r"stress|attack|verify|test|attacca|verifica|testa", {"skill": "/lens-adversarial", "topology": "cascade", "mode": "QUICK"}),
+    (r"creativ|innovat|idea|new|innova|ide|nuov", {"skill": "/lens", "topology": "bisociation_engine", "mode": "QUICK"}),
+    (r"risk|premortem|failure|danger|rischi|falliment|pericol", {"skill": "/lens-premortem", "topology": "cascade", "mode": "QUICK"}),
+    (r"assumption|hidden|blind|assunzion|nascost", {"skill": "/lens-assumptions", "topology": "assumption_inversion", "mode": "QUICK"}),
+    (r"decision|choice|dilemma|balance|scelt|equilibr", {"skill": "/lens", "topology": "wise_mind_topology", "mode": "QUICK"}),
+    (r"argument|convince|robust|strong|argoment|convinc|forte", {"skill": "/lens-steelman", "topology": "steelman_chain", "mode": "QUICK"}),
     (r"scenario|futur|incertezz", {"skill": "/lens-scenarios", "topology": "scenario_matrix", "mode": "DEEP"}),
     (r"approfond|epistemic|ipotesi|coerenz", {"skill": "/lens-deep", "topology": "sequential_chain", "mode": "DEEP"}),
     (r"focus.?group|persona|stakeholder|audience", {"skill": "/lens-focus-group", "topology": "star", "mode": "DEEP"}),
@@ -502,8 +502,8 @@ def smart_defaults(
                     "mode": defaults["mode"],
                 },
                 "confidence": "heuristic",
-                "reasoning": f"Basato su euristica goal-matching. "
-                             f"Pattern riconosciuto nel topic/goal.",
+                "reasoning": "Based on goal-matching heuristics. "
+                             "Pattern recognized in the topic/goal.",
                 "alternatives": _generate_alternatives(combined_text, defaults["topology"]),
             }
 
@@ -520,11 +520,11 @@ def smart_defaults(
             "mode": "QUICK",
         },
         "confidence": "fallback",
-        "reasoning": "Nessun pattern riconosciuto. Cascade adversariale come default sicuro.",
+        "reasoning": "No recognized pattern. Adversarial cascade as a safe default.",
         "alternatives": [
-            {"skill": "/lens-assumptions", "when": "Se vuoi scavare nelle assunzioni"},
-            {"skill": "/lens-deep", "when": "Se vuoi un'analisi profonda e coerente"},
-            {"skill": "/lens-perspective", "when": "Se vuoi una singola prospettiva rapida"},
+            {"skill": "/lens-assumptions", "when": "If you want to dig into assumptions"},
+            {"skill": "/lens-deep", "when": "If you want a deep, coherent analysis"},
+            {"skill": "/lens-perspective", "when": "If you want a single quick perspective"},
         ],
     }
 
@@ -546,15 +546,15 @@ def _generate_alternatives(text: str, current_topology: str) -> list[dict]:
         if defaults["topology"] != current_topology:
             alternatives.append({
                 "skill": defaults["skill"],
-                "when": f"Se preferisci {defaults['topology']}",
+                "when": f"If you prefer {defaults['topology']}",
             })
             if len(alternatives) >= 2:
                 break
 
     if not alternatives:
         alternatives = [
-            {"skill": "/lens-deep", "when": "Se vuoi approfondimento sequenziale"},
-            {"skill": "/lens-perspective", "when": "Se vuoi una prospettiva rapida"},
+            {"skill": "/lens-deep", "when": "If you want sequential deepening"},
+            {"skill": "/lens-perspective", "when": "If you want a quick perspective"},
         ]
 
     return alternatives
@@ -569,7 +569,7 @@ def implementation_rate() -> dict:
     sessions = _load_sessions()
 
     if not sessions:
-        return {"message": "Nessuna sessione disponibile.", "implementation_rate": 0}
+        return {"message": "No sessions available.", "implementation_rate": 0}
 
     total = len(sessions)
     implemented_count = 0
@@ -641,7 +641,7 @@ def roi_estimate() -> dict:
     sessions = _load_sessions()
 
     if not sessions:
-        return {"message": "Nessuna sessione disponibile."}
+        return {"message": "No sessions available."}
 
     total = len(sessions)
     implemented = sum(

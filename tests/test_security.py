@@ -38,7 +38,7 @@ def test_safe_identifier_rejects_traversal():
 
 
 def test_safe_identifier_accepts_real_ids():
-    for good in ["inversion", "cto-scettico", "lens-20260228-225903-249ddd", "miner-cfo"]:
+    for good in ["inversion", "cto-skeptic", "lens-20260228-225903-249ddd", "miner-cfo"]:
         assert safe_identifier(good) == good
 
 

@@ -37,7 +37,7 @@ def transform_miner_persona(miner_persona: dict) -> dict:
     Returns:
         Dict matching Lens persona template format (ready to save or use directly).
     """
-    name = str(miner_persona.get("name") or "Persona Miner")
+    name = str(miner_persona.get("name") or "Miner Persona")
     tagline = miner_persona.get("tagline", "")
 
     demographics = miner_persona.get("demographics", {})
@@ -56,30 +56,30 @@ def transform_miner_persona(miner_persona: dict) -> dict:
         role_parts.append(tagline)
     age = demographics.get("age_range", "")
     if age:
-        role_parts.append(f"{age} anni")
+        role_parts.append(f"{age} years old")
     occupations = demographics.get("occupation_indicators", [])
     if occupations:
         role_parts.append(", ".join(occupations[:3]))
     location = demographics.get("location_indicators", [])
     if location:
-        role_parts.append(f"zona {', '.join(location[:2])}")
+        role_parts.append(f"area: {', '.join(location[:2])}")
 
     # Bias from psychographics
     bias_parts = []
     values = psychographics.get("values", [])
     if values:
-        bias_parts.append(f"valori: {', '.join(values[:4])}")
+        bias_parts.append(f"values: {', '.join(values[:4])}")
     vals_segment = psychographics.get("vals_segment", "")
     if vals_segment:
-        bias_parts.append(f"segmento VALS: {vals_segment}")
+        bias_parts.append(f"VALS segment: {vals_segment}")
     motivation = psychographics.get("primary_motivation", "unknown")
     if motivation != "unknown":
-        bias_parts.append(f"motivazione: {motivation}")
+        bias_parts.append(f"motivation: {motivation}")
 
     constraints.append({
         "type": "role",
         "role": ". ".join(role_parts) if role_parts else name,
-        "bias": ". ".join(bias_parts) if bias_parts else "profilo derivato da dati reali",
+        "bias": ". ".join(bias_parts) if bias_parts else "profile derived from real data",
     })
 
     # 2. Modal constraint from attitudes and lifestyle
@@ -91,7 +91,7 @@ def transform_miner_persona(miner_persona: dict) -> dict:
         for topic_key, attitude in list(attitudes.items())[:3]:
             modal_parts.append(f"{topic_key}: {attitude}")
     if lifestyle:
-        modal_parts.append(f"stile di vita: {', '.join(lifestyle[:3])}")
+        modal_parts.append(f"lifestyle: {', '.join(lifestyle[:3])}")
 
     if modal_parts:
         constraints.append({
@@ -106,18 +106,18 @@ def transform_miner_persona(miner_persona: dict) -> dict:
     if decision_style or resource_level != "unknown":
         # High resources + researched → central route
         # Low resources + impulsive → peripheral route
-        if any(w in decision_style.lower() for w in ["research", "analiz", "dati", "evidenz"]):
+        if any(w in decision_style.lower() for w in ["research", "analy", "data", "evidence", "analiz", "dati", "evidenz"]):
             route = "central"
-            focus = "dati, evidenze, ROI, casi studio"
-        elif any(w in decision_style.lower() for w in ["impuls", "emozion", "intuit", "veloc"]):
+            focus = "data, evidence, ROI, case studies"
+        elif any(w in decision_style.lower() for w in ["impuls", "emotion", "intuit", "fast", "emozion", "veloc"]):
             route = "peripheral"
-            focus = "testimonianze, brand appeal, social proof, semplicita'"
+            focus = "testimonials, brand appeal, social proof, simplicity"
         elif resource_level == "high":
             route = "central"
-            focus = "qualita' delle argomentazioni e delle evidenze"
+            focus = "the quality of the arguments and the evidence"
         else:
             route = "peripheral"
-            focus = "credibilita' della fonte e appeal emotivo"
+            focus = "source credibility and emotional appeal"
 
         constraints.append({
             "type": "elm_route",
@@ -158,14 +158,14 @@ def transform_miner_persona(miner_persona: dict) -> dict:
     threshold_parts = []
     if vals_segment:
         vals_thresholds = {
-            "Innovators": "novita' e visione, non necessita di social proof",
-            "Thinkers": "evidenze solide, analisi approfondita, referenze accademiche",
-            "Believers": "tradizione, affidabilita', referenze di fiducia",
-            "Achievers": "status, risultati dimostrabili, successo degli altri",
-            "Strivers": "aspirazione, accessibilita' economica, appartenenza",
-            "Makers": "praticita', funzionalita', rapporto qualita'-prezzo",
-            "Experiencers": "esperienza diretta, coinvolgimento, novita'",
-            "Survivors": "necessita' immediata, sicurezza, prezzo",
+            "Innovators": "novelty and vision, no need for social proof",
+            "Thinkers": "solid evidence, in-depth analysis, academic references",
+            "Believers": "tradition, reliability, trusted references",
+            "Achievers": "status, demonstrable results, the success of others",
+            "Strivers": "aspiration, affordability, belonging",
+            "Makers": "practicality, functionality, value for money",
+            "Experiencers": "direct experience, engagement, novelty",
+            "Survivors": "immediate need, security, price",
         }
         threshold = vals_thresholds.get(vals_segment, "")
         if threshold:
@@ -187,13 +187,13 @@ def transform_miner_persona(miner_persona: dict) -> dict:
     # --- Build description ---
     desc_parts = [tagline] if tagline else [name]
     if age:
-        desc_parts.append(f"eta' {age}")
+        desc_parts.append(f"age {age}")
     if occupations:
         desc_parts.append(", ".join(occupations[:2]))
     confidence = miner_persona.get("confidence_score", 0)
     segment_size = miner_persona.get("segment_size_estimate", 0)
     if isinstance(segment_size, (int, float)) and segment_size > 0:
-        desc_parts.append(f"~{int(segment_size * 100)}% dell'audience")
+        desc_parts.append(f"~{int(segment_size * 100)}% of the audience")
 
     # --- Assemble template ---
     template = {

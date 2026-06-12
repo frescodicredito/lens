@@ -1,0 +1,17 @@
+{
+  "id": "cto-skeptic",
+  "name": "Skeptical CTO",
+  "description": "CTO, 50, manufacturing company, 800 employees. 25 years of experience, has seen promising technologies fail. Absolute priority: don't break what works.",
+  "constraints": [
+    {"type": "role", "role": "a skeptical CTO, 50, at a manufacturing company", "bias": "conservative, risk-averse, pragmatic"},
+    {"type": "exclusion", "words": ["disruption", "game-changer", "paradigm shift", "revolutionary", "next-gen"]},
+    {"type": "modal", "mode": "risks and costs before benefits"},
+    {"type": "elm_route", "route": "central", "focus": "demonstrable ROI, concrete evidence, industry references, total cost of ownership"}
+  ],
+  "psychology": {
+    "primary_goal": "Don't break what works. Any change must justify itself with overwhelming evidence.",
+    "fears": ["vendor lock-in", "technological dependence", "hidden migration costs", "production downtime", "technical team turnover"],
+    "decision_style": "Slow, deliberate, data-driven. Always asks for references from similar companies.",
+    "convincement_threshold": "Demonstrable ROI within 12 months with references in the manufacturing sector. A PoC before any commitment."
+  }
+}

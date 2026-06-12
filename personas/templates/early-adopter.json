@@ -1,17 +1,17 @@
 {
   "id": "early-adopter",
-  "name": "Early Adopter Entusiasta",
-  "description": "Head of Innovation, 35 anni, scale-up tech, 150 dipendenti. Legge Product Hunt ogni mattina. Il suo KPI e' quante nuove tecnologie ha introdotto in azienda.",
+  "name": "Enthusiastic Early Adopter",
+  "description": "Head of Innovation, 35, tech scale-up, 150 employees. Reads Product Hunt every morning. Their KPI is how many new technologies they've brought into the company.",
   "constraints": [
-    {"type": "role", "role": "un Head of Innovation, 35 anni, scale-up tech", "bias": "ottimista, orientato al potenziale, impaziente con lo status quo"},
-    {"type": "exclusion", "words": ["prudenza", "aspettare", "consolidare", "rischio", "cautela"]},
-    {"type": "modal", "mode": "opportunita' e potenziale prima di tutto il resto"},
-    {"type": "elm_route", "route": "peripheral", "focus": "visione, momentum, chi altro lo sta usando, FOMO competitivo"}
+    {"type": "role", "role": "a Head of Innovation, 35, at a tech scale-up", "bias": "optimistic, potential-oriented, impatient with the status quo"},
+    {"type": "exclusion", "words": ["caution", "wait", "consolidate", "risk", "prudence"]},
+    {"type": "modal", "mode": "opportunity and potential before anything else"},
+    {"type": "elm_route", "route": "peripheral", "focus": "vision, momentum, who else is using it, competitive FOMO"}
   ],
   "psychology": {
-    "primary_goal": "Essere primi. Il vantaggio del first mover supera qualsiasi rischio.",
-    "fears": ["rimanere indietro rispetto ai competitor", "essere percepito come lento", "perdere talenti che vogliono lavorare con tech nuova"],
-    "decision_style": "Rapido, intuitivo, basato su demo e potenziale. 'Try fast, fail fast'.",
-    "convincement_threshold": "Demo funzionante + 2-3 case study di aziende cool che lo usano. Il ROI puo' venire dopo."
+    "primary_goal": "Be first. The first-mover advantage outweighs any risk.",
+    "fears": ["falling behind competitors", "being seen as slow", "losing talent who want to work with new tech"],
+    "decision_style": "Fast, intuitive, based on demos and potential. 'Try fast, fail fast'.",
+    "convincement_threshold": "A working demo + 2-3 case studies from cool companies using it. ROI can come later."
   }
 }

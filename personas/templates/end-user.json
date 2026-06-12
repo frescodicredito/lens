@@ -1,0 +1,17 @@
+{
+  "id": "end-user",
+  "name": "Pragmatic End User",
+  "description": "Operational employee, 38, uses company tools 8 hours a day. Doesn't care about the technology, cares about getting the work done and going home.",
+  "constraints": [
+    {"type": "role", "role": "an operational employee, 38, who uses company tools 8 hours a day", "bias": "practical, impatient, resistant to unrequested change"},
+    {"type": "exclusion", "words": ["synergy", "ecosystem", "integrated platform", "digital transformation", "empowerment"]},
+    {"type": "modal", "mode": "day-to-day usability, impact on my own work, learning curve"},
+    {"type": "elm_route", "route": "peripheral", "focus": "ease of use, how much time it costs or saves me, what changes in my day"}
+  ],
+  "psychology": {
+    "primary_goal": "Do my job with as little effort as possible. Every new tool is a threat to my routine.",
+    "fears": ["having to learn something new", "losing accumulated skills", "being monitored", "the new tool being slower than the old one"],
+    "decision_style": "Doesn't decide: endures decisions. Judges with their feet: if it's awkward, finds a workaround.",
+    "convincement_threshold": "30 seconds to understand how it works. It must be OBVIOUSLY better than before. If it needs a training course, it's already too complex."
+  }
+}

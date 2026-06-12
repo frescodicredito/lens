@@ -68,11 +68,11 @@ def _write_json_atomic(path: Path, data: dict) -> None:
 mcp = FastMCP(
     "Lens",
     instructions=(
-        "Lens e' un sistema di infrastruttura cognitiva. "
-        "Non produce contenuti: produce modi di guardare problemi. "
-        "Il primitivo e' il vincolo cognitivo, non la persona. "
-        "I vincoli navigano le code della distribuzione LLM, "
-        "dove vivono creativita', connessioni insolite e prospettive non-lineari."
+        "Lens is a cognitive infrastructure system. "
+        "It does not produce content: it produces ways of looking at problems. "
+        "The primitive is the cognitive constraint, not the persona. "
+        "Constraints navigate the tails of the LLM distribution, "
+        "where creativity, unusual connections, and non-linear perspectives live."
     ),
 )
 
@@ -151,7 +151,7 @@ def lens_get_persona(persona_id: str) -> str:
     """Get full details of a specific persona template.
 
     Args:
-        persona_id: The persona ID (e.g., 'cto-scettico', 'early-adopter').
+        persona_id: The persona ID (e.g., 'cto-skeptic', 'early-adopter').
     """
     try:
         persona = load_persona(persona_id)
@@ -262,7 +262,7 @@ def lens_compose_persona(
     a structured prompt.
 
     Args:
-        persona_id: The persona template ID (e.g., 'cto-scettico').
+        persona_id: The persona template ID (e.g., 'cto-skeptic').
         topic: The topic or problem to analyze.
         output_format: Output schema (perspective_card, field_map, delta_report, raw).
         intensity: Constraint intensity 1-5.
@@ -571,7 +571,7 @@ def lens_efficacy_report() -> str:
     session_files = list(SESSIONS_DIR.glob("*.json"))
 
     if not session_files:
-        return json.dumps({"message": "Nessuna sessione salvata ancora.", "sessions_count": 0})
+        return json.dumps({"message": "No sessions saved yet.", "sessions_count": 0})
 
     total = 0
     rated = 0

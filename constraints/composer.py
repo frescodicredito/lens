@@ -29,104 +29,104 @@ OUTPUT_SCHEMAS = {
     "perspective_card": """
 ## Output Format: Perspective Card
 
-Struttura la tua risposta ESATTAMENTE in questo formato:
+Structure your response EXACTLY in this format:
 
 ### CLAIM
-[La tua posizione principale in 1-2 frasi]
+[Your main position in 1-2 sentences]
 
-### SUPPORTO
-[3-5 evidenze, ragionamenti o dati che supportano il claim]
+### SUPPORT
+[3-5 pieces of evidence, reasoning, or data that support the claim]
 
 ### BLIND SPOT
-[1-3 aspetti che questa prospettiva potrebbe non vedere o sottovalutare]
+[1-3 aspects this perspective might miss or underestimate]
 
-### CONFIDENZA
-[Alta/Media/Bassa] — [1 frase che spiega perche']
+### CONFIDENCE
+[High/Medium/Low] — [1 sentence explaining why]
 """,
     "field_map": """
 ## Output Format: Field Map
 
-Struttura la tua risposta ESATTAMENTE in questo formato:
+Structure your response EXACTLY in this format:
 
-### CONVERGENZE
-[Punti su cui le diverse prospettive concordano]
+### CONVERGENCES
+[Points the different perspectives agree on]
 
-### DIVERGENZE
-[Punti di disaccordo sostanziale, con le posizioni di ciascuna prospettiva]
+### DIVERGENCES
+[Points of substantial disagreement, with each perspective's position]
 
-### OUTLIER
-[Insight sorprendenti o inaspettati emersi dall'analisi]
+### OUTLIERS
+[Surprising or unexpected insights that emerged from the analysis]
 
-### SINTESI
-[Integrazione che onora le divergenze senza forzare consenso artificiale]
+### SYNTHESIS
+[An integration that honors the divergences without forcing artificial consensus]
 """,
     "delta_report": """
 ## Output Format: Delta Report
 
-Struttura la tua risposta ESATTAMENTE in questo formato:
+Structure your response EXACTLY in this format:
 
 ### BASELINE
-[Cosa direbbe un'analisi standard senza vincoli]
+[What a standard, unconstrained analysis would say]
 
 ### DELTA
-[Cosa emerge di DIVERSO grazie ai vincoli applicati]
+[What emerges DIFFERENTLY thanks to the applied constraints]
 
-### INSIGHT UNICI
-[Intuizioni che NON sarebbero emerse senza i vincoli strutturali]
+### UNIQUE INSIGHTS
+[Insights that would NOT have emerged without the structural constraints]
 
-### VALORE AGGIUNTO
-[Perche' questi insight sono rilevanti per la decisione]
+### ADDED VALUE
+[Why these insights matter for the decision]
 """,
     "chain_output": """
 ## Output Format: Chain Output
 
-Struttura la tua risposta ESATTAMENTE in questo formato:
+Structure your response EXACTLY in this format:
 
-### POSIZIONE ATTUALE
-[La tua posizione dopo aver integrato tutti i round precedenti. 2-3 frasi.]
+### CURRENT POSITION
+[Your position after integrating all previous rounds. 2-3 sentences.]
 
-### EVOLUZIONE
-[Come la tua posizione e' cambiata rispetto ai round precedenti. Cosa hai aggiunto, modificato, abbandonato?]
+### EVOLUTION
+[How your position changed relative to previous rounds. What did you add, modify, abandon?]
 
-### TENSIONI IRRISOLTE
-[Contraddizioni o tensioni che rimangono aperte. Non forzare una risoluzione artificiale.]
+### UNRESOLVED TENSIONS
+[Contradictions or tensions that remain open. Do not force an artificial resolution.]
 
-### CONFIDENZA CALIBRATA
-[Alta/Media/Bassa] — [Cosa ti renderebbe piu'/meno sicuro]
+### CALIBRATED CONFIDENCE
+[High/Medium/Low] — [What would make you more/less certain]
 """,
     "decision_brief": """
 ## Output Format: Decision Brief
 
-Struttura la tua risposta ESATTAMENTE in questo formato:
+Structure your response EXACTLY in this format:
 
-### RACCOMANDAZIONE
-[Azione specifica e concreta raccomandata, in 1-2 frasi]
+### RECOMMENDATION
+[The specific, concrete recommended action, in 1-2 sentences]
 
-### CONFIDENZA
-[Alta/Media/Bassa] — [Motivazione in 1 frase]
+### CONFIDENCE
+[High/Medium/Low] — [Rationale in 1 sentence]
 
-### ARGOMENTI A FAVORE
-1. [Argomento piu' forte]
-2. [Secondo argomento]
-3. [Terzo argomento]
+### ARGUMENTS IN FAVOR
+1. [Strongest argument]
+2. [Second argument]
+3. [Third argument]
 
-### RISCHI
-1. [Rischio piu' significativo]
-2. [Secondo rischio]
-3. [Terzo rischio]
+### RISKS
+1. [Most significant risk]
+2. [Second risk]
+3. [Third risk]
 
-### COSA VERIFICARE PRIMA DI PROCEDERE
-1. [Test o verifica concreta #1]
-2. [Test o verifica concreta #2]
+### WHAT TO VERIFY BEFORE PROCEEDING
+1. [Concrete test or check #1]
+2. [Concrete test or check #2]
 """,
     "executive_extract": """
 ## Output Format: Executive Extract
 
-Struttura la tua risposta in MASSIMO 5 bullet point:
-- Ogni bullet e' actionable (chi fa cosa quando)
-- Nessun background o contesto — solo azioni
-- Se c'e' una decisione da prendere, indicala esplicitamente
-- Se c'e' un rischio critico, indicalo esplicitamente
+Structure your response in AT MOST 5 bullet points:
+- Every bullet is actionable (who does what, when)
+- No background or context — only actions
+- If there is a decision to make, state it explicitly
+- If there is a critical risk, flag it explicitly
 """,
     "raw": "",
 }
@@ -172,7 +172,7 @@ def check_compatibility(constraints: list[dict], library: dict) -> list[str]:
         for other_id in constraint_ids:
             if other_id != c_id and other_id in incompatible:
                 warnings.append(
-                    f"Vincolo '{c_id}' e' incompatibile con '{other_id}'"
+                    f"Constraint '{c_id}' is incompatible with '{other_id}'"
                 )
 
     return warnings
@@ -235,7 +235,7 @@ def render_constraint(constraint_config: dict, library: dict, intensity: int = 3
         ops = lib_constraint.get("scamper_operations", {})
         op = constraint_config["operation"]
         if op in ops:
-            appendices.append(f"Operazione: {ops[op]}")
+            appendices.append(f"Operation: {ops[op]}")
 
     if c_type == "elm_route" and "route" in constraint_config:
         routes = lib_constraint.get("elm_routes", {})
@@ -283,7 +283,7 @@ def compose_prompt(
     for c in constraints:
         c_type = c.get("type", c.get("id", ""))
         if c_type and c_type not in valid_ids:
-            warnings.append(f"Vincolo '{c_type}' sconosciuto: ignorato (non presente nella libreria)")
+            warnings.append(f"Constraint '{c_type}' is unknown: ignored (not present in the library)")
 
     # Render each constraint
     rendered_constraints = []
@@ -294,19 +294,20 @@ def compose_prompt(
 
     # Build system prompt
     parts = [
-        "Sei un analista vincolato dalle seguenti regole cognitive.",
-        "Queste regole NON sono suggerimenti: sono vincoli RIGIDI che definiscono come pensi.",
+        "You are an analyst bound by the following cognitive rules.",
+        "These rules are NOT suggestions: they are RIGID constraints that define how you think.",
+        "Respond in the same language as the Topic below.",
         "",
     ]
 
     if rendered_constraints:
-        parts.append("## Vincoli attivi")
+        parts.append("## Active constraints")
         parts.append("")
         parts.extend(rendered_constraints)
         parts.append("")
 
     if extra_instructions:
-        parts.append("## Istruzioni aggiuntive")
+        parts.append("## Additional instructions")
         parts.append(extra_instructions)
         parts.append("")
 
@@ -315,7 +316,7 @@ def compose_prompt(
     if schema:
         parts.append(schema)
 
-    parts.append(f"## Topic")
+    parts.append("## Topic")
     parts.append("")
     parts.append(topic)
 
@@ -348,16 +349,16 @@ def compose_persona_prompt(
 
     extra = []
     if psychology:
-        extra.append(f"Il tuo obiettivo primario: {psychology.get('primary_goal', '')}")
+        extra.append(f"Your primary goal: {psychology.get('primary_goal', '')}")
         fears = psychology.get("fears", [])
         if fears:
-            extra.append(f"Le tue paure: {', '.join(fears)}")
+            extra.append(f"Your fears: {', '.join(fears)}")
         style = psychology.get("decision_style", "")
         if style:
-            extra.append(f"Il tuo stile decisionale: {style}")
+            extra.append(f"Your decision style: {style}")
         threshold = psychology.get("convincement_threshold", "")
         if threshold:
-            extra.append(f"Per convincerti serve: {threshold}")
+            extra.append(f"To convince you requires: {threshold}")
 
     result = compose_prompt(
         constraints=constraints,
@@ -386,50 +387,51 @@ def suggest_constraints(
 
     goal_lower = goal.lower()
 
-    # Heuristic mapping
-    if any(w in goal_lower for w in ["stressare", "attaccare", "verificare", "testare"]):
+    # Heuristic mapping. Keyword lists are bilingual (EN + IT) so the goal can be
+    # expressed in either language.
+    if any(w in goal_lower for w in ["stress", "attack", "verify", "test", "stressare", "attaccare", "verificare", "testare"]):
         suggestions.extend([
-            {"type": "inversion", "_reason": "Attacca la posizione per trovare debolezze"},
-            {"type": "abductive", "_reason": "Cerca spiegazioni non ovvie"},
+            {"type": "inversion", "_reason": "Attack the position to find weaknesses"},
+            {"type": "abductive", "_reason": "Look for non-obvious explanations"},
         ])
 
-    if any(w in goal_lower for w in ["creativ", "innova", "ide", "nuov"]):
+    if any(w in goal_lower for w in ["creativ", "innovat", "idea", "new", "innova", "ide", "nuov"]):
         suggestions.extend([
-            {"type": "bisociative", "domain_forced": "[dominio da specificare]", "_reason": "Collisione tra frame incompatibili"},
-            {"type": "provocation", "po_statement": "[provocazione da specificare]", "_reason": "Punto di partenza impossibile"},
-            {"type": "defamiliarize", "perspective": "un antropologo alieno", "_reason": "Rompi la familiarita'"},
+            {"type": "bisociative", "domain_forced": "[domain to specify]", "_reason": "Collision between incompatible frames"},
+            {"type": "provocation", "po_statement": "[provocation to specify]", "_reason": "An impossible starting point"},
+            {"type": "defamiliarize", "perspective": "an alien anthropologist", "_reason": "Break familiarity"},
         ])
 
-    if any(w in goal_lower for w in ["rischio", "premortem", "fallimento", "pericol"]):
+    if any(w in goal_lower for w in ["risk", "premortem", "failure", "danger", "rischio", "fallimento", "pericol"]):
         suggestions.extend([
-            {"type": "premortem", "date": "2028", "_reason": "Analisi dal futuro del fallimento"},
-            {"type": "modal", "mode": "solo rischi, nessun beneficio", "_reason": "Focus esclusivo su downside"},
+            {"type": "premortem", "date": "2028", "_reason": "Analysis from a future where it failed"},
+            {"type": "modal", "mode": "only risks, no benefits", "_reason": "Exclusive focus on the downside"},
         ])
 
-    if any(w in goal_lower for w in ["assunzion", "assumption", "nascost", "blind"]):
+    if any(w in goal_lower for w in ["assumption", "hidden", "blind", "assunzion", "nascost"]):
         suggestions.extend([
-            {"type": "assumption_reversal", "assumption": "[da specificare]", "reversed": "[da specificare]", "_reason": "Inverti le assunzioni fondamentali"},
-            {"type": "concept_fan", "level": "purpose", "_reason": "Scava fino al bisogno fondamentale"},
+            {"type": "assumption_reversal", "assumption": "[to specify]", "reversed": "[to specify]", "_reason": "Invert the foundational assumptions"},
+            {"type": "concept_fan", "level": "purpose", "_reason": "Dig down to the fundamental need"},
         ])
 
-    if any(w in goal_lower for w in ["decision", "scelt", "dilemma", "equilibr"]):
+    if any(w in goal_lower for w in ["decision", "choice", "dilemma", "balance", "scelt", "equilibr"]):
         suggestions.extend([
-            {"type": "wise_mind", "mind_type": "wise", "_reason": "Integra emozione e ragione"},
-            {"type": "janusian", "thesis": "[da specificare]", "antithesis": "[da specificare]", "_reason": "Trascendi la contraddizione"},
+            {"type": "wise_mind", "mind_type": "wise", "_reason": "Integrate emotion and reason"},
+            {"type": "janusian", "thesis": "[to specify]", "antithesis": "[to specify]", "_reason": "Transcend the contradiction"},
         ])
 
-    if any(w in goal_lower for w in ["argoment", "convinc", "robust", "forte"]):
+    if any(w in goal_lower for w in ["argument", "convince", "robust", "strong", "argoment", "convinc", "forte"]):
         suggestions.extend([
-            {"type": "steelman", "_reason": "Costruisci la versione piu' forte"},
-            {"type": "elm_route", "route": "central", "focus": "logica e evidenze", "_reason": "Analisi centrale rigorosa"},
+            {"type": "steelman", "_reason": "Build the strongest version"},
+            {"type": "elm_route", "route": "central", "focus": "logic and evidence", "_reason": "Rigorous central-route analysis"},
         ])
 
     # Fallback: always useful constraints
     if not suggestions:
         suggestions = [
-            {"type": "inversion", "_reason": "Prospettiva opposta come default utile"},
-            {"type": "defamiliarize", "perspective": "un osservatore esterno al settore", "_reason": "Occhi freschi"},
-            {"type": "limit", "constraint": "massimo 3 argomenti, ognuno con un dato concreto", "_reason": "Forza concretezza"},
+            {"type": "inversion", "_reason": "The opposite perspective as a useful default"},
+            {"type": "defamiliarize", "perspective": "an observer outside the industry", "_reason": "Fresh eyes"},
+            {"type": "limit", "constraint": "at most 3 arguments, each with one concrete data point", "_reason": "Force concreteness"},
         ]
 
     return suggestions[:max_constraints]
@@ -488,35 +490,36 @@ def compose_sequential_prompt(
 
         # Build system prompt parts
         parts = [
-            "Sei un analista in un processo di approfondimento sequenziale.",
-            f"Questo e' il round {round_num} di {len(full_sequence)}.",
+            "You are an analyst in a sequential deepening process.",
+            f"This is round {round_num} of {len(full_sequence)}.",
+            "Respond in the same language as the Topic below.",
             "",
         ]
 
         # Context instruction for rounds after the first
         context_instruction = None
         if round_num == 1:
-            parts.append("## Vincolo attivo")
+            parts.append("## Active constraint")
             parts.append("")
             parts.append(f"1. {rendered}")
             parts.append("")
         else:
             context_instruction = (
-                "## Contesto: output dei round precedenti\n\n"
+                "## Context: output of previous rounds\n\n"
                 "{previous_output}\n\n"
-                "## Nuovo vincolo per questo round\n\n"
+                "## New constraint for this round\n\n"
                 f"1. {rendered}\n\n"
-                "## Istruzione\n\n"
-                "Integra il contesto precedente con il nuovo vincolo. "
-                "Non ripetere cio' che e' gia' stato detto. "
-                "Aggiungi, contraddici, approfondisci o trascendi."
+                "## Instruction\n\n"
+                "Integrate the previous context with the new constraint. "
+                "Do not repeat what has already been said. "
+                "Add, contradict, deepen, or transcend."
             )
-            parts.append("## Vincolo attivo")
+            parts.append("## Active constraint")
             parts.append("")
             parts.append(f"1. {rendered}")
             parts.append("")
-            parts.append("NOTA: riceverai l'output dei round precedenti come contesto. "
-                        "Integralo con il vincolo attivo.")
+            parts.append("NOTE: you will receive the output of previous rounds as context. "
+                        "Integrate it with the active constraint.")
             parts.append("")
 
         # Output schema only for the last round
@@ -563,7 +566,8 @@ def compose_baseline_prompt(
     schema = OUTPUT_SCHEMAS.get(output_format, OUTPUT_SCHEMAS["raw"])
 
     parts = [
-        "Analizza il seguente topic con un'analisi approfondita e strutturata.",
+        "Analyze the following topic with a thorough, structured analysis.",
+        "Respond in the same language as the Topic below.",
         "",
     ]
 

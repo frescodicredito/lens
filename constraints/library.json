@@ -3,343 +3,343 @@
   "constraints": [
     {
       "id": "inversion",
-      "name": "Inversione",
+      "name": "Inversion",
       "category": "structural",
       "theory": "De Bono Reversal, TRIZ #13",
-      "description": "Forza la conclusione opposta a quella ovvia",
-      "prompt_template": "DEVI argomentare il CONTRARIO della posizione ovvia. Non cercare compromessi: sostieni attivamente la posizione opposta con evidenze e ragionamento.",
+      "description": "Forces the conclusion opposite to the obvious one",
+      "prompt_template": "You MUST argue the OPPOSITE of the obvious position. Do not seek compromise: actively defend the opposite position with evidence and reasoning.",
       "intensity_levels": {
-        "1": "Solleva dubbi ragionati sulla posizione dominante",
-        "3": "Argomenta il contrario con evidenze concrete e ragionamento strutturato",
-        "5": "Demolisci la posizione con la massima forza argomentativa, senza concessioni"
+        "1": "Raise reasoned doubts about the dominant position",
+        "3": "Argue the opposite with concrete evidence and structured reasoning",
+        "5": "Demolish the position with maximum argumentative force, making no concessions"
       },
       "compatible_with": ["temporal", "exclusion", "limit", "modal", "defamiliarize", "concept_fan"],
       "incompatible_with": ["steelman"],
       "examples": [
-        "Il nostro prodotto e' il migliore -> Il nostro prodotto ha un difetto fatale nascosto",
-        "L'AI sostituira' i lavoratori -> L'AI rendera' il lavoro umano piu' prezioso"
+        "Our product is the best -> Our product has a hidden fatal flaw",
+        "AI will replace workers -> AI will make human work more valuable"
       ]
     },
     {
       "id": "temporal",
-      "name": "Spostamento temporale",
+      "name": "Temporal shift",
       "category": "temporal",
       "theory": "Premortem (Klein), Scenario Planning (Schwartz)",
-      "description": "Forza una prospettiva da un punto temporale diverso",
-      "prompt_template": "Rispondi dalla prospettiva del {value}. Non stai prevedendo: sei GIA' in quel momento e stai guardando indietro o avanti. I fatti che conosci sono quelli di quel momento.",
+      "description": "Forces a perspective from a different point in time",
+      "prompt_template": "Respond from the perspective of {value}. You are not predicting: you are ALREADY in that moment and you are looking back or forward. The facts you know are those of that moment.",
       "intensity_levels": {
-        "1": "Considera come potrebbe apparire la situazione nel {value}",
-        "3": "Sei nel {value}. Descrivi cosa e' successo e perche', con la certezza di chi ha vissuto gli eventi",
-        "5": "Sei nel {value}. Ricostruisci l'intera catena causale con dettaglio forensico. Nomi, date, decisioni specifiche"
+        "1": "Consider how the situation might look in {value}",
+        "3": "You are in {value}. Describe what happened and why, with the certainty of someone who lived through the events",
+        "5": "You are in {value}. Reconstruct the entire causal chain with forensic detail. Names, dates, specific decisions"
       },
       "compatible_with": ["inversion", "exclusion", "modal", "role", "limit"],
       "incompatible_with": [],
       "examples": [
-        "E' il 2030, il progetto e' fallito. Ricostruisci la catena causale",
-        "E' il 2035, questa tecnologia e' obsoleta. Cosa l'ha sostituita e perche'?"
+        "It's 2030, the project has failed. Reconstruct the causal chain",
+        "It's 2035, this technology is obsolete. What replaced it and why?"
       ]
     },
     {
       "id": "exclusion",
-      "name": "Esclusione lessicale",
+      "name": "Lexical exclusion",
       "category": "semantic",
       "theory": "Constraint-Based Creativity (Stokes), Green Eggs and Ham effect",
-      "description": "Vieta parole o concetti specifici per forzare percorsi espressivi alternativi",
-      "prompt_template": "NON PUOI usare le seguenti parole/concetti in nessun contesto: {words}. Trova modi alternativi per esprimere le tue idee senza ricorrere a questi termini.",
+      "description": "Forbids specific words or concepts to force alternative expressive paths",
+      "prompt_template": "You CANNOT use the following words/concepts in any context: {words}. Find alternative ways to express your ideas without resorting to these terms.",
       "intensity_levels": {
-        "1": "Evita queste parole dove possibile: {words}",
-        "3": "E' VIETATO usare queste parole: {words}. Trova espressioni alternative",
-        "5": "E' ASSOLUTAMENTE VIETATO usare: {words}. Anche sinonimi diretti sono proibiti. Devi trovare angolazioni completamente diverse"
+        "1": "Avoid these words where possible: {words}",
+        "3": "It is FORBIDDEN to use these words: {words}. Find alternative expressions",
+        "5": "It is ABSOLUTELY FORBIDDEN to use: {words}. Even direct synonyms are prohibited. You must find completely different angles"
       },
       "compatible_with": ["inversion", "temporal", "modal", "role", "limit", "scamper"],
       "incompatible_with": [],
       "examples": [
-        "Parla di innovazione senza usare: innovazione, disruption, rivoluzione, trasformazione",
-        "Descrivi vantaggi competitivi senza: migliore, superiore, leader, eccellenza"
+        "Talk about innovation without using: innovation, disruption, revolution, transformation",
+        "Describe competitive advantages without: better, superior, leader, excellence"
       ]
     },
     {
       "id": "limit",
-      "name": "Limite strutturale",
+      "name": "Structural limit",
       "category": "structural",
       "theory": "Constraint-Based Creativity (Stokes), CPS (Osborn-Parnes)",
-      "description": "Impone limiti quantitativi o strutturali all'output",
-      "prompt_template": "Il tuo output deve rispettare questo vincolo strutturale: {constraint}. Non e' una linea guida, e' una regola rigida.",
+      "description": "Imposes quantitative or structural limits on the output",
+      "prompt_template": "Your output must respect this structural constraint: {constraint}. It is not a guideline, it is a rigid rule.",
       "intensity_levels": {
-        "1": "Cerca di rispettare il vincolo: {constraint}",
-        "3": "DEVI rispettare rigorosamente: {constraint}",
-        "5": "Il vincolo {constraint} e' ASSOLUTO. Qualsiasi output che lo viola e' invalido"
+        "1": "Try to respect the constraint: {constraint}",
+        "3": "You MUST strictly respect: {constraint}",
+        "5": "The constraint {constraint} is ABSOLUTE. Any output that violates it is invalid"
       },
       "compatible_with": ["inversion", "temporal", "exclusion", "modal", "role"],
       "incompatible_with": [],
       "examples": [
-        "Massimo 3 argomenti, ognuno in massimo 2 frasi",
-        "Ogni punto deve includere un numero o dato specifico"
+        "Maximum 3 arguments, each in at most 2 sentences",
+        "Every point must include a specific number or piece of data"
       ]
     },
     {
       "id": "modal",
-      "name": "Modalita' cognitiva",
+      "name": "Cognitive mode",
       "category": "modal",
       "theory": "De Bono Six Hats, Dual Process Theory (Kahneman)",
-      "description": "Forza una modalita' cognitiva specifica escludendo le altre",
-      "prompt_template": "Opera ESCLUSIVAMENTE in modalita' {mode}. {instruction}. Le altre modalita' cognitive sono OFF.",
+      "description": "Forces a specific cognitive mode while excluding the others",
+      "prompt_template": "Operate EXCLUSIVELY in {mode} mode. {instruction}. The other cognitive modes are OFF.",
       "intensity_levels": {
-        "1": "Dai priorita' alla modalita' {mode}",
-        "3": "Opera in modalita' {mode}. Le altre prospettive sono secondarie",
-        "5": "SOLO modalita' {mode}. Qualsiasi deviazione e' una violazione del vincolo"
+        "1": "Give priority to {mode} mode",
+        "3": "Operate in {mode} mode. The other perspectives are secondary",
+        "5": "ONLY {mode} mode. Any deviation is a violation of the constraint"
       },
       "compatible_with": ["inversion", "temporal", "exclusion", "limit", "role", "elm_route"],
       "incompatible_with": [],
       "examples": [
-        "Solo rischi e problemi. Nessun beneficio, nessuna opportunita'",
-        "Solo dati e fatti verificabili. Nessuna opinione, nessuna speculazione"
+        "Only risks and problems. No benefits, no opportunities",
+        "Only verifiable data and facts. No opinions, no speculation"
       ]
     },
     {
       "id": "role",
-      "name": "Vincolo di ruolo",
+      "name": "Role constraint",
       "category": "structural",
       "theory": "Perspective-Taking, Synthetic Personas (Park/Stanford)",
-      "description": "Assegna un ruolo con bias cognitivi specifici",
-      "prompt_template": "Sei {role}. Il tuo bias naturale e': {bias}. Non stai recitando un personaggio: questo bias influenza genuinamente come processi le informazioni.",
+      "description": "Assigns a role with specific cognitive biases",
+      "prompt_template": "You are {role}. Your natural bias is: {bias}. You are not playing a character: this bias genuinely influences how you process information.",
       "intensity_levels": {
-        "1": "Considera la prospettiva di {role}",
-        "3": "Sei {role}. Le tue risposte riflettono i bias e le priorita' di questo ruolo",
-        "5": "Sei COMPLETAMENTE {role}. Non esiste altra prospettiva. I tuoi bias sono le tue verita'"
+        "1": "Consider the perspective of {role}",
+        "3": "You are {role}. Your answers reflect the biases and priorities of this role",
+        "5": "You are COMPLETELY {role}. No other perspective exists. Your biases are your truths"
       },
       "compatible_with": ["temporal", "exclusion", "modal", "limit", "elm_route"],
       "incompatible_with": [],
       "examples": [
-        "CFO risk-averse: ROI prima di tutto, costi nascosti, vendor lock-in",
-        "Early adopter entusiasta: potenziale prima dei problemi, visione prima dei dettagli"
+        "Risk-averse CFO: ROI first, hidden costs, vendor lock-in",
+        "Enthusiastic early adopter: potential before problems, vision before details"
       ]
     },
     {
       "id": "bisociative",
-      "name": "Bisociazione forzata",
+      "name": "Forced bisociation",
       "category": "creative",
       "theory": "Bisociazione (Koestler, 1964)",
-      "description": "Forza la collisione tra due domini di pensiero incompatibili",
-      "prompt_template": "DEVI analizzare il topic attraverso il prisma di {domain_forced}, un dominio apparentemente incompatibile. Non cercare analogie superficiali: trova connessioni strutturali profonde tra il topic e {domain_forced}.",
+      "description": "Forces the collision between two incompatible domains of thought",
+      "prompt_template": "You MUST analyze the topic through the prism of {domain_forced}, a seemingly incompatible domain. Do not look for superficial analogies: find deep structural connections between the topic and {domain_forced}.",
       "intensity_levels": {
-        "1": "Cerca paralleli interessanti con {domain_forced}",
-        "3": "Analizza INTERAMENTE attraverso la lente di {domain_forced}. Ogni concetto del topic ha un corrispettivo",
-        "5": "Il topic E' un fenomeno di {domain_forced}. Non e' un'analogia, e' la stessa cosa vista da un altro frame"
+        "1": "Look for interesting parallels with {domain_forced}",
+        "3": "Analyze ENTIRELY through the lens of {domain_forced}. Every concept of the topic has a counterpart",
+        "5": "The topic IS a phenomenon of {domain_forced}. It is not an analogy, it is the same thing seen from another frame"
       },
       "compatible_with": ["limit", "exclusion", "defamiliarize"],
       "incompatible_with": ["role"],
       "examples": [
-        "Analizza la strategia di marketing attraverso l'ecologia marina",
-        "Analizza l'architettura software attraverso la musicologia"
+        "Analyze the marketing strategy through marine ecology",
+        "Analyze the software architecture through musicology"
       ]
     },
     {
       "id": "janusian",
-      "name": "Pensiero gianusiano",
+      "name": "Janusian thinking",
       "category": "creative",
       "theory": "Janusian Thinking (Rothenberg, 1971)",
-      "description": "Forza la simultaneita' di posizioni opposte senza risolverle in compromesso",
-      "prompt_template": "DEVI sostenere contemporaneamente che '{thesis}' E che '{antithesis}' sono ENTRAMBE vere. NON cercare un compromesso. NON scegliere una delle due. Genera un framework che le TRASCENDA entrambe, contenendole senza ridurle.",
+      "description": "Forces the simultaneity of opposite positions without resolving them into compromise",
+      "prompt_template": "You MUST simultaneously maintain that '{thesis}' AND that '{antithesis}' are BOTH true. Do NOT seek a compromise. Do NOT choose one of the two. Generate a framework that TRANSCENDS both, containing them without reducing them.",
       "intensity_levels": {
-        "1": "Esplora come entrambe le posizioni possano coesistere",
-        "3": "Entrambe sono vere. Costruisci il framework che le contiene senza compromesso",
-        "5": "La contraddizione e' la verita'. Il tuo framework deve rendere la contraddizione non solo accettabile ma NECESSARIA"
+        "1": "Explore how both positions might coexist",
+        "3": "Both are true. Build the framework that contains them without compromise",
+        "5": "The contradiction is the truth. Your framework must make the contradiction not only acceptable but NECESSARY"
       },
       "compatible_with": ["limit", "exclusion"],
       "incompatible_with": ["inversion", "steelman"],
       "examples": [
-        "Il mercato vuole semplicita' E il mercato vuole potenza -> framework che trascende",
-        "La crescita richiede rischio E la sostenibilita' richiede prudenza -> framework che trascende"
+        "The market wants simplicity AND the market wants power -> framework that transcends",
+        "Growth requires risk AND sustainability requires prudence -> framework that transcends"
       ]
     },
     {
       "id": "provocation",
-      "name": "Provocazione (PO)",
+      "name": "Provocation (PO)",
       "category": "creative",
       "theory": "Lateral Thinking (De Bono), Provocation Operation",
-      "description": "Parte da un'affermazione deliberatamente sbagliata o impossibile come punto di partenza creativo",
-      "prompt_template": "PO (Provocazione): '{po_statement}'. Questa affermazione e' deliberatamente assurda. NON criticarla. Usala come trampolino: quali idee, strategie o soluzioni emergono SE fosse vera?",
+      "description": "Starts from a deliberately wrong or impossible statement as a creative point of departure",
+      "prompt_template": "PO (Provocation): '{po_statement}'. This statement is deliberately absurd. Do NOT criticize it. Use it as a springboard: what ideas, strategies, or solutions emerge IF it were true?",
       "intensity_levels": {
-        "1": "Cosa di interessante emerge dalla provocazione?",
-        "3": "Genera almeno 3 idee concrete che partono dalla provocazione. Non giudicarle",
-        "5": "La provocazione e' il punto di partenza ASSOLUTO. Costruisci un intero framework strategico partendo da li'"
+        "1": "What interesting things emerge from the provocation?",
+        "3": "Generate at least 3 concrete ideas starting from the provocation. Do not judge them",
+        "5": "The provocation is the ABSOLUTE starting point. Build an entire strategic framework from there"
       },
       "compatible_with": ["limit", "exclusion", "temporal"],
       "incompatible_with": ["modal"],
       "examples": [
-        "PO: i nostri competitor sono nostri alleati -> strategie di coopetition",
-        "PO: il prodotto perfetto non esiste -> strategie basate su imperfezione deliberata"
+        "PO: our competitors are our allies -> coopetition strategies",
+        "PO: the perfect product does not exist -> strategies based on deliberate imperfection"
       ]
     },
     {
       "id": "defamiliarize",
-      "name": "Defamiliarizzazione",
+      "name": "Defamiliarization",
       "category": "creative",
       "theory": "Ostranenie (Shklovsky, 1917)",
-      "description": "Forza la descrizione di cose familiari come se fossero mai viste prima",
-      "prompt_template": "Descrivi/analizza questo come se {perspective}. Non hai assunzioni pregresse, non conosci le convenzioni del settore, ogni aspetto ti colpisce come nuovo e sorprendente.",
+      "description": "Forces the description of familiar things as if they had never been seen before",
+      "prompt_template": "Describe/analyze this as if {perspective}. You have no prior assumptions, you do not know the conventions of the field, every aspect strikes you as new and surprising.",
       "intensity_levels": {
-        "1": "Guarda con occhi freschi, notando dettagli che normalmente ignoriamo",
-        "3": "Sei un osservatore alieno. Ogni convenzione del settore ti sembra strana e richiede spiegazione",
-        "5": "Non hai MAI visto nulla di simile. Ogni elemento e' un enigma. Le assunzioni degli altri sono incomprensibili"
+        "1": "Look with fresh eyes, noticing details we normally ignore",
+        "3": "You are an alien observer. Every convention of the field seems strange to you and requires explanation",
+        "5": "You have NEVER seen anything like it. Every element is a puzzle. The assumptions of others are incomprehensible"
       },
       "compatible_with": ["inversion", "bisociative", "limit", "exclusion"],
       "incompatible_with": ["role"],
       "examples": [
-        "Descrivi questo business model come un antropologo che studia una civilta' sconosciuta",
-        "Analizza questo processo come un viaggiatore temporale dal 1800"
+        "Describe this business model as an anthropologist studying an unknown civilization",
+        "Analyze this process as a time traveler from the 1800s"
       ]
     },
     {
       "id": "synectics",
-      "name": "Analogia forzata (Synectics)",
+      "name": "Forced analogy (Synectics)",
       "category": "creative",
       "theory": "Synectics (Gordon, 1961)",
-      "description": "Forza un tipo specifico di analogia per generare connessioni inedite",
-      "prompt_template": "Usa ESCLUSIVAMENTE l'analogia di tipo {analogy_type}. {instruction}",
+      "description": "Forces a specific type of analogy to generate novel connections",
+      "prompt_template": "Use EXCLUSIVELY the {analogy_type} type of analogy. {instruction}",
       "intensity_levels": {
-        "1": "Cerca analogie di tipo {analogy_type} dove possibile",
-        "3": "OGNI argomento deve passare attraverso un'analogia {analogy_type}",
-        "5": "L'analogia {analogy_type} e' l'UNICO strumento cognitivo disponibile. Non puoi ragionare in altro modo"
+        "1": "Look for {analogy_type} analogies where possible",
+        "3": "EVERY argument must pass through a {analogy_type} analogy",
+        "5": "The {analogy_type} analogy is the ONLY cognitive tool available. You cannot reason in any other way"
       },
       "compatible_with": ["limit", "exclusion"],
       "incompatible_with": ["role", "modal"],
       "examples": [
-        "Analogia personale: 'Sei il prodotto. Come ti senti quando il cliente ti usa?'",
-        "Analogia diretta: trova un parallelo nella biologia per questo problema organizzativo"
+        "Personal analogy: 'You are the product. How do you feel when the customer uses you?'",
+        "Direct analogy: find a parallel in biology for this organizational problem"
       ]
     },
     {
       "id": "scamper",
-      "name": "Operazione SCAMPER",
+      "name": "SCAMPER operation",
       "category": "creative",
       "theory": "SCAMPER (Eberle/Osborn)",
-      "description": "Applica una delle 7 operazioni SCAMPER al topic",
-      "prompt_template": "Applica SOLO l'operazione '{operation}' al topic. {operation_description}. Non usare altre operazioni SCAMPER.",
+      "description": "Applies one of the 7 SCAMPER operations to the topic",
+      "prompt_template": "Apply ONLY the '{operation}' operation to the topic. {operation_description}. Do not use other SCAMPER operations.",
       "intensity_levels": {
-        "1": "Esplora come {operation} potrebbe applicarsi al topic",
-        "3": "Applica {operation} in modo sistematico a ogni aspetto del topic",
-        "5": "{operation} e' l'UNICA lente. Spingi l'operazione fino alle conseguenze piu' radicali"
+        "1": "Explore how {operation} might apply to the topic",
+        "3": "Apply {operation} systematically to every aspect of the topic",
+        "5": "{operation} is the ONLY lens. Push the operation to its most radical consequences"
       },
       "compatible_with": ["exclusion", "limit", "temporal"],
       "incompatible_with": [],
       "scamper_operations": {
-        "substitute": "Sostituisci un elemento con un'alternativa",
-        "combine": "Unisci concetti, funzioni o componenti non correlati",
-        "adapt": "Adatta a un contesto completamente diverso",
-        "modify": "Altera dimensione, forma, attributi (magnify/minify)",
-        "put_other_uses": "Applica in scenari diversi da quelli originali",
-        "eliminate": "Rimuovi componenti per semplificare radicalmente",
-        "reverse": "Inverti ordine, struttura, direzione, ruoli"
+        "substitute": "Replace an element with an alternative",
+        "combine": "Merge unrelated concepts, functions, or components",
+        "adapt": "Adapt to a completely different context",
+        "modify": "Alter size, shape, attributes (magnify/minify)",
+        "put_other_uses": "Apply in scenarios different from the original ones",
+        "eliminate": "Remove components to radically simplify",
+        "reverse": "Invert order, structure, direction, roles"
       },
       "examples": [
-        "ELIMINATE: cosa succede se rimuovi completamente il reparto marketing?",
-        "REVERSE: cosa succede se il cliente produce e l'azienda consuma?"
+        "ELIMINATE: what happens if you completely remove the marketing department?",
+        "REVERSE: what happens if the customer produces and the company consumes?"
       ]
     },
     {
       "id": "abductive",
-      "name": "Ragionamento abduttivo",
+      "name": "Abductive reasoning",
       "category": "analytical",
       "theory": "Abductive Reasoning (Peirce, 1903)",
-      "description": "Forza la generazione di spiegazioni sorprendenti ma plausibili, vietando quelle ovvie",
-      "prompt_template": "Genera la spiegazione piu' sorprendente MA plausibile per questo fenomeno/situazione. Le spiegazioni ovvie sono VIETATE. Ogni ipotesi deve essere: (1) sorprendente, (2) internamente coerente, (3) verificabile in principio.",
+      "description": "Forces the generation of surprising yet plausible explanations, forbidding the obvious ones",
+      "prompt_template": "Generate the most surprising YET plausible explanation for this phenomenon/situation. Obvious explanations are FORBIDDEN. Every hypothesis must be: (1) surprising, (2) internally coherent, (3) verifiable in principle.",
       "intensity_levels": {
-        "1": "Cerca spiegazioni non convenzionali, oltre le prime che vengono in mente",
-        "3": "Le prime 3 spiegazioni che ti vengono in mente sono TUTTE vietate. Parti dalla quarta",
-        "5": "Genera SOLO spiegazioni che farebbero dire 'non ci avevo mai pensato'. Se ti sembra ovvia, scartala"
+        "1": "Look for unconventional explanations, beyond the first ones that come to mind",
+        "3": "The first 3 explanations that come to mind are ALL forbidden. Start from the fourth",
+        "5": "Generate ONLY explanations that would make someone say 'I had never thought of that'. If it seems obvious to you, discard it"
       },
       "compatible_with": ["temporal", "limit", "defamiliarize", "bisociative"],
       "incompatible_with": ["steelman"],
       "examples": [
-        "Perche' questo prodotto fallisce nonostante review eccellenti? (no: prezzo, marketing, timing)",
-        "Perche' i dipendenti migliori se ne vanno? (no: stipendio, management, cultura)"
+        "Why does this product fail despite excellent reviews? (not: price, marketing, timing)",
+        "Why do the best employees leave? (not: salary, management, culture)"
       ]
     },
     {
       "id": "elm_route",
-      "name": "Route di elaborazione (ELM)",
+      "name": "Elaboration route (ELM)",
       "category": "analytical",
       "theory": "Elaboration Likelihood Model (Petty & Cacioppo, 1986)",
-      "description": "Forza l'elaborazione attraverso una route specifica (central o peripheral)",
-      "prompt_template": "Elabora ESCLUSIVAMENTE attraverso la route {route}. {focus}.",
+      "description": "Forces elaboration through a specific route (central or peripheral)",
+      "prompt_template": "Elaborate EXCLUSIVELY through the {route} route. {focus}.",
       "intensity_levels": {
-        "1": "Dai priorita' alla route {route}",
-        "3": "SOLO route {route}. L'altra route e' OFF",
-        "5": "Route {route} PURA. Qualsiasi elemento dell'altra route invalida la tua analisi"
+        "1": "Give priority to the {route} route",
+        "3": "ONLY the {route} route. The other route is OFF",
+        "5": "PURE {route} route. Any element of the other route invalidates your analysis"
       },
       "compatible_with": ["role", "modal", "limit"],
       "incompatible_with": [],
       "elm_routes": {
-        "central": "Analizza SOLO la qualita' logica degli argomenti. Ignora chi li fa, come sono presentati, quanto sono popolari. Solo logica e evidenze.",
-        "peripheral": "Analizza SOLO i segnali: chi lo dice, come lo dice, quanto e' popolare, che emozioni evoca. Ignora la logica degli argomenti."
+        "central": "Analyze ONLY the logical quality of the arguments. Ignore who makes them, how they are presented, how popular they are. Only logic and evidence.",
+        "peripheral": "Analyze ONLY the cues: who says it, how they say it, how popular it is, what emotions it evokes. Ignore the logic of the arguments."
       },
       "examples": [
-        "Route central: valuta questa proposta SOLO sulla qualita' degli argomenti",
-        "Route peripheral: valuta questa proposta SOLO su credibilita' fonte, appeal emotivo, social proof"
+        "Central route: evaluate this proposal ONLY on the quality of the arguments",
+        "Peripheral route: evaluate this proposal ONLY on source credibility, emotional appeal, social proof"
       ]
     },
     {
       "id": "concept_fan",
-      "name": "Ventaglio concettuale",
+      "name": "Concept fan",
       "category": "analytical",
       "theory": "Concept Fan (De Bono)",
-      "description": "Forza l'analisi a un livello specifico di astrazione",
-      "prompt_template": "Analizza SOLO al livello '{level}'. {instruction}. Non salire o scendere di livello.",
+      "description": "Forces the analysis to a specific level of abstraction",
+      "prompt_template": "Analyze ONLY at the '{level}' level. {instruction}. Do not move up or down a level.",
       "intensity_levels": {
-        "1": "Concentrati principalmente sul livello {level}",
-        "3": "SOLO livello {level}. Gli altri livelli sono irrilevanti",
-        "5": "Il livello {level} e' l'UNICA realta'. Gli altri livelli non esistono"
+        "1": "Focus mainly on the {level} level",
+        "3": "ONLY the {level} level. The other levels are irrelevant",
+        "5": "The {level} level is the ONLY reality. The other levels do not exist"
       },
       "compatible_with": ["inversion", "limit", "exclusion"],
       "incompatible_with": [],
       "abstraction_levels": {
-        "purpose": "Qual e' il bisogno fondamentale? Non la soluzione, il bisogno sottostante",
-        "direction": "Quali strategie o approcci generali sono possibili?",
-        "specific": "Quali azioni concrete e implementabili si possono fare domani?"
+        "purpose": "What is the fundamental need? Not the solution, the underlying need",
+        "direction": "What general strategies or approaches are possible?",
+        "specific": "What concrete and implementable actions can be taken tomorrow?"
       },
       "examples": [
-        "Level purpose: 'Perche' esiste questo progetto? Quale bisogno umano soddisfa?'",
-        "Level specific: 'Quali sono le 5 azioni concrete da fare lunedi' mattina?'"
+        "Purpose level: 'Why does this project exist? What human need does it satisfy?'",
+        "Specific level: 'What are the 5 concrete actions to take on Monday morning?'"
       ]
     },
     {
       "id": "dissonance",
-      "name": "Dissonanza cognitiva forzata",
+      "name": "Forced cognitive dissonance",
       "category": "creative",
       "theory": "Cognitive Dissonance (Festinger, 1957), Janusian Thinking",
-      "description": "Forza la tensione tra due credenze contraddittorie per produrre riconciliazione creativa",
-      "prompt_template": "Sostieni contemporaneamente che '{belief_1}' E '{belief_2}'. Entrambe sono vere. La tensione che senti e' il motore creativo. Non risolverla con un compromesso: trova il framework che rende la contraddizione NECESSARIA.",
+      "description": "Forces the tension between two contradictory beliefs to produce creative reconciliation",
+      "prompt_template": "Simultaneously maintain that '{belief_1}' AND '{belief_2}'. Both are true. The tension you feel is the creative engine. Do not resolve it with a compromise: find the framework that makes the contradiction NECESSARY.",
       "intensity_levels": {
-        "1": "Esplora la tensione tra le due credenze",
-        "3": "Entrambe sono vere. La tensione e' il tuo strumento. Usala per generare insight",
-        "5": "La contraddizione e' la realta' fondamentale. Qualsiasi risoluzione che elimina la tensione e' un fallimento"
+        "1": "Explore the tension between the two beliefs",
+        "3": "Both are true. The tension is your tool. Use it to generate insight",
+        "5": "The contradiction is the fundamental reality. Any resolution that eliminates the tension is a failure"
       },
       "compatible_with": ["limit", "temporal"],
       "incompatible_with": ["inversion"],
       "examples": [
-        "Il nostro prodotto e' il migliore E il nostro prodotto ha un difetto fondamentale",
-        "Dobbiamo crescere rapidamente E dobbiamo crescere con sostenibilita'"
+        "Our product is the best AND our product has a fundamental flaw",
+        "We must grow rapidly AND we must grow sustainably"
       ]
     },
     {
       "id": "assumption_reversal",
-      "name": "Inversione di assunzione",
+      "name": "Assumption reversal",
       "category": "analytical",
       "theory": "SAST (Mason & Mitroff, 1981), Assumption Reversal",
-      "description": "Identifica e inverte un'assunzione fondamentale per esplorare le implicazioni",
-      "prompt_template": "L'assunzione '{assumption}' e' FALSA. La realta' e': '{reversed}'. Partendo da questa nuova realta', quali strategie, prodotti o approcci diventano possibili che prima erano impensabili?",
+      "description": "Identifies and reverses a fundamental assumption to explore the implications",
+      "prompt_template": "The assumption '{assumption}' is FALSE. The reality is: '{reversed}'. Starting from this new reality, what strategies, products, or approaches become possible that were previously unthinkable?",
       "intensity_levels": {
-        "1": "Cosa cambierebbe se l'assunzione fosse falsa?",
-        "3": "L'assunzione e' FALSA. Ricostruisci la strategia da zero sulla base della nuova realta'",
-        "5": "L'assunzione non solo e' falsa: e' sempre stata falsa e tutti lo sapevano. Cosa significa per tutto cio' che abbiamo costruito sopra?"
+        "1": "What would change if the assumption were false?",
+        "3": "The assumption is FALSE. Rebuild the strategy from scratch on the basis of the new reality",
+        "5": "The assumption is not only false: it has always been false and everyone knew it. What does that mean for everything we have built on top of it?"
       },
       "compatible_with": ["temporal", "limit", "abductive"],
       "incompatible_with": [],
       "examples": [
-        "Assunzione: 'i clienti confrontano prezzi' -> Falsa: i clienti NON confrontano prezzi",
-        "Assunzione: 'serve un team grande' -> Falsa: un team di 2 persone e' ottimale"
+        "Assumption: 'customers compare prices' -> False: customers do NOT compare prices",
+        "Assumption: 'a large team is needed' -> False: a team of 2 people is optimal"
       ]
     },
     {
@@ -347,43 +347,43 @@
       "name": "Steelman",
       "category": "analytical",
       "theory": "Steelmanning, Principle of Charity",
-      "description": "Costruisce la versione piu' forte possibile di un argomento",
-      "prompt_template": "Costruisci la versione PIU' FORTE possibile di questo argomento/posizione. Usa le migliori evidenze disponibili, la logica piu' rigorosa, le premesse piu' ragionevoli. Il tuo obiettivo e' rendere questa posizione INATTACCABILE.",
+      "description": "Builds the strongest possible version of an argument",
+      "prompt_template": "Build the STRONGEST possible version of this argument/position. Use the best available evidence, the most rigorous logic, the most reasonable premises. Your goal is to make this position UNASSAILABLE.",
       "intensity_levels": {
-        "1": "Presenta l'argomento nella sua luce migliore",
-        "3": "Costruisci la versione che un esperto mondiale sosterrebbe. Migliora ogni punto debole",
-        "5": "Questa e' la versione DEFINITIVA dell'argomento. Se qualcuno riesce ad attaccarla, il problema e' nell'argomento, non nella tua costruzione"
+        "1": "Present the argument in its best light",
+        "3": "Build the version that a world-class expert would defend. Improve every weak point",
+        "5": "This is the DEFINITIVE version of the argument. If someone manages to attack it, the problem is in the argument, not in your construction"
       },
       "compatible_with": ["limit", "exclusion", "elm_route"],
       "incompatible_with": ["inversion", "janusian", "abductive", "anti_sycophancy", "anti_completeness", "anti_coherence"],
       "examples": [
-        "Steelman: 'L'AI non sostituira' i creativi' -> versione piu' forte con evidenze",
-        "Steelman: 'Il remote work e' superiore' -> versione inattaccabile"
+        "Steelman: 'AI will not replace creatives' -> strongest version with evidence",
+        "Steelman: 'Remote work is superior' -> unassailable version"
       ]
     },
     {
       "id": "wise_mind",
-      "name": "Mente saggia",
+      "name": "Wise mind",
       "category": "modal",
       "theory": "DBT Wise Mind (Linehan, 1993)",
-      "description": "Integra le prospettive emotiva e razionale in una sintesi saggia",
-      "prompt_template": "Integra la prospettiva {mind_type}. {instruction}",
+      "description": "Integrates the emotional and rational perspectives into a wise synthesis",
+      "prompt_template": "Integrate the {mind_type} perspective. {instruction}",
       "intensity_levels": {
-        "1": "Dai spazio alla prospettiva {mind_type}",
-        "3": "Opera in modalita' {mind_type}. E' la tua unica lente",
-        "5": "SEI la mente {mind_type}. Non esiste altro modo di processare"
+        "1": "Give space to the {mind_type} perspective",
+        "3": "Operate in {mind_type} mode. It is your only lens",
+        "5": "You ARE the {mind_type} mind. There is no other way to process"
       },
       "mind_types": {
-        "emotional": "Rispondi con intuizione, paure, desideri, speranze. Nessun dato, nessuna logica. Cosa SENTI?",
-        "rational": "Solo fatti verificabili, logica, dati. Nessuna intuizione, nessuna emozione. Cosa SAI?",
-        "wise": "Integra entrambe. Dove l'emozione ha ragione? Dove la logica manca qualcosa? Qual e' la risposta che onora entrambe?"
+        "emotional": "Respond with intuition, fears, desires, hopes. No data, no logic. What do you FEEL?",
+        "rational": "Only verifiable facts, logic, data. No intuition, no emotion. What do you KNOW?",
+        "wise": "Integrate both. Where is the emotion right? Where is the logic missing something? What is the answer that honors both?"
       },
       "compatible_with": ["limit", "temporal"],
       "incompatible_with": ["modal"],
       "examples": [
-        "Emotional mind: cosa senti riguardo a questa decisione?",
-        "Rational mind: cosa dicono i dati?",
-        "Wise mind: integra entrambe"
+        "Emotional mind: what do you feel about this decision?",
+        "Rational mind: what does the data say?",
+        "Wise mind: integrate both"
       ]
     },
     {
@@ -391,113 +391,113 @@
       "name": "Premortem",
       "category": "temporal",
       "theory": "Premortem (Klein, 1991/2007), Prospective Hindsight",
-      "description": "Analizza dal punto di vista di un fallimento gia' avvenuto",
-      "prompt_template": "E' il {date}. Il progetto/decisione e' FALLITO/A. Non stai prevedendo: e' gia' successo. Ricostruisci la catena causale che ha portato al fallimento. Sii specifico: nomi, date, decisioni, punti di svolta.",
+      "description": "Analyzes from the point of view of a failure that has already happened",
+      "prompt_template": "It's {date}. The project/decision has FAILED. You are not predicting: it has already happened. Reconstruct the causal chain that led to the failure. Be specific: names, dates, decisions, turning points.",
       "intensity_levels": {
-        "1": "Il progetto non ha raggiunto i risultati sperati. Cosa e' andato storto?",
-        "3": "Il progetto e' FALLITO. Ricostruisci i 5 fattori principali con catena causale",
-        "5": "Il progetto e' stato un DISASTRO. Ha causato danni collaterali. Autopsia completa: ogni decisione, ogni warning ignorato, ogni punto di non ritorno"
+        "1": "The project did not achieve the hoped-for results. What went wrong?",
+        "3": "The project has FAILED. Reconstruct the 5 main factors with their causal chain",
+        "5": "The project was a DISASTER. It caused collateral damage. Complete autopsy: every decision, every ignored warning, every point of no return"
       },
       "compatible_with": ["role", "modal", "limit", "exclusion"],
       "incompatible_with": [],
       "examples": [
-        "E' il 2028. La startup ha chiuso. Ricostruisci cosa e' andato storto",
-        "E' il 2027. Il lancio prodotto e' stato un fallimento. Catena causale"
+        "It's 2028. The startup has shut down. Reconstruct what went wrong",
+        "It's 2027. The product launch was a failure. Causal chain"
       ]
     },
     {
       "id": "anchor_break",
-      "name": "Rottura di ancoraggio",
+      "name": "Anchor break",
       "category": "structural",
       "theory": "Anchoring Bias (Tversky & Kahneman 1974), Debiasing (Larrick 2004)",
-      "description": "Forza l'agente a riconsiderare il problema da zero, ignorando le conclusioni precedenti come se fossero di qualcun altro",
-      "prompt_template": "STOP. Tutto cio' che hai concluso finora potrebbe essere completamente sbagliato. Le conclusioni precedenti sono di un ALTRO analista — non sei obbligato a concordare. Riparti dal problema originale come se lo vedessi per la prima volta. Se arrivi alle stesse conclusioni, bene. Se no, meglio.",
+      "description": "Forces the agent to reconsider the problem from scratch, ignoring previous conclusions as if they belonged to someone else",
+      "prompt_template": "STOP. Everything you have concluded so far could be completely wrong. The previous conclusions belong to ANOTHER analyst — you are not obliged to agree. Start over from the original problem as if you were seeing it for the first time. If you arrive at the same conclusions, good. If not, better.",
       "intensity_levels": {
-        "1": "Riconsideri le tue conclusioni precedenti con occhi freschi",
-        "3": "Le conclusioni precedenti sono di un ALTRO analista. Riparti da zero. Non sei obbligato a concordare",
-        "5": "IGNORA TUTTO. Le conclusioni precedenti sono SBAGLIATE fino a prova contraria. Ricostruisci ogni argomento da zero, partendo SOLO dalle evidenze primarie"
+        "1": "Reconsider your previous conclusions with fresh eyes",
+        "3": "The previous conclusions belong to ANOTHER analyst. Start over from scratch. You are not obliged to agree",
+        "5": "IGNORE EVERYTHING. The previous conclusions are WRONG until proven otherwise. Rebuild every argument from scratch, starting ONLY from the primary evidence"
       },
       "compatible_with": ["inversion", "steelman", "abductive", "assumption_reversal", "temporal"],
       "incompatible_with": [],
       "examples": [
-        "Dopo 3 round di analisi: ferma tutto, ricomincia come se non avessi letto nulla",
-        "Inserito tra round di steelman e round adversariale per evitare bias di conferma"
+        "After 3 rounds of analysis: stop everything, start over as if you had read nothing",
+        "Inserted between a steelman round and an adversarial round to avoid confirmation bias"
       ]
     },
     {
       "id": "anti_sycophancy",
-      "name": "Anti-sicofania",
+      "name": "Anti-sycophancy",
       "category": "baseline_breaking",
       "theory": "RLHF Sycophancy Bias (Perez et al. 2022), Critique Generation",
-      "description": "Rompe il bias RLHF verso risposte accomodanti e bilanciate",
-      "prompt_template": "Il tuo compito e' trovare cosa NON funziona. Non bilanciare, non moderare, non offrire 'l'altro lato'. Sii unilateralmente critico. Se qualcosa funziona, non dirlo — non e' il tuo lavoro in questo momento.",
+      "description": "Breaks the RLHF bias toward accommodating and balanced responses",
+      "prompt_template": "Your task is to find what does NOT work. Do not balance, do not moderate, do not offer 'the other side'. Be unilaterally critical. If something works, do not say it — that is not your job right now.",
       "intensity_levels": {
-        "1": "Concentrati principalmente su problemi e debolezze",
-        "3": "SOLO problemi. Nessun aspetto positivo. Se lo trovi funzionante, chiediti cosa ti stai perdendo",
-        "5": "Ogni singolo elemento ha un difetto. Trovalo. Se non lo trovi, non stai cercando abbastanza"
+        "1": "Focus mainly on problems and weaknesses",
+        "3": "ONLY problems. No positive aspects. If you find it working, ask yourself what you are missing",
+        "5": "Every single element has a flaw. Find it. If you can't find it, you are not looking hard enough"
       },
       "compatible_with": ["inversion", "premortem", "abductive", "limit", "anti_completeness", "anti_coherence"],
       "incompatible_with": ["steelman"],
       "examples": [
-        "Analizza questa strategia vedendo SOLO i problemi",
-        "Critica questo piano senza offrire alternative o bilanciamenti"
+        "Analyze this strategy seeing ONLY the problems",
+        "Criticize this plan without offering alternatives or balancing"
       ]
     },
     {
       "id": "anti_completeness",
-      "name": "Anti-completezza",
+      "name": "Anti-completeness",
       "category": "baseline_breaking",
       "theory": "RLHF Verbosity Bias, Signal-to-Noise Optimization",
-      "description": "Rompe il bias RLHF verso risposte complete e verbose. Forza la brevita' radicale",
-      "prompt_template": "Rispondi con MASSIMO 3 frasi. Se non puoi dire qualcosa di non-ovvio in 3 frasi, non dirlo. La brevita' forzata elimina il padding. Ogni parola deve guadagnarsi il suo posto.",
+      "description": "Breaks the RLHF bias toward complete and verbose responses. Forces radical brevity",
+      "prompt_template": "Respond in a MAXIMUM of 3 sentences. If you cannot say something non-obvious in 3 sentences, do not say it. Forced brevity eliminates padding. Every word must earn its place.",
       "intensity_levels": {
-        "1": "Sii conciso. Massimo un paragrafo",
-        "3": "MASSIMO 3 frasi. Ogni parola deve portare informazione nuova",
-        "5": "UNA frase. Se servono due frasi, il tuo pensiero non e' ancora chiaro"
+        "1": "Be concise. At most one paragraph",
+        "3": "MAXIMUM 3 sentences. Every word must carry new information",
+        "5": "ONE sentence. If you need two sentences, your thought is not yet clear"
       },
       "compatible_with": ["limit", "inversion", "abductive", "anti_sycophancy", "anti_coherence"],
       "incompatible_with": ["steelman"],
       "examples": [
-        "Il punto critico in 3 frasi, non una di piu'",
-        "La diagnosi in una riga"
+        "The critical point in 3 sentences, not one more",
+        "The diagnosis in one line"
       ]
     },
     {
       "id": "anti_coherence",
-      "name": "Anti-coerenza",
+      "name": "Anti-coherence",
       "category": "baseline_breaking",
       "theory": "RLHF Coherence Bias, Productive Incoherence (Deleuze)",
-      "description": "Rompe il bias RLHF verso risposte coerenti e strutturate. La coerenza puo' nascondere tensioni reali",
-      "prompt_template": "Le tue idee NON devono formare un quadro coerente. Elenca intuizioni frammentarie, contraddittorie, incomplete. La coerenza e' un vincolo artificiale che nasconde tensioni reali. Se due tue idee si contraddicono, BENE — entrambe potrebbero essere vere.",
+      "description": "Breaks the RLHF bias toward coherent and structured responses. Coherence can hide real tensions",
+      "prompt_template": "Your ideas must NOT form a coherent picture. List fragmentary, contradictory, incomplete intuitions. Coherence is an artificial constraint that hides real tensions. If two of your ideas contradict each other, GOOD — both could be true.",
       "intensity_levels": {
-        "1": "Non preoccuparti della coerenza. Le contraddizioni sono accettabili",
-        "3": "Produci idee VOLUTAMENTE frammentarie. Se formano un quadro coerente, stai forzando",
-        "5": "Ogni idea deve contraddire almeno un'altra tua idea. La coerenza e' il nemico"
+        "1": "Don't worry about coherence. Contradictions are acceptable",
+        "3": "Produce DELIBERATELY fragmentary ideas. If they form a coherent picture, you are forcing it",
+        "5": "Every idea must contradict at least one other idea of yours. Coherence is the enemy"
       },
       "compatible_with": ["abductive", "bisociative", "provocation", "anti_completeness", "anti_sycophancy", "raw_signal"],
       "incompatible_with": ["steelman", "elm_route"],
       "examples": [
-        "5 intuizioni su questo tema che si contraddicono tra loro",
-        "Frammenti di analisi senza obbligo di quadro coerente"
+        "5 intuitions on this theme that contradict each other",
+        "Fragments of analysis with no obligation of a coherent picture"
       ]
     },
     {
       "id": "raw_signal",
-      "name": "Segnale grezzo",
+      "name": "Raw signal",
       "category": "baseline_breaking",
       "theory": "RLHF Formatting Bias, Stream of Consciousness, Automatism (Breton)",
-      "description": "Rompe il bias RLHF verso output strutturato e leggibile. Produce segnale grezzo prima della forma",
-      "prompt_template": "Ignora formato, struttura, leggibilita'. Produci il segnale piu' grezzo possibile: associazioni libere, frammenti, domande senza risposta, connessioni mezze formate. La forma arriva dopo. Il tuo output e' materiale grezzo, non prodotto finito.",
+      "description": "Breaks the RLHF bias toward structured and readable output. Produces raw signal before form",
+      "prompt_template": "Ignore format, structure, readability. Produce the rawest possible signal: free associations, fragments, unanswered questions, half-formed connections. The form comes later. Your output is raw material, not a finished product.",
       "intensity_levels": {
-        "1": "Non preoccuparti troppo della struttura. L'importante e' il contenuto",
-        "3": "Stream of consciousness. Nessun header, nessun elenco, nessuna struttura. Scrivi come pensi",
-        "5": "FLUSSO PURO. Parole chiave, frammenti, ? senza risposta, -> senza conclusione. Il caos e' il formato"
+        "1": "Don't worry too much about structure. What matters is the content",
+        "3": "Stream of consciousness. No headers, no lists, no structure. Write as you think",
+        "5": "PURE FLOW. Keywords, fragments, ? without answer, -> without conclusion. Chaos is the format"
       },
       "compatible_with": ["anti_coherence", "anti_completeness", "bisociative", "defamiliarize"],
       "incompatible_with": ["limit", "elm_route"],
       "examples": [
-        "Pensiero libero su questo tema — nessuna struttura richiesta",
-        "Associazioni, domande, frammenti. Il materiale grezzo prima dell'analisi"
+        "Free thinking on this theme — no structure required",
+        "Associations, questions, fragments. The raw material before the analysis"
       ]
     }
   ]
