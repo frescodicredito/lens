@@ -50,8 +50,8 @@ Lens navigates the tails of the LLM distribution through structural constraints.
 ### Step 1: Understand the topic
 
 If the user provides a clear topic, proceed. If vague, ask:
-- "Qual e' il topic o la decisione da analizzare?"
-- "Cosa vuoi ottenere? (stressare un'idea, esplorare prospettive, analizzare rischi, generare idee creative, trovare blind spot)"
+- "What is the topic or decision to analyze?"
+- "What do you want to achieve? (stress-test an idea, explore perspectives, analyze risks, generate creative ideas, find blind spots)"
 
 ### Step 2: Suggest topology
 
@@ -74,8 +74,8 @@ Based on the topic and goal, suggest 1-2 topologies from the mapping below:
 
 Present the suggestion briefly:
 ```
-Per questo topic suggerisco la topologia **[name]**: [1-line description].
-[N] agenti, [mode]. Procedo?
+For this topic I suggest the **[name]** topology: [1-line description].
+[N] agents, [mode]. Shall I proceed?
 ```
 
 If the user wants something different, adjust.
@@ -104,8 +104,8 @@ Your cognitive constraints for this analysis:
 
 Produce your analysis as a Perspective Card:
 1. Your constrained analysis (be specific, use numbers and examples where possible)
-2. **Insight chiave:** [1-sentence core insight that this constraint uniquely reveals]
-3. **Confidence:** [alta/media/bassa]
+2. **Key insight:** [1-sentence core insight that this constraint uniquely reveals]
+3. **Confidence:** [high/medium/low]
 
 Take a clear position. Do not hedge. If your constraint forces an uncomfortable
 conclusion, state it directly.
@@ -143,24 +143,24 @@ Based on the topology, use the appropriate output format:
 
 [Analysis content]
 
-**Insight chiave:** [1-sentence core insight]
-**Confidence:** [alta/media/bassa]
+**Key insight:** [1-sentence core insight]
+**Confidence:** [high/medium/low]
 ```
 
 **Field Map** (multi-agent parallel topologies — star, parallel_hats):
 ```markdown
 # Field Map — [topic]
 
-## Convergenze
+## Convergences
 [Points where multiple agents agree]
 
-## Divergenze
+## Divergences
 [Points of genuine disagreement between agents]
 
-## Outlier
+## Outliers
 [Surprising or unique insights from individual agents]
 
-## Sintesi
+## Synthesis
 [Integration of the field — what the collective analysis reveals]
 ```
 
@@ -183,7 +183,7 @@ Based on the topology, use the appropriate output format:
 Always add footer:
 ```
 ---
-*Lens | Topologia: {name} | Agenti: {N} | Intensita': {intensity}/5*
+*Lens | Topology: {name} | Agents: {N} | Intensity: {intensity}/5*
 ```
 
 ## Constraint library — Quick reference
@@ -209,17 +209,17 @@ A few representative constraints (each forces a specific thinking pattern):
 
 ## Examples
 
-**User:** `/lens "Dovremmo adottare AI per il customer support?"`
+**User:** `/lens "Should we adopt AI for customer support?"`
 - Lens suggests: Star/Delphi (multi-perspective, DEEP)
 - 4 agents: CTO (technical feasibility + steelman), Customer (defamiliarize + role), CFO (inversion + temporal), Competitor analyst (abductive + bisociative)
 - 2 rounds → Field Map
 
-**User:** `/lens "Il nostro positioning e' 'AI infrastructure for creative agencies'" --quick`
+**User:** `/lens "Our positioning is 'AI infrastructure for creative agencies'" --quick`
 - Lens suggests: Cascade (stress-test, QUICK)
 - 3 agents: steelman → inversion attack → synthesis
 - Sequential cascade → Cascade Report with surviving core
 
-**User:** `/lens "Quale feature sviluppare nel Q2?" --topology scamper_parallel`
+**User:** `/lens "Which feature should we build in Q2?" --topology scamper_parallel`
 - User specifies topology
 - 7 agents, one per SCAMPER operation (Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse)
 - Moderator synthesizes best ideas → Field Map

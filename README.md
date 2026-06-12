@@ -27,12 +27,12 @@ A constraint is the steering wheel. Instead of asking *"is launching a free tier
 ```text
 Topic:  "Launch a free tier for our B2B SaaS"
 
-Lens composes  →  Sei un analista vincolato dalle seguenti regole cognitive.
-                  ## Vincoli attivi
-                  1. Il progetto è FALLITO. Ricostruisci i 5 fattori principali
-                     con catena causale            ← premortem constraint
-                  2. Argomenta il CONTRARIO con evidenze concrete e ragionamento
-                     strutturato                    ← inversion constraint
+Lens composes  →  You are an analyst bound by the following cognitive rules.
+                  ## Active constraints
+                  1. The project has FAILED. Reconstruct the 5 main factors
+                     with their causal chain          ← premortem constraint
+                  2. Argue the opposite with concrete evidence and
+                     structured reasoning             ← inversion constraint
 ```
 
 Two agents, two incompatible vantage points, one synthesized **Field Map** of convergences, divergences and blind spots — instead of one safe paragraph. That's the whole idea.

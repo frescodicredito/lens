@@ -55,11 +55,11 @@ lens_compose_prompt(
   topic=subject,
   constraints=[
     {"type": "abductive"},
-    {"type": "modal", "mode": "solo domande e assunzioni nascoste, nessuna risposta o soluzione"}
+    {"type": "modal", "mode": "only questions and hidden assumptions, no answers or solutions"}
   ],
   output_format="raw",
   intensity=intensity,
-  extra_instructions="Il tuo compito e' SCAVARE fino alle assunzioni fondamentali. Per ogni affermazione implicita nella strategia, chiedi: 'Perche' assumiamo che sia vero?' Elenca TUTTE le assunzioni che trovi, anche quelle che sembrano ovvie. Le assunzioni piu' pericolose sono quelle che nessuno mette in discussione."
+  extra_instructions="Your task is to DIG down to the foundational assumptions. For every implicit claim in the strategy, ask: 'Why do we assume this is true?' List ALL the assumptions you find, even the ones that seem obvious. The most dangerous assumptions are the ones no one questions."
 )
 ```
 
@@ -67,59 +67,59 @@ lens_compose_prompt(
 ```
 {system_prompt}
 
-STRATEGIA/PIANO DA ESAMINARE:
+STRATEGY/PLAN TO EXAMINE:
 {subject}
 
-Identifica TUTTE le assunzioni nascoste. Per ciascuna:
-1. **Assunzione**: cosa si assume sia vero senza verificarlo
-2. **Perche' e' nascosta**: perche' nessuno la mette in discussione
-3. **Evidenza**: quale evidenza supporta (o non supporta) questa assunzione
+Identify ALL the hidden assumptions. For each:
+1. **Assumption**: what is taken to be true without verifying it
+2. **Why it's hidden**: why no one questions it
+3. **Evidence**: what evidence supports (or fails to support) this assumption
 
-Obiettivo: trovare almeno 6-8 assunzioni, dalle piu' ovvie alle piu' profonde.
+Goal: find at least 6-8 assumptions, from the most obvious to the deepest.
 ```
 
 ### Step 3: Agent 2 — Classifier (rank by impact x certainty)
 
 **Agent 2 prompt:**
 ```
-Sei un analista di rischio strategico. Hai ricevuto una lista di assunzioni nascoste per: "{subject}"
+You are a strategic risk analyst. You have received a list of hidden assumptions for: "{subject}"
 
-## Assunzioni identificate
+## Identified assumptions
 {Agent 1 output}
 
-Classifica ogni assunzione su due dimensioni:
+Classify each assumption along two dimensions:
 
-**IMPORTANZA** (se questa assunzione e' sbagliata, quanto impatta?):
-- CRITICA: il piano/strategia crolla completamente
-- ALTA: richiede modifiche significative
-- MEDIA: richiede aggiustamenti
-- BASSA: impatto marginale
+**IMPORTANCE** (if this assumption is wrong, how much impact does it have?):
+- CRITICAL: the plan/strategy collapses entirely
+- HIGH: requires significant changes
+- MEDIUM: requires adjustments
+- LOW: marginal impact
 
-**CERTEZZA** (quanto siamo sicuri che sia vera?):
-- VERIFICATA: dati solidi la confermano
-- PROBABILE: ragionevolmente sicura ma non verificata
-- INCERTA: potrebbe andare in entrambe le direzioni
-- FRAGILE: basata su speranze piu' che su evidenze
+**CERTAINTY** (how sure are we that it's true?):
+- VERIFIED: solid data confirms it
+- PROBABLE: reasonably sure but not verified
+- UNCERTAIN: could go either way
+- FRAGILE: based on hope more than on evidence
 
-## Output richiesto
+## Required output
 
-### MATRICE ASSUNZIONI
+### ASSUMPTIONS MATRIX
 
-| # | Assunzione | Importanza | Certezza | Priorita' inversione |
+| # | Assumption | Importance | Certainty | Inversion priority |
 |---|-----------|-----------|---------|---------------------|
-| 1 | ... | CRITICA | FRAGILE | MASSIMA |
+| 1 | ... | CRITICAL | FRAGILE | MAXIMUM |
 | ... | ... | ... | ... | ... |
 
-### TOP 3-4 PER INVERSIONE
-[Le assunzioni con combinazione CRITICA/ALTA importanza + INCERTA/FRAGILE certezza — queste sono le piu' pericolose e vanno invertite per prime]
+### TOP 3-4 FOR INVERSION
+[The assumptions combining CRITICAL/HIGH importance + UNCERTAIN/FRAGILE certainty — these are the most dangerous and should be inverted first]
 ```
 
 **In QUICK mode:** launch Agents 1 and 2 sequentially, then proceed to Step 4.
 
 **In DEEP mode:** after Agent 2, show the matrix to the user and ask:
 ```
-Ecco la mappa delle assunzioni. Quali vuoi invertire?
-Le top {N} per rischio sono segnate. Vuoi procedere con queste o sceglierne altre?
+Here is the assumptions map. Which ones do you want to invert?
+The top {N} by risk are marked. Do you want to proceed with these or choose others?
 ```
 
 ### Step 4: Agent 3 — Inverter (explore what if assumptions are false)
@@ -142,19 +142,19 @@ lens_compose_prompt(
 ```
 {system_prompt}
 
-STRATEGIA ORIGINALE: {subject}
+ORIGINAL STRATEGY: {subject}
 
-ASSUNZIONI DA INVERTIRE (dalla piu' pericolosa):
+ASSUMPTIONS TO INVERT (from the most dangerous):
 
 {For each top assumption from Agent 2:}
-### Assunzione {N}: {assumption}
-**Inversione**: {what if the opposite is true?}
+### Assumption {N}: {assumption}
+**Inversion**: {what if the opposite is true?}
 
-Per OGNI inversione, esplora:
-1. **Scenario**: se questa assunzione e' FALSA, cosa succede alla strategia?
-2. **Segnali**: quali segnali vedremmo GIA' OGGI se l'inversione fosse vera?
-3. **Adattamento**: come dovremmo modificare la strategia per essere robusti anche in questo caso?
-4. **Opportunita'**: l'inversione apre opportunita' inaspettate?
+For EACH inversion, explore:
+1. **Scenario**: if this assumption is FALSE, what happens to the strategy?
+2. **Signals**: what signals would we already see TODAY if the inversion were true?
+3. **Adaptation**: how should we modify the strategy to be robust in this case too?
+4. **Opportunity**: does the inversion open unexpected opportunities?
 ```
 
 **DEEP mode: one agent per assumption (parallel)**
@@ -163,23 +163,23 @@ For each selected assumption, launch a dedicated agent with `assumption_reversal
 
 **DEEP mode synthesizer prompt:**
 ```
-Sei il sintetizzatore di una Assumption Inversion Lens. Hai visto {N} inversioni indipendenti per: "{subject}"
+You are the synthesizer of an Assumption Inversion Lens. You have seen {N} independent inversions for: "{subject}"
 
 {For each inversion agent output}
 
-## Analisi cross-inversione
+## Cross-inversion analysis
 
-### PATTERN
-[Quali pattern emergono dalle inversioni? Ci sono assunzioni correlate che crollano insieme?]
+### PATTERNS
+[What patterns emerge from the inversions? Are there correlated assumptions that collapse together?]
 
-### ASSUNZIONE PIU' PERICOLOSA
-[Quale singola assunzione, se falsa, causa il danno maggiore? Perche'?]
+### MOST DANGEROUS ASSUMPTION
+[Which single assumption, if false, causes the greatest damage? Why?]
 
-### PIANO DI VERIFICA
-[Per ogni assunzione critica: cosa fare CONCRETAMENTE per verificarla nei prossimi 30 giorni?]
+### VERIFICATION PLAN
+[For each critical assumption: what to do CONCRETELY to verify it in the next 30 days?]
 
-### STRATEGIA ROBUSTA
-[Come modificare la strategia per essere meno dipendente dalle assunzioni piu' fragili?]
+### ROBUST STRATEGY
+[How to modify the strategy to be less dependent on the most fragile assumptions?]
 ```
 
 ### Step 5: Present output
@@ -187,32 +187,32 @@ Sei il sintetizzatore di una Assumption Inversion Lens. Hai visto {N} inversioni
 ```markdown
 # Assumption Map — {subject}
 
-> Modo: {QUICK/DEEP} | Assunzioni trovate: {N} | Invertite: {M} | Intensita': {intensity}/5
+> Mode: {QUICK/DEEP} | Assumptions found: {N} | Inverted: {M} | Intensity: {intensity}/5
 
-## Matrice assunzioni
+## Assumptions matrix
 
 {Agent 2 matrix}
 
-## Inversioni
+## Inversions
 
 {Agent 3 output (QUICK) or Synthesizer output (DEEP)}
 
 ---
 
-### Dettaglio assunzioni
+### Assumptions detail
 
 <details>
-<summary>Lista completa assunzioni (Agent 1)</summary>
+<summary>Full assumptions list (Agent 1)</summary>
 {Agent 1 full output}
 </details>
 
 <details>
-<summary>Classificazione (Agent 2)</summary>
+<summary>Classification (Agent 2)</summary>
 {Agent 2 full output}
 </details>
 
 ---
-*Lens Assumptions | {QUICK/DEEP} | {N} assunzioni | Intensita': {intensity}/5*
+*Lens Assumptions | {QUICK/DEEP} | {N} assumptions | Intensity: {intensity}/5*
 ```
 
 ### Step 6: Save session
@@ -223,28 +223,28 @@ lens_session_save(topology="assumption_inversion", topic=subject, agents_count=3
 
 ## Examples
 
-**User:** `/lens-assumptions "La nostra strategia di crescita si basa sull'acquisizione di 3 clienti enterprise da 100k+/anno"`
+**User:** `/lens-assumptions "Our growth strategy relies on acquiring 3 enterprise clients at 100k+/year"`
 - QUICK mode: surfaces assumptions, classifies, inverts top 3
-- Might find: "assume che il mercato enterprise sia accessibile senza sales team dedicato"
+- Might find: "assumes the enterprise market is accessible without a dedicated sales team"
 
-**User:** `/lens-assumptions "Puntiamo tutto sul mercato italiano per i prossimi 2 anni" --deep`
+**User:** `/lens-assumptions "We're betting everything on the Italian market for the next 2 years" --deep`
 - DEEP mode: full exploration, user chooses which assumptions to invert
 - Dedicated agent per assumption, cross-analysis
 
-**User:** `/lens-assumptions "Il nostro vantaggio competitivo e' la qualita' del servizio" --intensity 5 --focus "market assumptions"`
+**User:** `/lens-assumptions "Our competitive advantage is service quality" --intensity 5 --focus "market assumptions"`
 - Maximum intensity, focused on market-related assumptions
 - Will be relentless in surfacing uncomfortable truths
 
 ## The Importance-Certainty matrix
 
 ```
-                    CERTEZZA
-                FRAGILE ←——→ VERIFICATA
-    CRITICA  |  DANGER!  |  PILASTRO  |
-IMPORTANZA   |  Invertire |  Monitorare |
-             |  subito    |            |
-    BASSA    |  RUMORE   |  NON-ISSUE |
-             |  Ignorare  |  Ignorare  |
+                    CERTAINTY
+                FRAGILE ←——→ VERIFIED
+    CRITICAL |  DANGER!  |  PILLAR    |
+IMPORTANCE   |  Invert    |  Monitor   |
+             |  now       |            |
+    LOW      |  NOISE    |  NON-ISSUE |
+             |  Ignore    |  Ignore    |
 ```
 
-The top-right (CRITICA + FRAGILE) quadrant contains the assumptions that can kill your strategy. These get inverted first.
+The top-left (CRITICAL + FRAGILE) quadrant contains the assumptions that can kill your strategy. These get inverted first.

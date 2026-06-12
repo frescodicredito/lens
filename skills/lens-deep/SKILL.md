@@ -194,21 +194,21 @@ conclusion after all constraint rounds have been applied]
 
 ## Examples
 
-**User:** `/lens-deep "Il vantaggio competitivo di Lens e' la diversita' strutturale dei vincoli"`
+**User:** `/lens-deep "Lens's competitive advantage is the structural diversity of its constraints"`
 - Auto-selects: steelman → inversion → abductive → concept_fan(specific)
 - 4 rounds, each building on all previous
 - Output: evolution from "strongest case" to "strongest objection" to "surprising synthesis"
 
-**User:** `/lens-deep "L'AI generativa sostituira' i copywriter entro 5 anni" --intensity 5`
+**User:** `/lens-deep "Generative AI will replace copywriters within 5 years" --intensity 5`
 - Maximum intensity on each constraint
 - Deep exploration of the hypothesis from multiple angles
 - Anchor breaks force fresh thinking between rounds
 
-**User:** `/lens-deep "Il nostro pricing model basato su ore lavorate e' sostenibile" --constraints steelman,inversion,assumption_reversal,concept_fan`
+**User:** `/lens-deep "Our pricing model based on billable hours is sustainable" --constraints steelman,inversion,assumption_reversal,concept_fan`
 - Explicit constraint sequence specified by user
 - No auto-selection, uses exact order given
 
-**User:** `/lens-deep "La crescita organica e' preferibile al paid acquisition" --no-anchor-break`
+**User:** `/lens-deep "Organic growth is preferable to paid acquisition" --no-anchor-break`
 - Disables anchor break for continuous flow (risks path dependency but gains coherence)
 
 ## Why Sequential Chain for epistemic problems

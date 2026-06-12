@@ -3,19 +3,19 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Stiamo valutando se portare il team marketing in-house o continuare con l'agenzia esterna. Budget simile, ma il CEO vuole piu' controllo. Aiutami a ragionare su questa decisione.",
+      "prompt": "We're weighing whether to bring the marketing team in-house or keep working with the external agency. Similar budget, but the CEO wants more control. Help me reason through this decision.",
       "expected_output": "Lens suggests a multi-perspective topology (star or parallel_hats), configures 3-5 agents with diverse constraints, runs the session, and produces a Field Map with convergences, divergences, and synthesis.",
       "files": []
     },
     {
       "id": 2,
-      "prompt": "/lens \"Il nostro prodotto SaaS B2B dovrebbe offrire un free tier o solo trial a tempo?\" --quick",
+      "prompt": "/lens \"Should our B2B SaaS product offer a free tier or only a time-limited trial?\" --quick",
       "expected_output": "Lens runs a QUICK mode topology (cascade or steelman_chain), launches 2-4 sequential agents, and produces a Cascade Report with a surviving core position.",
       "files": []
     },
     {
       "id": 3,
-      "prompt": "/lens \"Vogliamo espanderci in Germania come primo mercato europeo\" --topology scenario_matrix",
+      "prompt": "/lens \"We want to expand into Germany as our first European market\" --topology scenario_matrix",
       "expected_output": "Lens uses scenario_matrix topology (DEEP mode), configures 4-5 agents for different scenarios, runs multi-round deliberation, produces a Field Map with scenario outcomes.",
       "files": []
     }

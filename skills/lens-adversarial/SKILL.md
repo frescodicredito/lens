@@ -62,7 +62,7 @@ lens_compose_prompt(
   ],
   output_format="perspective_card",
   intensity=intensity,
-  extra_instructions="Attacca OGNI punto della difesa precedente. Trova falle logiche, evidenze mancanti, assunzioni non dichiarate. Non concedere nulla."
+  extra_instructions="Attack EVERY point of the previous defense. Find logical flaws, missing evidence, undeclared assumptions. Concede nothing."
 )
 ```
 
@@ -71,11 +71,11 @@ lens_compose_prompt(
 lens_compose_prompt(
   topic="[All previous outputs will be inserted here]",
   constraints=[
-    {"type": "elm_route", "route": "central", "focus": "qualita' logica degli argomenti"}
+    {"type": "elm_route", "route": "central", "focus": "logical quality of the arguments"}
   ],
   output_format="raw",
   intensity=3,
-  extra_instructions="Valuta il dibattito. Identifica: (1) punti della tesi che sono sopravvissuti all'attacco, (2) punti demoliti, (3) il nucleo sopravvissuto, (4) le obiezioni irrisolte."
+  extra_instructions="Evaluate the debate. Identify: (1) points of the thesis that survived the attack, (2) demolished points, (3) the surviving core, (4) the unresolved objections."
 )
 ```
 
@@ -92,7 +92,7 @@ Launch agents in sequence using the Task tool (subagent_type: "general-purpose")
 ```
 {system_prompt from Step 2, Agent 1}
 
-CLAIM DA DIFENDERE:
+CLAIM TO DEFEND:
 {claim}
 ```
 
@@ -102,46 +102,46 @@ Wait for Agent 1 output, then...
 ```
 {system_prompt from Step 2, Agent 2}
 
-DIFESA DA ATTACCARE:
+DEFENSE TO ATTACK:
 ---
 {Agent 1's full output}
 ---
 
-Attacca ogni punto. Non fare concessioni.
+Attack every point. Make no concessions.
 ```
 
 Wait for Agent 2 output, then...
 
 **Agent 3 prompt:**
 ```
-Sei un giudice imparziale. Valuta il seguente dibattito con rigore logico.
+You are an impartial judge. Evaluate the following debate with logical rigor.
 
-CLAIM ORIGINALE: {claim}
+ORIGINAL CLAIM: {claim}
 
-DIFESA (Agente 1):
+DEFENSE (Agent 1):
 ---
 {Agent 1's output}
 ---
 
-ATTACCO (Agente 2):
+ATTACK (Agent 2):
 ---
 {Agent 2's output}
 ---
 
-Produci il tuo verdetto nel seguente formato:
+Produce your verdict in the following format:
 
-## NUCLEO SOPRAVVISSUTO
-[Cosa della tesi originale ha resistito all'attacco? Perche'?]
+## SURVIVING CORE
+[What of the original thesis withstood the attack? Why?]
 
-## PUNTI DEMOLITI
-[Cosa e' caduto sotto l'attacco? Perche'?]
+## DEMOLISHED POINTS
+[What fell under the attack? Why?]
 
-## OBIEZIONI IRRISOLTE
-[Quali critiche dell'attaccante restano senza risposta?]
+## UNRESOLVED OBJECTIONS
+[Which of the attacker's critiques remain unanswered?]
 
-## VERDETTO
-[Il claim originale e' robusto / parzialmente robusto / fragile?]
-[1-2 frasi con la valutazione complessiva]
+## VERDICT
+[Is the original claim robust / partially robust / fragile?]
+[1-2 sentences with the overall assessment]
 ```
 
 ### Step 4: Present output
@@ -151,25 +151,25 @@ Present a structured **Cascade Report** showing:
 ```markdown
 # Adversarial Cascade — {claim}
 
-> Intensita': {intensity}/5 | Profondita': {depth} agenti
+> Intensity: {intensity}/5 | Depth: {depth} agents
 
 ---
 
-## Round 1 — Difesa
+## Round 1 — Defense
 {Agent 1 output}
 
 ---
 
-## Round 2 — Attacco
+## Round 2 — Attack
 {Agent 2 output}
 
 ---
 
-## Verdetto
+## Verdict
 {Agent 3 output}
 
 ---
-*Lens Adversarial | Cascade depth: {depth} | Intensita': {intensity}/5*
+*Lens Adversarial | Cascade depth: {depth} | Intensity: {intensity}/5*
 ```
 
 ### Step 5: Save session
@@ -180,15 +180,15 @@ lens_session_save(topology="cascade", topic=claim, agents_count=depth, rounds_co
 
 ## Examples
 
-**User:** `/lens-adversarial "L'AI generativa rendera' obsolete le agenzie creative entro 3 anni"`
+**User:** `/lens-adversarial "Generative AI will make creative agencies obsolete within 3 years"`
 - Depth 3, intensity 3 (default)
 - Agent 1 defends, Agent 2 attacks, Agent 3 judges
 
-**User:** `/lens-adversarial "Dovremmo investire 500k in un rebrand" --intensity 5`
+**User:** `/lens-adversarial "We should invest 500k in a rebrand" --intensity 5`
 - Maximum attack intensity
 - Agent 2 will be merciless
 
-**User:** `/lens-adversarial "Il nostro vantaggio competitivo e' il servizio clienti" --depth 4 --focus "sostenibilita' nel tempo"`
+**User:** `/lens-adversarial "Our competitive advantage is customer service" --depth 4 --focus "long-term sustainability"`
 - 4 agents, focused attack on long-term sustainability
 - Agent 4 attacks the judge's synthesis
 

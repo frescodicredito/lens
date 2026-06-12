@@ -47,7 +47,7 @@ Each agent gets the same premortem temporal constraint PLUS a different failure 
 ```json
 [
   {"type": "premortem", "date": "{horizon}"},
-  {"type": "modal", "mode": "solo fallimenti di esecuzione: ritardi, incompetenza, risorse insufficienti, errori tecnici"}
+  {"type": "modal", "mode": "only execution failures: delays, incompetence, insufficient resources, technical errors"}
 ]
 ```
 
@@ -55,7 +55,7 @@ Each agent gets the same premortem temporal constraint PLUS a different failure 
 ```json
 [
   {"type": "premortem", "date": "{horizon}"},
-  {"type": "modal", "mode": "solo fallimenti esterni: mercato cambiato, competitor, regolamentazione, shock economici"}
+  {"type": "modal", "mode": "only external failures: shifted market, competitors, regulation, economic shocks"}
 ]
 ```
 
@@ -63,7 +63,7 @@ Each agent gets the same premortem temporal constraint PLUS a different failure 
 ```json
 [
   {"type": "premortem", "date": "{horizon}"},
-  {"type": "assumption_reversal", "assumption": "[assunzione chiave del progetto]", "reversed": "[inversione]"}
+  {"type": "assumption_reversal", "assumption": "[key project assumption]", "reversed": "[inversion]"}
 ]
 ```
 
@@ -71,7 +71,7 @@ Each agent gets the same premortem temporal constraint PLUS a different failure 
 ```json
 [
   {"type": "premortem", "date": "{horizon}"},
-  {"type": "modal", "mode": "solo fallimenti umani e organizzativi: conflitti, turnover, burnout, disallineamento culturale, politica interna"}
+  {"type": "modal", "mode": "only human and organizational failures: conflicts, turnover, burnout, cultural misalignment, internal politics"}
 ]
 ```
 
@@ -91,40 +91,40 @@ Launch ALL agents in parallel using the Task tool (subagent_type: "general-purpo
 After all agents return, launch a final synthesizer agent with this prompt:
 
 ```
-Sei il sintetizzatore di un premortem strutturato. Hai ricevuto {N} scenari di fallimento indipendenti per il progetto: "{project}".
+You are the synthesizer of a structured premortem. You have received {N} independent failure scenarios for the project: "{project}".
 
-## Scenari ricevuti
+## Scenarios received
 
-### Scenario 1 — Fallimento esecutivo
+### Scenario 1 — Execution failure
 {Agent 1 output}
 
-### Scenario 2 — Fallimento esterno
+### Scenario 2 — External failure
 {Agent 2 output}
 
-### Scenario 3 — Fallimento strategico
+### Scenario 3 — Strategic failure
 {Agent 3 output}
 
-### Scenario 4 — Fallimento organizzativo
+### Scenario 4 — Organizational failure
 {Agent 4 output, if used}
 
-## Il tuo compito
+## Your task
 
-Produci una MAPPA DEI RISCHI nel seguente formato:
+Produce a RISK MAP in the following format:
 
-### RISCHI CONVERGENTI
-[Rischi che emergono in 2+ scenari — sono i piu' probabili]
+### CONVERGENT RISKS
+[Risks that emerge in 2+ scenarios — these are the most likely]
 
-### RISCHI CATASTROFICI
-[Rischi che appaiono in un solo scenario ma avrebbero impatto devastante]
+### CATASTROPHIC RISKS
+[Risks that appear in only one scenario but would have devastating impact]
 
-### CATENA CAUSALE PRINCIPALE
-[La sequenza di eventi piu' plausibile che porta al fallimento]
+### MAIN CAUSAL CHAIN
+[The most plausible sequence of events leading to failure]
 
-### SEGNALI DI ALLARME PRECOCI
-[Cosa monitorare nei prossimi 3-6 mesi per intercettare questi rischi]
+### EARLY WARNING SIGNALS
+[What to monitor in the next 3-6 months to intercept these risks]
 
-### AZIONI PREVENTIVE
-[3-5 azioni concrete da fare ORA per ridurre i rischi identificati]
+### PREVENTIVE ACTIONS
+[3-5 concrete actions to take NOW to reduce the identified risks]
 ```
 
 ### Step 5: Present output
@@ -132,31 +132,31 @@ Produci una MAPPA DEI RISCHI nel seguente formato:
 ```markdown
 # Premortem — {project}
 
-> Orizzonte: {horizon} | Agenti: {N} | Intensita': {intensity}/5
+> Horizon: {horizon} | Agents: {N} | Intensity: {intensity}/5
 
 {Synthesizer output}
 
 ---
 
-### Scenari individuali
+### Individual scenarios
 
 <details>
-<summary>Scenario 1 — Fallimento esecutivo</summary>
+<summary>Scenario 1 — Execution failure</summary>
 {Agent 1 output}
 </details>
 
 <details>
-<summary>Scenario 2 — Fallimento esterno</summary>
+<summary>Scenario 2 — External failure</summary>
 {Agent 2 output}
 </details>
 
 <details>
-<summary>Scenario 3 — Fallimento strategico</summary>
+<summary>Scenario 3 — Strategic failure</summary>
 {Agent 3 output}
 </details>
 
 ---
-*Lens Premortem | {N} agenti | Intensita': {intensity}/5*
+*Lens Premortem | {N} agents | Intensity: {intensity}/5*
 ```
 
 ### Step 6: Save session
@@ -167,14 +167,14 @@ lens_session_save(topology="star", topic=project, agents_count=N+1, rounds_count
 
 ## Examples
 
-**User:** `/lens-premortem "Lancio del nuovo prodotto SaaS B2B a marzo"`
+**User:** `/lens-premortem "Launch of the new B2B SaaS product in March"`
 - 4 agents: execution, market, strategic, organizational
 - Horizon: 2028 (default)
 
-**User:** `/lens-premortem "Migrazione a microservizi" --horizon 2027`
+**User:** `/lens-premortem "Migration to microservices" --horizon 2027`
 - Custom horizon
-- Agent 3 inverts assumption "microservizi migliorano la velocity"
+- Agent 3 inverts the assumption "microservices improve velocity"
 
-**User:** `/lens-premortem "Assunzione di 20 persone nei prossimi 6 mesi" --intensity 5`
+**User:** `/lens-premortem "Hiring 20 people in the next 6 months" --intensity 5`
 - Maximum intensity
 - Agents will be merciless in finding failure modes

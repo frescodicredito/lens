@@ -9,198 +9,198 @@ The 13 topologies that define how constrained agents interact. Pick one by what 
 
 | Topology | Mode | Agents | Rounds | Best for |
 |----------|------|--------|--------|----------|
-| [`cascade`](#cascade) | QUICK | 2-4 | 1 | ['stress-testing claims', 'argomenti controversi', 'decisioni binarie'] |
-| [`star`](#star) | DEEP | 3-6 | 2-3 | ['multi-prospettiva', 'focus group', 'analisi strategica'] |
-| [`adversarial_jury`](#adversarial_jury) | DEEP | 5 | 2-3 | ['decisioni ad alto impatto', 'valutazione imparziale', 'controversie'] |
-| [`ring`](#ring) | DEEP | 3-5 | 1-2 | ['generazione creativa', 'connessioni inedite', 'innovazione radicale'] |
-| [`parallel_hats`](#parallel_hats) | QUICK | 4-6 | 1-2 | ['analisi completa', 'decisioni strutturate', 'evitare groupthink'] |
-| [`steelman_chain`](#steelman_chain) | QUICK | 3-5 | 2 | ['costruire argomenti robusti', 'trovare debolezze nascoste', 'preparazione a obiezioni'] |
-| [`socratic_drill`](#socratic_drill) | QUICK | 2-3 | 3-5 | ['scoprire assunzioni nascoste', 'chiarezza concettuale', 'validazione logica'] |
-| [`scenario_matrix`](#scenario_matrix) | DEEP | 4-5 | 1-2 | ['pianificazione strategica', 'scenari futuri', 'decisioni in incertezza'] |
-| [`bisociation_engine`](#bisociation_engine) | QUICK | 3-4 | 1-2 | ['innovazione radicale', 'connessioni inedite', 'pensiero laterale'] |
-| [`wise_mind_topology`](#wise_mind_topology) | QUICK | 3 | 1 | ['decisioni personali', 'equilibrio emozione-logica', 'dilemmi etici'] |
-| [`scamper_parallel`](#scamper_parallel) | DEEP | 7 | 1 | ['ideazione prodotto', 'innovazione sistematica', 'brainstorming strutturato'] |
-| [`assumption_inversion`](#assumption_inversion) | QUICK | 2-4 | 2-3 | ['sfidare lo status quo', 'trovare blind spot strategici', 'innovazione di processo'] |
-| [`sequential_chain`](#sequential_chain) | DEEP | 1 | 3-6 | ['approfondimento ipotesi', 'coerenza argomentativa', 'chain epistemica', 'steelmanning profondo'] |
+| [`cascade`](#cascade) | QUICK | 2-4 | 1 | ['stress-testing claims', 'controversial arguments', 'binary decisions'] |
+| [`star`](#star) | DEEP | 3-6 | 2-3 | ['multi-perspective', 'focus group', 'strategic analysis'] |
+| [`adversarial_jury`](#adversarial_jury) | DEEP | 5 | 2-3 | ['high-impact decisions', 'impartial evaluation', 'controversies'] |
+| [`ring`](#ring) | DEEP | 3-5 | 1-2 | ['creative generation', 'novel connections', 'radical innovation'] |
+| [`parallel_hats`](#parallel_hats) | QUICK | 4-6 | 1-2 | ['comprehensive analysis', 'structured decisions', 'avoiding groupthink'] |
+| [`steelman_chain`](#steelman_chain) | QUICK | 3-5 | 2 | ['building robust arguments', 'finding hidden weaknesses', 'preparing for objections'] |
+| [`socratic_drill`](#socratic_drill) | QUICK | 2-3 | 3-5 | ['uncovering hidden assumptions', 'conceptual clarity', 'logical validation'] |
+| [`scenario_matrix`](#scenario_matrix) | DEEP | 4-5 | 1-2 | ['strategic planning', 'future scenarios', 'decisions under uncertainty'] |
+| [`bisociation_engine`](#bisociation_engine) | QUICK | 3-4 | 1-2 | ['radical innovation', 'novel connections', 'lateral thinking'] |
+| [`wise_mind_topology`](#wise_mind_topology) | QUICK | 3 | 1 | ['personal decisions', 'emotion-logic balance', 'ethical dilemmas'] |
+| [`scamper_parallel`](#scamper_parallel) | DEEP | 7 | 1 | ['product ideation', 'systematic innovation', 'structured brainstorming'] |
+| [`assumption_inversion`](#assumption_inversion) | QUICK | 2-4 | 2-3 | ['challenging the status quo', 'finding strategic blind spots', 'process innovation'] |
+| [`sequential_chain`](#sequential_chain) | DEEP | 1 | 3-6 | ['deepening hypotheses', 'argumentative coherence', 'epistemic chain', 'deep steelmanning'] |
 
 ## cascade
 
-**Cascade (Dialettica Hegeliana)** — Sequenza dialettica: ogni agente attacca o raffina l'output del precedente. Tesi -> Antitesi -> Sintesi iterata.
+**Cascade (Hegelian Dialectic)** — Dialectical sequence: each agent attacks or refines the previous one's output. Thesis -> Antithesis -> iterated Synthesis.
 
 > Theory: Hegel, Boosting cognitivo (ensemble), Devil's Advocacy (CIA/IC)
 
 Mode: **QUICK** · Agents: 2-4 · Rounds: 1 · Interaction: sequential · Output: `perspective_card`
 
-**Best for:** ['stress-testing claims', 'argomenti controversi', 'decisioni binarie']
+**Best for:** ['stress-testing claims', 'controversial arguments', 'binary decisions']
 
 Recommended constraints: [`inversion`](CONSTRAINTS.md#inversion), [`steelman`](CONSTRAINTS.md#steelman), [`limit`](CONSTRAINTS.md#limit)
 
-Workflow: Agente 1 produce output -> Agente 2 riceve output e attacca/raffina -> Agente 3 sintetizza
+Workflow: Agent 1 produces output -> Agent 2 receives it and attacks/refines -> Agent 3 synthesizes
 
 ## star
 
-**Star / Delphi** — Moderatore + N agenti indipendenti. Round 1 indipendente (no cross-talk), poi sintesi. Bagging cognitivo.
+**Star / Delphi** — Moderator + N independent agents. Independent Round 1 (no cross-talk), then synthesis. Cognitive bagging.
 
 > Theory: Wisdom of Crowds (Surowiecki), Delphi (RAND), Bagging (ensemble)
 
 Mode: **DEEP** · Agents: 3-6 · Rounds: 2-3 · Interaction: parallel_then_aggregate · Output: `field_map`
 
-**Best for:** ['multi-prospettiva', 'focus group', 'analisi strategica']
+**Best for:** ['multi-perspective', 'focus group', 'strategic analysis']
 
 Recommended constraints: [`role`](CONSTRAINTS.md#role), [`modal`](CONSTRAINTS.md#modal), [`elm_route`](CONSTRAINTS.md#elm_route), [`concept_fan`](CONSTRAINTS.md#concept_fan)
 
-Workflow: Round 1: N agenti rispondono indipendentemente. Round 2: agenti vedono output altrui, rivedono posizioni. Moderatore sintetizza.
+Workflow: Round 1: N agents respond independently. Round 2: agents see each other's output and revise their positions. The moderator synthesizes.
 
 ## adversarial_jury
 
-**Adversarial + Jury** — 2 agenti dibattono, 3 giurati valutano indipendentemente. Separa argomentazione da giudizio.
+**Adversarial + Jury** — 2 agents debate, 3 jurors evaluate independently. Separates argumentation from judgment.
 
 > Theory: Adversarial Collaboration, ACH (CIA), Argumentative Theory (Mercier-Sperber)
 
 Mode: **DEEP** · Agents: 5 · Rounds: 2-3 · Interaction: adversarial_then_judge · Output: `field_map`
 
-**Best for:** ['decisioni ad alto impatto', 'valutazione imparziale', 'controversie']
+**Best for:** ['high-impact decisions', 'impartial evaluation', 'controversies']
 
 Recommended constraints: [`inversion`](CONSTRAINTS.md#inversion), [`steelman`](CONSTRAINTS.md#steelman), [`elm_route`](CONSTRAINTS.md#elm_route)
 
-Workflow: 2 avvocati dibattono per N round, poi 3 giurati con vincoli diversi valutano indipendentemente.
+Workflow: 2 advocates debate for N rounds, then 3 jurors with different constraints evaluate independently.
 
 ## ring
 
-**Ring (Bisociazione Iterata)** — Catena circolare: ogni agente trasforma l'output nel proprio frame, l'ultimo riporta al primo.
+**Ring (Iterated Bisociation)** — Circular chain: each agent transforms the output into its own frame, and the last one passes it back to the first.
 
 > Theory: Bisociazione (Koestler), Ring topology
 
 Mode: **DEEP** · Agents: 3-5 · Rounds: 1-2 · Interaction: circular_handoff · Output: `field_map`
 
-**Best for:** ['generazione creativa', 'connessioni inedite', 'innovazione radicale']
+**Best for:** ['creative generation', 'novel connections', 'radical innovation']
 
 Recommended constraints: [`bisociative`](CONSTRAINTS.md#bisociative), [`defamiliarize`](CONSTRAINTS.md#defamiliarize), [`synectics`](CONSTRAINTS.md#synectics)
 
-Workflow: Agente 1 -> Agente 2 -> ... -> Agente N -> Agente 1. Ogni passaggio forza re-interpretazione nel frame dell'agente.
+Workflow: Agent 1 -> Agent 2 -> ... -> Agent N -> Agent 1. Each handoff forces a re-interpretation within the agent's frame.
 
 ## parallel_hats
 
-**Parallel Hats (De Bono)** — N agenti, ognuno vincolato a una modalita' cognitiva diversa, operano in parallelo.
+**Parallel Hats (De Bono)** — N agents, each constrained to a different cognitive mode, operating in parallel.
 
 > Theory: Six Thinking Hats (De Bono), Cognitive Diversity (Ashby)
 
 Mode: **QUICK** · Agents: 4-6 · Rounds: 1-2 · Interaction: parallel_independent · Output: `field_map`
 
-**Best for:** ['analisi completa', 'decisioni strutturate', 'evitare groupthink']
+**Best for:** ['comprehensive analysis', 'structured decisions', 'avoiding groupthink']
 
 Recommended constraints: [`modal`](CONSTRAINTS.md#modal), [`exclusion`](CONSTRAINTS.md#exclusion)
 
-Workflow: Ogni agente opera in una modalita' cognitiva esclusiva. Output aggregato senza contaminazione.
+Workflow: Each agent operates in an exclusive cognitive mode. Output is aggregated without contamination.
 
 ## steelman_chain
 
-**Steelman Chain** — 3 round di rafforzamento progressivo, poi 1-2 round adversariali sulla versione piu' forte.
+**Steelman Chain** — 3 rounds of progressive strengthening, then 1-2 adversarial rounds against the strongest version.
 
 > Theory: Steelmanning, Principle of Charity + Adversarial Collaboration
 
 Mode: **QUICK** · Agents: 3-5 · Rounds: 2 · Interaction: strengthen_then_attack · Output: `perspective_card`
 
-**Best for:** ['costruire argomenti robusti', 'trovare debolezze nascoste', 'preparazione a obiezioni']
+**Best for:** ['building robust arguments', 'finding hidden weaknesses', 'preparing for objections']
 
 Recommended constraints: [`steelman`](CONSTRAINTS.md#steelman), [`inversion`](CONSTRAINTS.md#inversion), [`limit`](CONSTRAINTS.md#limit)
 
-Workflow: Fase 1: N agenti rafforzano l'argomento in sequenza. Fase 2: 1-2 agenti attaccano la versione piu' forte.
+Workflow: Phase 1: N agents strengthen the argument in sequence. Phase 2: 1-2 agents attack the strongest version.
 
 ## socratic_drill
 
-**Socratic Drill** — Catena di domande che scavano fino alle assunzioni fondamentali.
+**Socratic Drill** — A chain of questions that digs down to the fundamental assumptions.
 
 > Theory: Metodo Socratico / Elenchus, Key Assumptions Check (CIA)
 
 Mode: **QUICK** · Agents: 2-3 · Rounds: 3-5 · Interaction: iterative_questioning · Output: `perspective_card`
 
-**Best for:** ['scoprire assunzioni nascoste', 'chiarezza concettuale', 'validazione logica']
+**Best for:** ['uncovering hidden assumptions', 'conceptual clarity', 'logical validation']
 
 Recommended constraints: [`abductive`](CONSTRAINTS.md#abductive), [`assumption_reversal`](CONSTRAINTS.md#assumption_reversal)
 
-Workflow: Agente interrogatore chiede 'perche'?'. Agente rispondente difende. L'interrogatore scava fino alle assunzioni non dichiarate.
+Workflow: The interrogator agent asks 'why?'. The responding agent defends. The interrogator digs down to the undeclared assumptions.
 
 ## scenario_matrix
 
-**Scenario Matrix** — 2 incertezze critiche generano 4 quadranti. 4 agenti esplorano uno scenario ciascuno.
+**Scenario Matrix** — 2 critical uncertainties generate 4 quadrants. 4 agents each explore one scenario.
 
 > Theory: Scenario Planning (Shell/Schwartz), Quadrant Crunching (CIA)
 
 Mode: **DEEP** · Agents: 4-5 · Rounds: 1-2 · Interaction: parallel_independent · Output: `field_map`
 
-**Best for:** ['pianificazione strategica', 'scenari futuri', 'decisioni in incertezza']
+**Best for:** ['strategic planning', 'future scenarios', 'decisions under uncertainty']
 
 Recommended constraints: [`temporal`](CONSTRAINTS.md#temporal), [`role`](CONSTRAINTS.md#role), [`assumption_reversal`](CONSTRAINTS.md#assumption_reversal)
 
-Workflow: 2 assi di incertezza -> 4 scenari. Ogni agente esplora uno scenario assumendolo come realta'. Poi confronto.
+Workflow: 2 axes of uncertainty -> 4 scenarios. Each agent explores one scenario, assuming it as reality. Then comparison.
 
 ## bisociation_engine
 
-**Bisociation Engine** — Collisione forzata tra domini incompatibili per generare connessioni inedite.
+**Bisociation Engine** — Forced collision between incompatible domains to generate novel connections.
 
 > Theory: Bisociazione (Koestler), Synectics (Gordon)
 
 Mode: **QUICK** · Agents: 3-4 · Rounds: 1-2 · Interaction: collision · Output: `perspective_card`
 
-**Best for:** ['innovazione radicale', 'connessioni inedite', 'pensiero laterale']
+**Best for:** ['radical innovation', 'novel connections', 'lateral thinking']
 
 Recommended constraints: [`bisociative`](CONSTRAINTS.md#bisociative), [`synectics`](CONSTRAINTS.md#synectics), [`defamiliarize`](CONSTRAINTS.md#defamiliarize)
 
-Workflow: Ogni agente analizza il topic dal suo dominio forzato. Un sintetizzatore trova le connessioni strutturali.
+Workflow: Each agent analyzes the topic from its forced domain. A synthesizer finds the structural connections.
 
 ## wise_mind_topology
 
-**Wise Mind** — Emotional Mind + Rational Mind -> Wise Mind synthesis. Non dialettica ma integrazione.
+**Wise Mind** — Emotional Mind + Rational Mind -> Wise Mind synthesis. Not dialectic but integration.
 
 > Theory: DBT Wise Mind (Linehan, 1993), Dual Process Theory
 
 Mode: **QUICK** · Agents: 3 · Rounds: 1 · Interaction: parallel_then_integrate · Output: `perspective_card`
 
-**Best for:** ['decisioni personali', 'equilibrio emozione-logica', 'dilemmi etici']
+**Best for:** ['personal decisions', 'emotion-logic balance', 'ethical dilemmas']
 
 Recommended constraints: [`wise_mind`](CONSTRAINTS.md#wise_mind), [`modal`](CONSTRAINTS.md#modal)
 
-Workflow: Agente emotional produce prospettiva emotiva. Agente rational produce prospettiva razionale. Agente wise integra.
+Workflow: The emotional agent produces an emotional perspective. The rational agent produces a rational perspective. The wise agent integrates.
 
 ## scamper_parallel
 
-**SCAMPER Parallel** — 7 agenti, ognuno vincolato a una operazione SCAMPER diversa.
+**SCAMPER Parallel** — 7 agents, each constrained to a different SCAMPER operation.
 
 > Theory: SCAMPER (Eberle/Osborn)
 
 Mode: **DEEP** · Agents: 7 · Rounds: 1 · Interaction: parallel_independent · Output: `field_map`
 
-**Best for:** ['ideazione prodotto', 'innovazione sistematica', 'brainstorming strutturato']
+**Best for:** ['product ideation', 'systematic innovation', 'structured brainstorming']
 
 Recommended constraints: [`scamper`](CONSTRAINTS.md#scamper), [`limit`](CONSTRAINTS.md#limit)
 
-Workflow: 7 agenti applicano S-C-A-M-P-E-R in parallelo. Moderatore sintetizza le migliori idee.
+Workflow: 7 agents apply S-C-A-M-P-E-R in parallel. The moderator synthesizes the best ideas.
 
 ## assumption_inversion
 
-**Assumption Inversion** — Identifica assunzioni, le inverte sistematicamente, esplora le implicazioni.
+**Assumption Inversion** — Identifies assumptions, inverts them systematically, and explores the implications.
 
 > Theory: SAST (Mason & Mitroff), Assumption Reversal
 
 Mode: **QUICK** · Agents: 2-4 · Rounds: 2-3 · Interaction: sequential · Output: `perspective_card`
 
-**Best for:** ['sfidare lo status quo', 'trovare blind spot strategici', 'innovazione di processo']
+**Best for:** ['challenging the status quo', 'finding strategic blind spots', 'process innovation']
 
 Recommended constraints: [`assumption_reversal`](CONSTRAINTS.md#assumption_reversal), [`abductive`](CONSTRAINTS.md#abductive), [`inversion`](CONSTRAINTS.md#inversion)
 
-Workflow: Fase 1: Socratic Drill per elencare assunzioni. Fase 2: classificazione importanza/certezza. Fase 3: inversione top-K assunzioni.
+Workflow: Phase 1: Socratic Drill to list the assumptions. Phase 2: classification by importance/certainty. Phase 3: inversion of the top-K assumptions.
 
 ## sequential_chain
 
-**Sequential Deep Chain** — Vincoli concatenati in sequenza sullo stesso thread cognitivo. Ogni round riceve l'output di tutti i precedenti e lo integra con un nuovo vincolo.
+**Sequential Deep Chain** — Constraints chained in sequence on the same cognitive thread. Each round receives the output of all previous ones and integrates it with a new constraint.
 
 > Theory: Chain-of-Thought (Wei et al. 2022), Self-Consistency (Wang et al. 2023), Deliberative Alignment
 
 Mode: **DEEP** · Agents: 1 · Rounds: 3-6 · Interaction: sequential_self · Output: `chain_output`
 
-**Best for:** ['approfondimento ipotesi', 'coerenza argomentativa', 'chain epistemica', 'steelmanning profondo']
+**Best for:** ['deepening hypotheses', 'argumentative coherence', 'epistemic chain', 'deep steelmanning']
 
 Recommended constraints: [`inversion`](CONSTRAINTS.md#inversion), [`steelman`](CONSTRAINTS.md#steelman), [`abductive`](CONSTRAINTS.md#abductive), [`assumption_reversal`](CONSTRAINTS.md#assumption_reversal), [`anchor_break`](CONSTRAINTS.md#anchor_break)
 
-Workflow: Ogni round applica un vincolo diverso allo stesso problema. L'agente integra l'output dei round precedenti come contesto.
+Workflow: Each round applies a different constraint to the same problem. The agent integrates the output of the previous rounds as context.

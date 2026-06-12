@@ -1,582 +1,582 @@
-# Lens — Fondamenti Teorici e Ricerca
+# Lens — Theoretical Foundations and Research
 
-> Documento di ricerca — aggiornato 28 febbraio 2026
-> Stato: in espansione continua
+> Research document — updated 28 February 2026
+> Status: continuously expanding
 
 ---
 
-## Indice delle teorie per categoria
+## Index of theories by category
 
-### A. Teorie sulla struttura del pensiero creativo
-- A1. Bisociazione (Koestler)
+### A. Theories on the structure of creative thinking
+- A1. Bisociation (Koestler)
 - A2. Janusian Thinking (Rothenberg)
-- A3. Lateral Thinking e Provocation (De Bono)
+- A3. Lateral Thinking and Provocation (De Bono)
 - A4. Defamiliarization / Ostranenie (Shklovsky)
-- A5. Synectics e analogie forzate (Gordon)
-- A6. TRIZ e risoluzione di contraddizioni (Altshuller)
+- A5. Synectics and forced analogies (Gordon)
+- A6. TRIZ and contradiction resolution (Altshuller)
 
-### B. Teorie sul pensiero di gruppo e intelligenza collettiva
+### B. Theories on group thinking and collective intelligence
 - B1. Wisdom of Crowds (Surowiecki)
-- B2. Groupthink e dissenso strutturato (Janis)
+- B2. Groupthink and structured dissent (Janis)
 - B3. Argumentative Theory of Reasoning (Mercier & Sperber)
-- B4. Cognitive Diversity e Requisite Variety (Ashby)
-- B5. Ensemble Methods come metafora cognitiva
+- B4. Cognitive Diversity and Requisite Variety (Ashby)
+- B5. Ensemble Methods as a cognitive metaphor
 
-### C. Teorie sulla struttura del ragionamento
-- C1. Dialettica hegeliana
-- C2. Metodo Socratico / Elenchus
+### C. Theories on the structure of reasoning
+- C1. Hegelian dialectic
+- C2. Socratic Method / Elenchus
 - C3. Abductive Reasoning (Peirce)
 - C4. Dual Process Theory (Kahneman)
 - C5. Tree/Graph of Thoughts
-- C6. Constitutional AI e Self-Critique (Anthropic)
+- C6. Constitutional AI and Self-Critique (Anthropic)
 
-### D. Teorie sulla persuasione e percezione
+### D. Theories on persuasion and perception
 - D1. Elaboration Likelihood Model (Petty & Cacioppo)
 - D2. Perspective-Taking (cognitive science)
 - D3. Cognitive Dissonance (Festinger)
-- D4. Reframing di secondo ordine (Watzlawick)
+- D4. Second-order reframing (Watzlawick)
 - D5. Steelmanning
 
-### E. Metodologie strutturate di analisi
+### E. Structured methodologies of analysis
 - E1. Structured Analytic Techniques (CIA/IC)
 - E2. Scenario Planning (Shell/Schwartz)
 - E3. Morphological Analysis (Zwicky)
-- E4. Red Teaming e Adversarial Collaboration
+- E4. Red Teaming and Adversarial Collaboration
 - E5. Premortem / Prospective Hindsight (Klein)
 - E6. SCAMPER (Eberle/Osborn)
 - E7. CPS Model (Osborn-Parnes)
 - E8. Assumption Reversal / SAST (Mason & Mitroff)
 - E9. Concept Fan (De Bono)
 
-### F. Teorie su flessibilità cognitiva e vincoli
-- F1. Cognitive Flexibility e Set-Shifting
+### F. Theories on cognitive flexibility and constraints
+- F1. Cognitive Flexibility and Set-Shifting
 - F2. Constraint-Based Creativity (Stokes)
 - F3. DBT Wise Mind (Linehan)
 - F4. Reflexivity (Soros/Bourdieu)
 
-### G. Ricerca empirica su multi-agent LLM
+### G. Empirical research on multi-agent LLMs
 - G1. Multi-Agent Debate (A-HMAD, Focus Agent)
 - G2. Synthetic Personas (Park, Stanford)
-- G3. Activation Steering e Control Vectors
-- G4. Divergent Creativity negli LLM
+- G3. Activation Steering and Control Vectors
+- G4. Divergent Creativity in LLMs
 
 ---
 
-## A. TEORIE SUL PENSIERO CREATIVO
+## A. THEORIES ON CREATIVE THINKING
 
-### A1. Bisociazione (Koestler, 1964)
+### A1. Bisociation (Koestler, 1964)
 
-**Fonte:** "The Act of Creation"
+**Source:** "The Act of Creation"
 
-**Meccanismo:** la creatività nasce dalla percezione simultanea di un'idea in due matrici di pensiero abitualmente incompatibili. Non è associazione (collegamento dentro un frame), è collisione tra frame indipendenti.
+**Mechanism:** creativity arises from the simultaneous perception of an idea in two habitually incompatible matrices of thought. It is not association (a connection within a frame), it is collision between independent frames.
 
-**Tre forme:**
-- Umorismo: collisione → sorpresa → risata
-- Scoperta scientifica: collisione → eureka
-- Arte: collisione → giustapposizione estetica
+**Three forms:**
+- Humor: collision → surprise → laughter
+- Scientific discovery: collision → eureka
+- Art: collision → aesthetic juxtaposition
 
-**Implicazione per Lens:** il Constraint Engine con vincoli semantici è un generatore di bisociazioni. La topologia Ring è bisociazione iterata. Il Bisociation Engine è la topologia dedicata.
+**Implication for Lens:** the Constraint Engine with semantic constraints is a generator of bisociations. The Ring topology is iterated bisociation. The Bisociation Engine is the dedicated topology.
 
-**Vincolo implementativo:** `{"type": "bisociative", "domain_forced": "ecologia marina", "domain_original": "marketing"}`
+**Implementation constraint:** `{"type": "bisociative", "domain_forced": "marine ecology", "domain_original": "marketing"}`
 
 ---
 
 ### A2. Janusian Thinking (Rothenberg, 1971)
 
-**Fonte:** Rothenberg, "The Emerging Goddess: The Creative Process in Art, Science, and Other Fields" (1979); studi pubblicati su *American Journal of Psychiatry*
+**Source:** Rothenberg, "The Emerging Goddess: The Creative Process in Art, Science, and Other Fields" (1979); studies published in *American Journal of Psychiatry*
 
-**Meccanismo:** concepire attivamente due o più idee opposte o antitetiche **simultaneamente** come valide. Non è pensare a opposti in sequenza: è tenerli entrambi in mente nello stesso momento, senza risolverli immediatamente.
+**Mechanism:** actively conceiving two or more opposite or antithetical ideas **simultaneously** as valid. It is not thinking about opposites in sequence: it is holding them both in mind at the same time, without resolving them immediately.
 
-**Esempi documentati:**
-- Einstein: un uomo che cade è simultaneamente in moto e a riposo → relatività
-- Bohr: la luce è simultaneamente onda e particella → complementarità
-- Watson: due strutture spaziali opposte → doppia elica DNA
-- Mozart: "Le dissonanze sono solo consonanze remote"
+**Documented examples:**
+- Einstein: a falling man is simultaneously in motion and at rest → relativity
+- Bohr: light is simultaneously wave and particle → complementarity
+- Watson: two opposite spatial structures → DNA double helix
+- Mozart: "Dissonances are only remote consonances"
 
-**Differenza da "pensare per opposti":** gli opposti sequenziali producono compromessi. La simultaneità produce trascendenza — una nuova categoria che contiene entrambi senza ridurre nessuno dei due.
+**Difference from "thinking in opposites":** sequential opposites produce compromises. Simultaneity produces transcendence — a new category that contains both without reducing either.
 
-**Implicazione per Lens:**
-- Vincolo di tipo "janusian": l'agente DEVE sostenere due posizioni opposte contemporaneamente e produrre una sintesi che le trascenda
-- Diverso dall'adversarial (dove due agenti si attaccano): qui è UN agente che tiene entrambi
-- Implementazione possibile: prompt che richiede "X è vero E non-X è vero contemporaneamente. Genera un framework che li contenga entrambi."
+**Implication for Lens:**
+- A "janusian" type constraint: the agent MUST hold two opposite positions at once and produce a synthesis that transcends them
+- Different from the adversarial (where two agents attack each other): here it is ONE agent that holds both
+- Possible implementation: a prompt that requires "X is true AND not-X is true at the same time. Generate a framework that contains both."
 
-**Vincolo implementativo:** `{"type": "janusian", "thesis": "il mercato vuole semplicità", "antithesis": "il mercato vuole potenza", "requirement": "framework che trascende la contraddizione"}`
+**Implementation constraint:** `{"type": "janusian", "thesis": "the market wants simplicity", "antithesis": "the market wants power", "requirement": "framework that transcends the contradiction"}`
 
-**Nota critica:** questo è il vincolo cognitivamente più difficile per un LLM. Tenderà a cercare un compromesso (il centro della distribuzione). Il vincolo deve esplicitamente vietare il compromesso e richiedere trascendenza.
+**Critical note:** this is the cognitively most difficult constraint for an LLM. It will tend to seek a compromise (the center of the distribution). The constraint must explicitly forbid compromise and demand transcendence.
 
 ---
 
-### A3. Lateral Thinking e Provocation (De Bono, 1967)
+### A3. Lateral Thinking and Provocation (De Bono, 1967)
 
-**Fonte:** "Lateral Thinking: Creativity Step by Step"; De Bono Group
+**Source:** "Lateral Thinking: Creativity Step by Step"; De Bono Group
 
-**Quattro tipi di strumenti:**
-1. **Idea-generating** — rompere pattern correnti
-2. **Focus** — ampliare dove cercare
-3. **Harvest** — estrarre più valore dall'output
-4. **Treatment** — considerare vincoli reali
+**Four types of tools:**
+1. **Idea-generating** — break current patterns
+2. **Focus** — broaden where to search
+3. **Harvest** — extract more value from the output
+4. **Treatment** — consider real constraints
 
-**Tecniche chiave:**
-- **Provocation (PO):** affermazione deliberatamente sbagliata/impossibile come punto di partenza. "PO: le automobili hanno ruote quadrate" → genera idee su sospensioni adattive
-- **Random Entry:** concetto casuale forzatamente associato al problema. "Naso" + "fotocopiatrice" → copiatrice che profuma di lavanda quando finisce la carta (reale)
-- **Reversal:** processo rovesciato. Non "come vendiamo al cliente" ma "come fa il cliente a comprare da solo"
+**Key techniques:**
+- **Provocation (PO):** a deliberately wrong/impossible statement as a starting point. "PO: cars have square wheels" → generates ideas about adaptive suspensions
+- **Random Entry:** a random concept forcibly associated with the problem. "Nose" + "photocopier" → a copier that smells of lavender when it runs out of paper (real)
+- **Reversal:** reversed process. Not "how do we sell to the customer" but "how does the customer buy on their own"
 
-**Implicazione per Lens:** le forcing functions sono implementazioni dirette. La Provocation è un tipo di vincolo non ancora esplorato a fondo: forza l'LLM a partire da un'affermazione impossibile e lavorare da lì.
+**Implication for Lens:** forcing functions are direct implementations. Provocation is a type of constraint not yet explored in depth: it forces the LLM to start from an impossible statement and work from there.
 
-**Vincolo implementativo:** `{"type": "provocation", "po_statement": "PO: i nostri competitor sono nostri alleati", "requirement": "genera 3 strategie partendo da questa provocazione"}`
+**Implementation constraint:** `{"type": "provocation", "po_statement": "PO: our competitors are our allies", "requirement": "generate 3 strategies starting from this provocation"}`
 
 ---
 
 ### A4. Defamiliarization / Ostranenie (Shklovsky, 1917)
 
-**Fonte:** "Art as Technique" (О́стране́ние)
+**Source:** "Art as Technique" (О́стране́ние)
 
-**Meccanismo:** presentare cose familiari in modi non familiari per forzare una nuova percezione. L'automazione percettiva (vediamo le cose senza vederle davvero) viene rotta dalla "resa strana". Tolstoj descrive oggetti comuni come se li vedesse per la prima volta.
+**Mechanism:** presenting familiar things in unfamiliar ways to force a new perception. Perceptual automation (we see things without truly seeing them) is broken by the "making strange." Tolstoy describes common objects as if seeing them for the first time.
 
-**Differenza dal semantic reframing:** il reframing cambia il vocabolario. La defamiliarization cambia il livello di osservazione — descrivi qualcosa come se non avessi mai visto nulla di simile prima.
+**Difference from semantic reframing:** reframing changes the vocabulary. Defamiliarization changes the level of observation — you describe something as if you had never seen anything like it before.
 
-**Implicazione per Lens:** vincolo di tipo "alien observer" — l'agente deve descrivere il problema come se lo vedesse per la prima volta, senza assunzioni pregresse. Combatte il bias di familiarità dell'LLM.
+**Implication for Lens:** an "alien observer" type constraint — the agent must describe the problem as if seeing it for the first time, with no prior assumptions. It counters the LLM's familiarity bias.
 
-**Vincolo implementativo:** `{"type": "defamiliarize", "instruction": "Descrivi questo business model come se fossi un antropologo che studia una civiltà sconosciuta"}`
+**Implementation constraint:** `{"type": "defamiliarize", "instruction": "Describe this business model as if you were an anthropologist studying an unknown civilization"}`
 
 ---
 
 ### A5. Synectics (Gordon, 1961)
 
-**Fonte:** "Synectics: The Development of Creative Capacity"
+**Source:** "Synectics: The Development of Creative Capacity"
 
-**Quattro tipi di analogia forzata:**
-1. **Direct Analogy:** parallelo stesso-dominio (volo degli uccelli → aeroplano)
-2. **Personal Analogy:** empatizzare con l'oggetto ("sentiti" come un'ala)
-3. **Symbolic Analogy:** metaforica (volo = "libertà")
-4. **Fantasy Analogy:** scenari impossibili ("ali fatte di sogni")
+**Four types of forced analogy:**
+1. **Direct Analogy:** a same-domain parallel (bird flight → airplane)
+2. **Personal Analogy:** empathizing with the object ("feel" like a wing)
+3. **Symbolic Analogy:** metaphorical (flight = "freedom")
+4. **Fantasy Analogy:** impossible scenarios ("wings made of dreams")
 
-**Esempi reali di innovazione da Synectics:**
-- Velcro: ganci dei semi di bardana (direct analogy dalla natura)
-- Pringles: compressione delle foglie secche → chip uniformi impilabili
+**Real examples of innovation from Synectics:**
+- Velcro: hooks of burdock seeds (direct analogy from nature)
+- Pringles: compression of dried leaves → uniform stackable chips
 
-**Implicazione per Lens:** ogni tipo di analogia è un vincolo diverso. Un focus group Synectics avrebbe 4 agenti, ognuno vincolato a un tipo di analogia diverso, applicati allo stesso problema.
+**Implication for Lens:** each type of analogy is a different constraint. A Synectics focus group would have 4 agents, each bound to a different type of analogy, applied to the same problem.
 
-**Vincolo implementativo:** `{"type": "synectics", "analogy_type": "personal", "instruction": "Sei il prodotto. Come ti senti quando il cliente ti usa?"}`
+**Implementation constraint:** `{"type": "synectics", "analogy_type": "personal", "instruction": "You are the product. How do you feel when the customer uses you?"}`
 
 ---
 
 ### A6. TRIZ (Altshuller, 1946+)
 
-**Fonte:** "40 Inventive Principles"; matrice delle contraddizioni (39x39)
+**Source:** "40 Inventive Principles"; the contradiction matrix (39x39)
 
-**Meccanismo:** l'innovazione vera nasce dalla risoluzione di contraddizioni tecniche. 40 principi inventivi derivati da centinaia di migliaia di brevetti.
+**Mechanism:** true innovation arises from the resolution of technical contradictions. 40 inventive principles derived from hundreds of thousands of patents.
 
-**Principi più rilevanti per Lens:**
-- #1 Segmentazione: dividere un sistema in parti indipendenti → base delle topologie multi-agente
-- #13 Inversione: fare l'azione opposta → forcing function di inversione
-- #17 Dimensionalità: passare da una dimensione a più dimensioni → aggiungere prospettive
-- #25 Self-service: fare che un oggetto si serva da solo → Meta-Lens (auto-ottimizzazione)
-- #35 Trasformazione di proprietà: cambiare lo stato del sistema → set-shifting forzato
+**Principles most relevant to Lens:**
+- #1 Segmentation: dividing a system into independent parts → the basis of multi-agent topologies
+- #13 Inversion: doing the opposite action → inversion forcing function
+- #17 Dimensionality: moving from one dimension to multiple dimensions → adding perspectives
+- #25 Self-service: making an object serve itself → Meta-Lens (self-optimization)
+- #35 Transformation of properties: changing the state of the system → forced set-shifting
 
-**Implicazione per Lens:** i 40 principi TRIZ possono essere mappati come una libreria di vincoli strutturati.
+**Implication for Lens:** the 40 TRIZ principles can be mapped as a library of structured constraints.
 
 ---
 
-## B. TEORIE SU PENSIERO DI GRUPPO E INTELLIGENZA COLLETTIVA
+## B. THEORIES ON GROUP THINKING AND COLLECTIVE INTELLIGENCE
 
 ### B1. Wisdom of Crowds (Surowiecki, 2004)
 
-**Fonte:** "The Wisdom of Crowds"
+**Source:** "The Wisdom of Crowds"
 
-**Quattro condizioni necessarie:**
-1. **Diversità di opinione** — ciascuno ha informazioni private
-2. **Indipendenza** — le opinioni non sono influenzate da quelle degli altri
-3. **Decentralizzazione** — nessuno dirige dall'alto
-4. **Meccanismo di aggregazione** — un metodo per trasformare giudizi individuali in decisione collettiva
+**Four necessary conditions:**
+1. **Diversity of opinion** — each person has private information
+2. **Independence** — opinions are not influenced by those of others
+3. **Decentralization** — no one directs from the top
+4. **Aggregation mechanism** — a method to turn individual judgments into a collective decision
 
-**Condizione critica:** "troppa comunicazione può rendere il gruppo meno intelligente"
+**Critical condition:** "too much communication can make the group less intelligent"
 
-**Implicazione per Lens:** PRINCIPIO ARCHITETTURALE. Nel Round 1 di ogni topologia, gli agenti NON devono vedere le posizioni degli altri. L'indipendenza computazionale nel primo round non è un dettaglio, è la condizione necessaria per l'intelligenza collettiva.
+**Implication for Lens:** ARCHITECTURAL PRINCIPLE. In Round 1 of every topology, the agents must NOT see the positions of the others. Computational independence in the first round is not a detail, it is the necessary condition for collective intelligence.
 
 ---
 
 ### B2. Groupthink (Janis, 1971)
 
-**Fonte:** "Victims of Groupthink"
+**Source:** "Victims of Groupthink"
 
-**Meccanismo:** i membri di un gruppo coeso sviluppano inconsciamente illusioni condivise che interferiscono con il pensiero critico.
+**Mechanism:** members of a cohesive group unconsciously develop shared illusions that interfere with critical thinking.
 
-**Prevenzione:** avvocato del diavolo istituzionalizzato, dissenso programmato, conflitto strutturato.
+**Prevention:** institutionalized devil's advocate, programmed dissent, structured conflict.
 
-**Implicazione per Lens:** l'LLM ha un bias strutturale verso il consenso. Lens contrasta questo con dissenso programmato.
+**Implication for Lens:** the LLM has a structural bias toward consensus. Lens counters this with programmed dissent.
 
 ---
 
 ### B3. Argumentative Theory of Reasoning (Mercier & Sperber, 2011/2017)
 
-**Fonte:** "The Enigma of Reason" (2017); paper originale in *Behavioral and Brain Sciences* (2011)
+**Source:** "The Enigma of Reason" (2017); original paper in *Behavioral and Brain Sciences* (2011)
 
-**Tesi centrale:** il ragionamento umano NON si è evoluto per cercare la verità in solitudine. Si è evoluto per l'argomentazione in contesti sociali — produrre argomenti per persuadere e valutare argomenti altrui per non farsi ingannare.
+**Central thesis:** human reasoning did NOT evolve to seek truth in solitude. It evolved for argumentation in social contexts — producing arguments to persuade and evaluating others' arguments to avoid being deceived.
 
-**Implicazione devastante:** il ragionamento di un singolo agente è **fondamentalmente limitato**. I bias (confirmation bias, myside bias) non sono bug del ragionamento — sono feature dell'argomentazione sociale. In solitudine producono errori. In gruppo producono verità.
+**Devastating implication:** the reasoning of a single agent is **fundamentally limited**. Biases (confirmation bias, myside bias) are not bugs of reasoning — they are features of social argumentation. In solitude they produce errors. In a group they produce truth.
 
-**Implicazione per Lens:** questa è la giustificazione teorica più forte per il multi-agent approach. Se il ragionamento è intrinsecamente sociale, un singolo LLM che "ragiona da solo" è strutturalmente limitato. Il debate multi-agente non è un'ottimizzazione — è la modalità naturale del ragionamento.
+**Implication for Lens:** this is the strongest theoretical justification for the multi-agent approach. If reasoning is intrinsically social, a single LLM "reasoning on its own" is structurally limited. Multi-agent debate is not an optimization — it is the natural mode of reasoning.
 
-**Vincolo architetturale:** ogni sessione Lens dovrebbe avere MINIMO 2 agenti. Il singolo agente è per definizione sub-ottimale secondo Mercier & Sperber.
-
----
-
-### B4. Cognitive Diversity e Requisite Variety (Ashby, 1956)
-
-**Fonte:** Ashby, "An Introduction to Cybernetics"; Aggarwal et al. (2019), PMC6374291
-
-**Legge di Ashby:** la varietà interna di un sistema deve essere almeno pari alla varietà dell'ambiente per controllarlo efficacemente.
-
-**Findings chiave sulla diversità cognitiva nei team:**
-- La diversità di **stile cognitivo** (come si elabora informazione) è più importante della diversità demografica o funzionale
-- La relazione è a U invertita: diversità moderata massimizza l'intelligenza collettiva; troppa diversità distrugge la coordinazione
-- La diversità funzionale (expertise diversa) e cognitiva superano quella demografica
-
-**Implicazione per Lens:** gli agenti devono avere stili cognitivi diversi (analitico vs olistico, dettaglio vs big picture), non solo posizioni diverse. La diversità deve essere moderata — 4-5 agenti con stili genuinamente diversi, non 10 con differenze marginali.
+**Architectural constraint:** every Lens session should have a MINIMUM of 2 agents. The single agent is by definition sub-optimal according to Mercier & Sperber.
 
 ---
 
-### B5. Ensemble Methods come metafora cognitiva
+### B4. Cognitive Diversity and Requisite Variety (Ashby, 1956)
 
-**Fonte:** DARPA "Quantifying Ensemble Diversity for Robust ML"; Wolpert (1992) stacking
+**Source:** Ashby, "An Introduction to Cybernetics"; Aggarwal et al. (2019), PMC6374291
 
-**Principio:** learner deboli diversi combinati superano un singolo learner forte. La condizione è che gli errori siano non correlati.
+**Ashby's law:** the internal variety of a system must be at least equal to the variety of the environment in order to control it effectively.
 
-**Tre pattern:**
-- **Bagging:** campioni diversi dello stesso problema → media delle predizioni (riduce varianza)
-- **Boosting:** ogni learner si concentra sugli errori del precedente (riduce bias)
-- **Stacking:** un meta-learner combina output eterogenei (massimizza diversità)
+**Key findings on cognitive diversity in teams:**
+- Diversity of **cognitive style** (how information is processed) is more important than demographic or functional diversity
+- The relationship is an inverted U: moderate diversity maximizes collective intelligence; too much diversity destroys coordination
+- Functional diversity (differing expertise) and cognitive diversity outperform demographic diversity
 
-**Implicazione per Lens:**
-- La topologia Star è bagging cognitivo (N agenti indipendenti → aggregazione)
-- La topologia Cascade è boosting cognitivo (ogni agente si concentra sulle debolezze del precedente)
-- Il Moderatore è un meta-learner (stacking — combina output eterogenei)
-
-Questa metafora suggerisce una metrica: misurare la **correlazione degli errori** tra agenti. Se tutti sbagliano nello stesso modo, i vincoli non sono abbastanza diversi.
+**Implication for Lens:** agents must have different cognitive styles (analytical vs holistic, detail vs big picture), not just different positions. Diversity must be moderate — 4-5 agents with genuinely different styles, not 10 with marginal differences.
 
 ---
 
-## C. TEORIE SULLA STRUTTURA DEL RAGIONAMENTO
+### B5. Ensemble Methods as a cognitive metaphor
 
-### C1. Dialettica Hegeliana
+**Source:** DARPA "Quantifying Ensemble Diversity for Robust ML"; Wolpert (1992) stacking
 
-Tesi → Antitesi → Sintesi. Documentato nel LENS.md principale (sezione 2.1).
+**Principle:** diverse weak learners combined outperform a single strong learner. The condition is that the errors be uncorrelated.
 
-### C2. Metodo Socratico / Elenchus
+**Three patterns:**
+- **Bagging:** different samples of the same problem → average of predictions (reduces variance)
+- **Boosting:** each learner focuses on the errors of the previous one (reduces bias)
+- **Stacking:** a meta-learner combines heterogeneous outputs (maximizes diversity)
 
-Documentato nel LENS.md principale (sezione 2.15).
+**Implication for Lens:**
+- The Star topology is cognitive bagging (N independent agents → aggregation)
+- The Cascade topology is cognitive boosting (each agent focuses on the weaknesses of the previous one)
+- The Moderator is a meta-learner (stacking — combines heterogeneous outputs)
+
+This metaphor suggests a metric: measuring the **error correlation** among agents. If they all err in the same way, the constraints are not diverse enough.
+
+---
+
+## C. THEORIES ON THE STRUCTURE OF REASONING
+
+### C1. Hegelian Dialectic
+
+Thesis → Antithesis → Synthesis. Documented in the main LENS.md (section 2.1).
+
+### C2. Socratic Method / Elenchus
+
+Documented in the main LENS.md (section 2.15).
 
 ### C3. Abductive Reasoning (Peirce, 1903)
 
-**Fonte:** Peirce, "Pragmatism and Pragmaticism"
+**Source:** Peirce, "Pragmatism and Pragmaticism"
 
-**Tre tipi di ragionamento:**
-- **Deduzione:** dalle premesse alla conclusione necessaria (sicura ma non creativa)
-- **Induzione:** dai dati alla generalizzazione (probabilistica)
-- **Abduzione:** dall'osservazione alla migliore spiegazione (creativa, incerta, genera ipotesi nuove)
+**Three types of reasoning:**
+- **Deduction:** from premises to the necessary conclusion (certain but not creative)
+- **Induction:** from data to generalization (probabilistic)
+- **Abduction:** from observation to the best explanation (creative, uncertain, generates new hypotheses)
 
-**Perché l'abduzione è la più rilevante per Lens:** è l'unica forma di ragionamento che genera ipotesi genuinamente nuove. Deduzione e induzione operano dentro frame esistenti. L'abduzione crea frame nuovi.
+**Why abduction is the most relevant to Lens:** it is the only form of reasoning that generates genuinely new hypotheses. Deduction and induction operate within existing frames. Abduction creates new frames.
 
-**LLM e abduzione:** gli LLM performano al 60-70% su benchmark di abduzione (α-NLI), molto sotto gli umani. La ragione: tendono a ipotizzare spiegazioni comuni (centro della distribuzione). Con chain-of-thought prompting migliorano del 15-20%.
+**LLMs and abduction:** LLMs perform at 60-70% on abduction benchmarks (α-NLI), well below humans. The reason: they tend to hypothesize common explanations (the center of the distribution). With chain-of-thought prompting they improve by 15-20%.
 
-**Implicazione per Lens:** un agente specializzato in abduzione ("Hypothesis Agent") che genera spiegazioni wild ma plausibili, vincolato a evitare le spiegazioni ovvie. Complementare a un agente deduttivo che verifica la coerenza logica.
+**Implication for Lens:** an agent specialized in abduction ("Hypothesis Agent") that generates wild but plausible explanations, constrained to avoid the obvious explanations. Complementary to a deductive agent that verifies logical coherence.
 
-**Vincolo implementativo:** `{"type": "abductive", "instruction": "Genera la spiegazione più sorprendente ma plausibile per questo fenomeno. Sono VIETATE le spiegazioni ovvie."}`
+**Implementation constraint:** `{"type": "abductive", "instruction": "Generate the most surprising yet plausible explanation for this phenomenon. Obvious explanations are FORBIDDEN."}`
 
 ---
 
 ### C4. Dual Process Theory (Kahneman)
 
-Documentato nel LENS.md principale (sezione 2.8).
+Documented in the main LENS.md (section 2.8).
 
 ### C5. Tree/Graph of Thoughts
 
-Documentato nel LENS.md principale (sezione 2.17).
+Documented in the main LENS.md (section 2.17).
 
-### C6. Constitutional AI e Self-Critique
+### C6. Constitutional AI and Self-Critique
 
-Documentato nel LENS.md principale (sezione 2.19).
+Documented in the main LENS.md (section 2.19).
 
 ---
 
-## D. TEORIE SU PERSUASIONE E PERCEZIONE
+## D. THEORIES ON PERSUASION AND PERCEPTION
 
 ### D1. Elaboration Likelihood Model (Petty & Cacioppo, 1986)
 
-**Fonte:** "Communication and Persuasion: Central and Peripheral Routes to Attitude Change"
+**Source:** "Communication and Persuasion: Central and Peripheral Routes to Attitude Change"
 
-**Due route:**
-- **Central:** elaborazione profonda, basata sulla qualità degli argomenti. Richiede alta motivazione e alta abilità. Produce cambio di atteggiamento durevole.
-- **Peripheral:** elaborazione superficiale, basata su segnali (credibilità fonte, attrattività, numero di argomenti). Bassa motivazione o abilità. Produce cambio temporaneo.
+**Two routes:**
+- **Central:** deep elaboration, based on the quality of the arguments. Requires high motivation and high ability. Produces durable attitude change.
+- **Peripheral:** superficial elaboration, based on cues (source credibility, attractiveness, number of arguments). Low motivation or ability. Produces temporary change.
 
-**Implicazione per Lens:** le synthetic persona dovrebbero avere un parametro "route" che determina come processano l'informazione:
-- Persona "central route": analizzano la logica degli argomenti, ignorano chi li fa
-- Persona "peripheral route": reagiscono alla presentazione, al tono, alla credibilità percepita
+**Implication for Lens:** synthetic personas should have a "route" parameter that determines how they process information:
+- "central route" persona: they analyze the logic of the arguments, ignore who makes them
+- "peripheral route" persona: they react to the presentation, the tone, the perceived credibility
 
-Questo crea diversità genuina nel focus group — non solo cosa pensano, ma COME processano.
+This creates genuine diversity in the focus group — not just what they think, but HOW they process.
 
-**Vincolo implementativo:** `{"type": "elm_route", "route": "peripheral", "cues": ["credibilità fonte", "appeal emotivo", "social proof"]}`
+**Implementation constraint:** `{"type": "elm_route", "route": "peripheral", "cues": ["source credibility", "emotional appeal", "social proof"]}`
 
 ---
 
 ### D2. Perspective-Taking
 
-**Fonte:** PMC9975546; Bradford (2022), St Andrews
+**Source:** PMC9975546; Bradford (2022), St Andrews
 
-**Meccanismo neurale:** coinvolge la giunzione temporo-parietale (TPJ), corteccia prefrontale dorsomediale (per "altri dissimili"), ventromediale (per "altri simili").
+**Neural mechanism:** it involves the temporo-parietal junction (TPJ), dorsomedial prefrontal cortex (for "dissimilar others"), ventromedial (for "similar others").
 
-**Differenza da empatia:** la perspective-taking è cognitiva (capire il punto di vista dell'altro), l'empatia è affettiva (sentire le emozioni dell'altro). Coinvolgono circuiti neurali diversi.
+**Difference from empathy:** perspective-taking is cognitive (understanding the other's point of view), empathy is affective (feeling the other's emotions). They involve different neural circuits.
 
-**Le macchine possono genuinamente prendere prospettive?** No. Possono simulare perspective-taking via pattern-matching sui dati di training, ma mancano della mentalizzazione genuina e della distinzione sé/altro. Questo è un LIMITE FONDAMENTALE di Lens: simulazione, non prospettiva genuina. Ma la simulazione, se vincolata da struttura cognitiva (bias, paure, obiettivi), può comunque produrre output diversificato e utile.
+**Can machines genuinely take perspectives?** No. They can simulate perspective-taking via pattern-matching on training data, but they lack genuine mentalization and the self/other distinction. This is a FUNDAMENTAL LIMIT of Lens: simulation, not genuine perspective. But the simulation, if constrained by cognitive structure (biases, fears, goals), can still produce diversified and useful output.
 
 ---
 
 ### D3. Cognitive Dissonance (Festinger, 1957)
 
-**Fonte:** "A Theory of Cognitive Dissonance"
+**Source:** "A Theory of Cognitive Dissonance"
 
-**Meccanismo:** tenere credenze contraddittorie crea tensione psicologica che motiva la risoluzione (cambio di atteggiamento, aggiunta di credenze, banalizzazione).
+**Mechanism:** holding contradictory beliefs creates psychological tension that motivates resolution (attitude change, adding beliefs, trivialization).
 
-**Come forcing function:** forzare un agente a sostenere due posizioni contraddittorie crea una "tensione computazionale" che lo costringe a trovare una risoluzione creativa — non un compromesso (che sarebbe banalizzazione), ma un framework che contiene entrambe.
+**As a forcing function:** forcing an agent to hold two contradictory positions creates a "computational tension" that compels it to find a creative resolution — not a compromise (which would be trivialization), but a framework that contains both.
 
-**Relazione con Janusian Thinking:** Festinger descrive la dissonanza come tensione da risolvere. Rothenberg descrive il Janusian thinking come simultaneità da mantenere. Sono complementari: la dissonanza è la pressione, il Janusian thinking è il metodo per trascenderla.
+**Relationship with Janusian Thinking:** Festinger describes dissonance as tension to be resolved. Rothenberg describes Janusian thinking as simultaneity to be maintained. They are complementary: dissonance is the pressure, Janusian thinking is the method for transcending it.
 
-**Vincolo implementativo:** `{"type": "dissonance", "belief_1": "il nostro prodotto è il migliore", "belief_2": "il nostro prodotto ha un difetto fondamentale", "requirement": "sostieni entrambe contemporaneamente e trova il framework che le riconcilia"}`
+**Implementation constraint:** `{"type": "dissonance", "belief_1": "our product is the best", "belief_2": "our product has a fundamental flaw", "requirement": "hold both at the same time and find the framework that reconciles them"}`
 
 ---
 
-### D4. Reframing di secondo ordine (Watzlawick)
+### D4. Second-order reframing (Watzlawick)
 
-Documentato nel LENS.md principale (sezione 2.3).
+Documented in the main LENS.md (section 2.3).
 
 ### D5. Steelmanning
 
-Documentato nel LENS.md principale (sezione 2.12).
+Documented in the main LENS.md (section 2.12).
 
 ---
 
-## E. METODOLOGIE STRUTTURATE DI ANALISI
+## E. STRUCTURED METHODOLOGIES OF ANALYSIS
 
 ### E1. Structured Analytic Techniques (CIA/IC)
 
-**Fonte:** Heuer & Pherson, "Structured Analytic Techniques for Intelligence Analysis" (2015/2020)
+**Source:** Heuer & Pherson, "Structured Analytic Techniques for Intelligence Analysis" (2015/2020)
 
-**SAT oltre ACH:**
+**SATs beyond ACH:**
 
-| SAT | Cosa fa | Mapping a Lens |
+| SAT | What it does | Mapping to Lens |
 |---|---|---|
-| **Key Assumptions Check** | Identifica e testa assunzioni non dichiarate | → Socratic Drill |
-| **Diagnostic Reasoning** | Elimina alternative sistematicamente | → Cascade con eliminazione |
-| **Quadrant Crunching** | Matrice per mappare scenari | → Scenario Matrix |
-| **What-If Analysis** | Esplora futuri ipotetici | → Vincolo counterfactual |
-| **High-Impact/Low-Probability** | Valuta eventi rari ma consequenziali | → Agente "black swan" |
-| **ACH** | Ipotesi in competizione | → Adversarial + Jury |
-| **Devil's Advocacy** | Attacca la posizione dominante | → Adversarial Cascade |
+| **Key Assumptions Check** | Identifies and tests undeclared assumptions | → Socratic Drill |
+| **Diagnostic Reasoning** | Eliminates alternatives systematically | → Cascade with elimination |
+| **Quadrant Crunching** | Matrix to map scenarios | → Scenario Matrix |
+| **What-If Analysis** | Explores hypothetical futures | → Counterfactual constraint |
+| **High-Impact/Low-Probability** | Evaluates rare but consequential events | → "black swan" agent |
+| **ACH** | Competing hypotheses | → Adversarial + Jury |
+| **Devil's Advocacy** | Attacks the dominant position | → Adversarial Cascade |
 
-**I SAT che mappano meglio su multi-agent LLM:** Quadrant Crunching e What-If Analysis, perché scomponibili in agenti paralleli.
+**The SATs that map best onto multi-agent LLMs:** Quadrant Crunching and What-If Analysis, because they are decomposable into parallel agents.
 
 ---
 
 ### E2-E5. Scenario Planning, Morphological Analysis, Red Teaming, Premortem
 
-Documentati nel LENS.md principale.
+Documented in the main LENS.md.
 
 ---
 
-### E6. SCAMPER (Eberle, basato su Osborn)
+### E6. SCAMPER (Eberle, based on Osborn)
 
-**Fonte:** Eberle, "SCAMPER: Creative Games and Activities for Imagination Development"
+**Source:** Eberle, "SCAMPER: Creative Games and Activities for Imagination Development"
 
-**7 operazioni:**
-1. **Substitute:** sostituisci un elemento con un'alternativa
-2. **Combine:** unisci concetti non correlati
-3. **Adapt:** adatta a un nuovo contesto
-4. **Modify:** altera dimensione, forma, attributi (anche Magnify/Minify)
-5. **Put to other uses:** applica in scenari diversi
-6. **Eliminate:** rimuovi componenti per semplificare
-7. **Reverse/Rearrange:** inverti ordine, struttura, direzione
+**7 operations:**
+1. **Substitute:** replace an element with an alternative
+2. **Combine:** unite unrelated concepts
+3. **Adapt:** adapt to a new context
+4. **Modify:** alter size, shape, attributes (also Magnify/Minify)
+5. **Put to other uses:** apply in different scenarios
+6. **Eliminate:** remove components to simplify
+7. **Reverse/Rearrange:** invert order, structure, direction
 
-**Evidenza empirica:** GPT-4 con SCAMPER genera soluzioni al 75° percentile in elaborazione, originalità e novità rispetto a studenti umani (Cambridge, 2024).
+**Empirical evidence:** GPT-4 with SCAMPER generates solutions at the 75th percentile in elaboration, originality, and novelty compared to human students (Cambridge, 2024).
 
-**Implicazione per Lens:** ogni operazione SCAMPER è un vincolo. Un workflow SCAMPER ha 7 agenti, ognuno vincolato a una sola operazione. Il moderatore sintetizza.
+**Implication for Lens:** each SCAMPER operation is a constraint. A SCAMPER workflow has 7 agents, each bound to a single operation. The moderator synthesizes.
 
-**Vincolo implementativo:** `{"type": "scamper", "operation": "reverse", "target": "il nostro processo di vendita"}`
+**Implementation constraint:** `{"type": "scamper", "operation": "reverse", "target": "our sales process"}`
 
 ---
 
 ### E7. CPS Model (Osborn-Parnes)
 
-**Fonte:** Osborn, "Applied Imagination" (1953); Parnes et al.
+**Source:** Osborn, "Applied Imagination" (1953); Parnes et al.
 
-**5 fasi:**
-1. **Fact-finding:** raccogliere dati
-2. **Problem-finding:** riformulare il problema
-3. **Idea-finding:** generare idee (DIVERGENTE)
-4. **Solution-finding:** valutare idee (CONVERGENTE)
-5. **Acceptance-finding:** pianificare implementazione
+**5 phases:**
+1. **Fact-finding:** gather data
+2. **Problem-finding:** reformulate the problem
+3. **Idea-finding:** generate ideas (DIVERGENT)
+4. **Solution-finding:** evaluate ideas (CONVERGENT)
+5. **Acceptance-finding:** plan implementation
 
-**Principio chiave:** la separazione deliberata tra fasi divergenti e convergenti migliora la qualità degli outcome. La prematura giudizio (convergere troppo presto) è il killer principale della creatività.
+**Key principle:** the deliberate separation between divergent and convergent phases improves the quality of outcomes. Premature judgment (converging too early) is the main killer of creativity.
 
-**Implicazione per Lens:** le sessioni Lens dovrebbero avere fasi esplicite. Round 1 = divergente (nessun agente valuta). Round 2+ = convergente (agenti che filtrano, attaccano, valutano). Il Moderatore NON giudica nel Round 1 — solo raccoglie.
+**Implication for Lens:** Lens sessions should have explicit phases. Round 1 = divergent (no agent evaluates). Round 2+ = convergent (agents that filter, attack, evaluate). The Moderator does NOT judge in Round 1 — it only collects.
 
 ---
 
 ### E8. Assumption Reversal / SAST (Mason & Mitroff, 1981)
 
-**Fonte:** "Challenging Strategic Planning Assumptions"
+**Source:** "Challenging Strategic Planning Assumptions"
 
-**Processo SAST:**
-1. Elencare le assunzioni su cui si basa la strategia/decisione
-2. Classificare per importanza e certezza
-3. Testare con dialectic debate
-4. Invertire quelle ad alto impatto e esplorare le implicazioni
+**SAST process:**
+1. List the assumptions on which the strategy/decision is based
+2. Classify by importance and certainty
+3. Test with dialectic debate
+4. Invert the high-impact ones and explore the implications
 
-**Esempi storici:**
-- Inversione di "le auto hanno bisogno di un guidatore" → veicoli autonomi
-- Inversione di "fidelizzazione tramite sconti" → modelli subscription
-- NASA: inversione di "lo spazio richiede esseri umani" → sonde non pilotate
+**Historical examples:**
+- Inversion of "cars need a driver" → autonomous vehicles
+- Inversion of "loyalty through discounts" → subscription models
+- NASA: inversion of "space requires humans" → unmanned probes
 
-**Implicazione per Lens:** workflow dedicato. Fase 1: Socratic Drill per elencare assunzioni. Fase 2: classificazione importanza/certezza. Fase 3: inversione sistematica delle top-K assunzioni. Fase 4: esplorazione delle implicazioni con agenti diversi.
+**Implication for Lens:** a dedicated workflow. Phase 1: Socratic Drill to list assumptions. Phase 2: importance/certainty classification. Phase 3: systematic inversion of the top-K assumptions. Phase 4: exploration of the implications with different agents.
 
-**Vincolo implementativo:** `{"type": "assumption_reversal", "assumption": "i clienti confrontano prezzi", "reversed": "i clienti NON confrontano prezzi", "explore": "quali strategie diventano possibili?"}`
+**Implementation constraint:** `{"type": "assumption_reversal", "assumption": "customers compare prices", "reversed": "customers do NOT compare prices", "explore": "which strategies become possible?"}`
 
 ---
 
 ### E9. Concept Fan (De Bono)
 
-**Fonte:** De Bono, "Serious Creativity"
+**Source:** De Bono, "Serious Creativity"
 
-**Meccanismo:** navigare tra livelli di astrazione:
-- **Specifico:** soluzione concreta ("ripara il rubinetto")
-- **Direzione:** strategia più ampia ("migliora l'efficienza idrica")
-- **Scopo:** bisogno fondamentale ("riduci gli sprechi domestici")
+**Mechanism:** navigating between levels of abstraction:
+- **Specific:** concrete solution ("fix the faucet")
+- **Direction:** broader strategy ("improve water efficiency")
+- **Purpose:** fundamental need ("reduce household waste")
 
-Muoversi verso l'alto apre nuove direzioni. Muoversi verso il basso concretizza.
+Moving upward opens new directions. Moving downward concretizes.
 
-**Implicazione per Lens:** vincolo di livello di astrazione. Un agente è vincolato a "solo scopo" (il livello più astratto), un altro a "solo specifico". Il confronto tra livelli rivela soluzioni invisibili da un singolo livello.
+**Implication for Lens:** an abstraction-level constraint. One agent is bound to "purpose only" (the most abstract level), another to "specific only." The comparison between levels reveals solutions invisible from a single level.
 
-**Vincolo implementativo:** `{"type": "concept_fan", "level": "purpose", "instruction": "Qual è il bisogno fondamentale che stiamo cercando di soddisfare? Non la soluzione, il bisogno."}`
+**Implementation constraint:** `{"type": "concept_fan", "level": "purpose", "instruction": "What is the fundamental need we are trying to satisfy? Not the solution, the need."}`
 
 ---
 
-## F. FLESSIBILITÀ COGNITIVA E VINCOLI
+## F. COGNITIVE FLEXIBILITY AND CONSTRAINTS
 
-### F1. Cognitive Flexibility e Set-Shifting
+### F1. Cognitive Flexibility and Set-Shifting
 
-**Fonte:** Wisconsin Card Sorting Test; ricerca su perseverazione
+**Source:** Wisconsin Card Sorting Test; research on perseveration
 
-**Perseverazione:** aderenza persistente a una strategia obsoleta nonostante feedback negativo. Gli LLM mostrano perseverazione: ripetono pattern stabiliti nel contesto nonostante nuove istruzioni.
+**Perseveration:** persistent adherence to an obsolete strategy despite negative feedback. LLMs show perseveration: they repeat patterns established in the context despite new instructions.
 
-**Meccanismi umani per rompere mental set:**
-- Error detection (notare che la regola è cambiata)
-- Inhibitory control (sopprimere la risposta precedente)
-- Working memory update (integrare nuovo feedback)
+**Human mechanisms for breaking mental set:**
+- Error detection (noticing that the rule has changed)
+- Inhibitory control (suppressing the previous response)
+- Working memory update (integrating new feedback)
 
-**Implicazione per Lens:** un agente "set-shifter" il cui unico compito è rilevare perseverazione negli altri agenti e forzare un cambio di frame. Come il WCST: quando l'output diventa prevedibile, cambia le regole.
+**Implication for Lens:** a "set-shifter" agent whose only task is to detect perseveration in the other agents and force a change of frame. Like the WCST: when the output becomes predictable, change the rules.
 
 ---
 
 ### F2. Constraint-Based Creativity (Stokes, 2001/2005)
 
-**Fonte:** "Creativity from Constraints: The Psychology of Breakthrough"
+**Source:** "Creativity from Constraints: The Psychology of Breakthrough"
 
-**Tipologia dei vincoli Stokes:**
-- **Primary constraints:** limitano le azioni ("usa solo questi 50 parole") → prevengono la "paralisi della pagina bianca"
-- **Secondary constraints:** ripetono percorsi di successo → costruiscono competenza
-- **Tertiary constraints:** estendono via analogia → producono innovazione
+**Stokes's typology of constraints:**
+- **Primary constraints:** limit actions ("use only these 50 words") → prevent "blank page paralysis"
+- **Secondary constraints:** repeat successful paths → build competence
+- **Tertiary constraints:** extend via analogy → produce innovation
 
-**Evidenza empirica:** gruppi vincolati producono +25% idee più originali e +236% output più creativo rispetto a gruppi liberi.
+**Empirical evidence:** constrained groups produce +25% more original ideas and +236% more creative output compared to unconstrained groups.
 
-**Il "Green Eggs and Ham effect":** Seuss scommise di scrivere un libro con sole 50 parole. Il vincolo produsse un capolavoro. Il vincolo non limita — dirige l'esplorazione verso territorio non ovvio.
+**The "Green Eggs and Ham effect":** Seuss bet he could write a book with only 50 words. The constraint produced a masterpiece. The constraint does not limit — it directs exploration toward non-obvious territory.
 
-**Implicazione per Lens:** VALIDAZIONE TEORICA CENTRALE. I vincoli non sono una limitazione, sono il meccanismo fondamentale della creatività. Lens non "limita" l'LLM — lo dirige verso le code della distribuzione.
+**Implication for Lens:** CENTRAL THEORETICAL VALIDATION. Constraints are not a limitation, they are the fundamental mechanism of creativity. Lens does not "limit" the LLM — it directs it toward the tails of the distribution.
 
 ---
 
 ### F3. DBT Wise Mind (Linehan, 1993)
 
-**Fonte:** "Cognitive-Behavioral Treatment of Borderline Personality Disorder"
+**Source:** "Cognitive-Behavioral Treatment of Borderline Personality Disorder"
 
-**Tre menti:**
-- **Emotional Mind:** intuitiva, guidata dai sentimenti, reattiva
-- **Reasonable Mind:** logica, basata sui fatti, fredda
-- **Wise Mind:** sintesi delle due — integra intuizione e logica
+**Three minds:**
+- **Emotional Mind:** intuitive, driven by feelings, reactive
+- **Reasonable Mind:** logical, fact-based, cold
+- **Wise Mind:** synthesis of the two — integrates intuition and logic
 
-**Implicazione per Lens:** topologia Wise Mind. Due agenti (emotional + rational) producono posizioni, un terzo agente-sintetizzatore le integra. Diverso dalla dialettica hegeliana: non tesi-antitesi-sintesi, ma emozione-ragione-saggezza.
+**Implication for Lens:** the Wise Mind topology. Two agents (emotional + rational) produce positions, a third synthesizer agent integrates them. Different from the Hegelian dialectic: not thesis-antithesis-synthesis, but emotion-reason-wisdom.
 
-**Vincolo implementativo:**
-- Agente emotional: `{"type": "modal", "mode": "emotional", "instruction": "Rispondi con intuizione, paure, desideri. Nessun dato, nessuna logica."}`
-- Agente rational: `{"type": "modal", "mode": "rational", "instruction": "Solo fatti verificabili, logica, dati. Nessuna intuizione."}`
-- Sintetizzatore: `{"type": "wise_mind", "instruction": "Integra entrambe le posizioni. Dove l'emozione ha ragione? Dove la logica manca qualcosa?"}`
+**Implementation constraint:**
+- Emotional agent: `{"type": "modal", "mode": "emotional", "instruction": "Respond with intuition, fears, desires. No data, no logic."}`
+- Rational agent: `{"type": "modal", "mode": "rational", "instruction": "Only verifiable facts, logic, data. No intuition."}`
+- Synthesizer: `{"type": "wise_mind", "instruction": "Integrate both positions. Where is the emotion right? Where is the logic missing something?"}`
 
 ---
 
 ### F4. Reflexivity (Soros/Bourdieu)
 
-**Fonte:** Soros, "The Alchemy of Finance" (1987); Bourdieu, "Outline of a Theory of Practice" (1977)
+**Source:** Soros, "The Alchemy of Finance" (1987); Bourdieu, "Outline of a Theory of Practice" (1977)
 
-**Meccanismo:** l'osservatore cambia ciò che osserva. In mercati finanziari: le previsioni influenzano il mercato che prevedono. In sistemi sociali: le categorie analitiche modellano la realtà che descrivono.
+**Mechanism:** the observer changes what they observe. In financial markets: forecasts influence the market they forecast. In social systems: analytical categories shape the reality they describe.
 
-**Rischi per Lens:** se Lens analizza una strategia e poi la strategia viene modificata sulla base dell'analisi di Lens, c'è un loop riflessivo. L'analisi di Lens non descrive una realtà indipendente — la co-crea.
+**Risks for Lens:** if Lens analyzes a strategy and then the strategy is modified on the basis of Lens's analysis, there is a reflexive loop. Lens's analysis does not describe an independent reality — it co-creates it.
 
-**Opportunità:** un agente "reflexivity monitor" che chiede: "Come cambierebbe la situazione SE agissimo sulla base di questa analisi?"
+**Opportunity:** a "reflexivity monitor" agent that asks: "How would the situation change IF we acted on the basis of this analysis?"
 
 ---
 
-## G. RICERCA EMPIRICA SU MULTI-AGENT LLM
+## G. EMPIRICAL RESEARCH ON MULTI-AGENT LLMs
 
 ### G1. Multi-Agent Debate
 
-- A-HMAD: +4-6% accuratezza, -30% errori fattuali con agenti eterogenei
-- Focus Agent (2024): focus group LLM simili a partecipanti umani
-- Multi-Agent Debate Scaling (ICLR 2025): diminishing returns dopo 3-4 round
+- A-HMAD: +4-6% accuracy, -30% factual errors with heterogeneous agents
+- Focus Agent (2024): LLM focus groups similar to human participants
+- Multi-Agent Debate Scaling (ICLR 2025): diminishing returns after 3-4 rounds
 
 ### G2. Synthetic Personas
 
-- Park (Stanford, 2024): 1.052 agenti da interviste qualitative replicano risposte all'85%
-- SSR (Semantic Similarity Rating): 90% della affidabilità test-retest umana
+- Park (Stanford, 2024): 1,052 agents from qualitative interviews replicate responses at 85%
+- SSR (Semantic Similarity Rating): 90% of human test-retest reliability
 
 ### G3. Activation Steering
 
-- Concept Activation Vectors (ICLR 2025): steering di creatività, humor, stile
-- Conceptors: steering multi-proprietà via operazioni booleane
-- Non implementabile oggi via API, ma valida la direzione teorica
+- Concept Activation Vectors (ICLR 2025): steering of creativity, humor, style
+- Conceptors: multi-property steering via boolean operations
+- Not implementable today via API, but it validates the theoretical direction
 
 ### G4. Divergent Creativity
 
-- LLM superano la media umana in divergent thinking
-- Non superano il top decile umano
-- I vincoli strutturali (Stokes) compensano il gap
+- LLMs outperform the human average in divergent thinking
+- They do not outperform the human top decile
+- Structural constraints (Stokes) compensate for the gap
 
 ---
 
-## Mappa delle connessioni tra teorie
+## Map of the connections between theories
 
 ```
-TEORIE CHE SI RAFFORZANO A VICENDA:
+THEORIES THAT REINFORCE ONE ANOTHER:
 
-Bisociazione ←→ Synectics ←→ Defamiliarization
-    (tutte: collisione tra frame incompatibili)
+Bisociation ←→ Synectics ←→ Defamiliarization
+    (all: collision between incompatible frames)
 
-Janusian Thinking ←→ Cognitive Dissonance ←→ Dialettica Hegeliana
-    (tutte: tensione tra opposti come motore creativo)
+Janusian Thinking ←→ Cognitive Dissonance ←→ Hegelian Dialectic
+    (all: tension between opposites as a creative engine)
 
 Wisdom of Crowds ←→ Mercier-Sperber ←→ Ensemble Methods
-    (tutte: il gruppo supera l'individuo sotto condizioni specifiche)
+    (all: the group outperforms the individual under specific conditions)
 
 Constraint Creativity (Stokes) ←→ TRIZ ←→ Forcing Functions
-    (tutte: i vincoli producono creatività, non la limitano)
+    (all: constraints produce creativity, they do not limit it)
 
 Premortem ←→ Scenario Planning ←→ Counterfactual
-    (tutte: spostamento temporale come strumento cognitivo)
+    (all: temporal shift as a cognitive tool)
 
 SCAMPER ←→ Morphological Analysis ←→ Concept Fan
-    (tutte: scomposizione sistematica dello spazio delle soluzioni)
+    (all: systematic decomposition of the solution space)
 
-TEORIE CHE CREANO TENSIONE PRODUTTIVA:
-- Wisdom of Crowds (indipendenza) vs Argumentative Theory (ragionamento è sociale)
-  → Risoluzione: indipendenza nel Round 1, interazione nei round successivi
-- Cognitive Dissonance (tensione da risolvere) vs Janusian Thinking (tensione da mantenere)
-  → Risoluzione: la dissonanza è il motore, il Janusian thinking è il metodo
+THEORIES THAT CREATE PRODUCTIVE TENSION:
+- Wisdom of Crowds (independence) vs Argumentative Theory (reasoning is social)
+  → Resolution: independence in Round 1, interaction in subsequent rounds
+- Cognitive Dissonance (tension to be resolved) vs Janusian Thinking (tension to be maintained)
+  → Resolution: dissonance is the engine, Janusian thinking is the method
 ```

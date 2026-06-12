@@ -3,19 +3,19 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "/lens-deep \"Le agenzie di comunicazione italiane sopravviveranno all'AI generativa solo se diventeranno tech company\"",
+      "prompt": "/lens-deep \"Italian communication agencies will survive generative AI only if they become tech companies\"",
       "expected_output": "Runs 4 sequential rounds with auto-selected constraints (e.g. steelman → inversion → abductive → concept_fan). Each round builds on all previous. Produces Sequential Chain Report with evolution map and executive extract.",
       "files": []
     },
     {
       "id": 2,
-      "prompt": "/lens-deep \"Il remote-first e' sostenibile per team creativi\" --intensity 5 --no-anchor-break",
+      "prompt": "/lens-deep \"Remote-first is sustainable for creative teams\" --intensity 5 --no-anchor-break",
       "expected_output": "Runs with intensity 5 and no anchor breaks. Should show more extreme constraint application. Continuous flow without anchor-break interruptions. Output includes evolution map showing how position shifts across rounds.",
       "files": []
     },
     {
       "id": 3,
-      "prompt": "/lens-deep \"La differenziazione tramite brand purpose e' un vantaggio competitivo reale o un trend passeggero\" --constraints anti_sycophancy,inversion,abductive,concept_fan",
+      "prompt": "/lens-deep \"Differentiation through brand purpose is a real competitive advantage or a passing trend\" --constraints anti_sycophancy,inversion,abductive,concept_fan",
       "expected_output": "Uses exact constraint sequence specified. 4 rounds with the explicit constraints. No auto-selection. Sequential Chain Report shows progressive deepening through each constraint.",
       "files": []
     }

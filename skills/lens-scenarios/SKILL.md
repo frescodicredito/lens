@@ -42,26 +42,26 @@ Extract from the user's message:
 - **question**: the strategic question or decision (required)
 - **uncertainty_1**: first critical uncertainty axis (optional)
 - **uncertainty_2**: second critical uncertainty axis (optional)
-- **horizon**: time horizon for scenarios (default: "3-5 anni")
+- **horizon**: time horizon for scenarios (default: "3-5 years")
 - **intensity**: 1-5 (default: 3)
 
 **If uncertainties are NOT provided**, identify them:
 
 Present to the user:
 ```
-Per costruire la matrice scenari, servono 2 incertezze critiche.
+To build the scenario matrix, we need 2 critical uncertainties.
 
-Suggerisco:
+I suggest:
 1. **{uncertainty_1}**: {pole_a} vs {pole_b}
 2. **{uncertainty_2}**: {pole_a} vs {pole_b}
 
-Questo genera 4 scenari:
+This generates 4 scenarios:
 - Q1: {u1_pole_a} + {u2_pole_a}
 - Q2: {u1_pole_a} + {u2_pole_b}
 - Q3: {u1_pole_b} + {u2_pole_a}
 - Q4: {u1_pole_b} + {u2_pole_b}
 
-Procedo con queste incertezze o vuoi modificarle?
+Shall I proceed with these uncertainties or do you want to change them?
 ```
 
 **Selection criteria for good uncertainties:**
@@ -90,7 +90,7 @@ lens_compose_prompt(
   constraints=[
     {"type": "temporal", "value": "{horizon from now}"},
     {"type": "assumption_reversal", "assumption": "[current baseline]", "reversed": "[Q1 conditions]"},
-    {"type": "modal", "mode": "solo conseguenze di questo scenario, nessuna alternativa"}
+    {"type": "modal", "mode": "only consequences of this scenario, no alternatives"}
   ],
   output_format="perspective_card",
   intensity=intensity
@@ -103,32 +103,32 @@ lens_compose_prompt(
 
 ## Scenario: {quadrant_name}
 
-Siamo nel {horizon}. Le seguenti condizioni si sono verificate:
+It's {horizon}. The following conditions have occurred:
 - {Uncertainty 1}: {pole for this quadrant}
 - {Uncertainty 2}: {pole for this quadrant}
 
-In questo mondo:
-1. Come si e' evoluta la situazione?
-2. Quali decisioni si sono rivelate vincenti?
-3. Quali decisioni si sono rivelate disastrose?
-4. Quali segnali precoci (visibili GIA' OGGI) avrebbero predetto questo scenario?
-5. Qual e' la strategia ottimale in questo mondo?
+In this world:
+1. How did the situation evolve?
+2. Which decisions turned out to be winners?
+3. Which decisions turned out to be disastrous?
+4. Which early signals (visible ALREADY TODAY) would have predicted this scenario?
+5. What is the optimal strategy in this world?
 ```
 
 Launch ALL 4 agents **in parallel** using the Task tool (subagent_type: "general-purpose").
 
 **CRITICAL — INDEPENDENCE**: In Round 1, each agent explores ONLY its own scenario. No agent sees other scenarios. This ensures genuine diversity.
 
-Show Round 1 results to user with the matrix layout. Ask: "Vuoi procedere con la sintesi cross-scenario o hai domande su uno scenario specifico?"
+Show Round 1 results to user with the matrix layout. Ask: "Do you want to proceed with the cross-scenario synthesis or do you have questions about a specific scenario?"
 
 ### Step 4: Round 2 — Cross-scenario synthesis
 
 Launch a synthesizer agent:
 
 ```
-Sei il sintetizzatore di una Scenario Matrix Lens. Hai ricevuto 4 scenari indipendenti per la domanda strategica: "{question}"
+You are the synthesizer of a Scenario Matrix Lens. You have received 4 independent scenarios for the strategic question: "{question}"
 
-## Matrice
+## Matrix
 
 | | {U2 Pole A} | {U2 Pole B} |
 |---|---|---|
@@ -147,24 +147,24 @@ Sei il sintetizzatore di una Scenario Matrix Lens. Hai ricevuto 4 scenari indipe
 ## Scenario Q4 — {name}
 {Agent Q4 output}
 
-## Il tuo compito
+## Your task
 
-Produci una ANALISI CROSS-SCENARIO nel seguente formato:
+Produce a CROSS-SCENARIO ANALYSIS in the following format:
 
-### STRATEGIE ROBUSTE
-[Azioni/decisioni che funzionano in 3+ scenari su 4. Queste sono le scommesse sicure.]
+### ROBUST STRATEGIES
+[Actions/decisions that work in 3+ scenarios out of 4. These are the safe bets.]
 
-### SCOMMESSE ASIMMETRICHE
-[Azioni con downside limitato ma upside enorme in 1-2 scenari specifici. Vale la pena rischiare?]
+### ASYMMETRIC BETS
+[Actions with limited downside but enormous upside in 1-2 specific scenarios. Worth the risk?]
 
-### STRATEGIE DA EVITARE
-[Azioni che sembrano buone ma falliscono in 2+ scenari. Sono trappole.]
+### STRATEGIES TO AVOID
+[Actions that look good but fail in 2+ scenarios. These are traps.]
 
-### SEGNALI PRECOCI
-[Per ogni scenario, quali indicatori monitorare nei prossimi 6-12 mesi per capire verso quale quadrante stiamo andando?]
+### EARLY SIGNALS
+[For each scenario, which indicators to monitor in the next 6-12 months to understand which quadrant we're heading toward?]
 
-### PIANO ADATTIVO
-[Una strategia che inizia con le azioni robuste e include trigger per pivotare verso strategie scenario-specifiche quando i segnali diventano chiari.]
+### ADAPTIVE PLAN
+[A strategy that starts with the robust actions and includes triggers to pivot toward scenario-specific strategies when the signals become clear.]
 ```
 
 ### Step 5: Present output
@@ -172,9 +172,9 @@ Produci una ANALISI CROSS-SCENARIO nel seguente formato:
 ```markdown
 # Scenario Matrix — {question}
 
-> Orizzonte: {horizon} | Incertezze: {u1} x {u2} | Intensita': {intensity}/5
+> Horizon: {horizon} | Uncertainties: {u1} x {u2} | Intensity: {intensity}/5
 
-## La Matrice
+## The Matrix
 
 | | {U2 Pole A} | {U2 Pole B} |
 |---|---|---|
@@ -183,13 +183,13 @@ Produci una ANALISI CROSS-SCENARIO nel seguente formato:
 
 ---
 
-## Analisi cross-scenario
+## Cross-scenario analysis
 
 {Synthesizer output}
 
 ---
 
-## Scenari individuali
+## Individual scenarios
 
 ### Q1 — {name}
 {Q1 agent output}
@@ -204,7 +204,7 @@ Produci una ANALISI CROSS-SCENARIO nel seguente formato:
 {Q4 agent output}
 
 ---
-*Lens Scenarios | Scenario Matrix | 4 + 1 agenti | Intensita': {intensity}/5*
+*Lens Scenarios | Scenario Matrix | 4 + 1 agents | Intensity: {intensity}/5*
 ```
 
 ### Step 6: Save session
@@ -215,26 +215,26 @@ lens_session_save(topology="scenario_matrix", topic=question, agents_count=5, ro
 
 ## Examples
 
-**User:** `/lens-scenarios "Dovremmo investire in un prodotto AI proprietario o rivendere soluzioni terze?"`
-- Auto-identify uncertainties (e.g., "velocita' commoditizzazione AI" x "willingness-to-pay del mercato")
+**User:** `/lens-scenarios "Should we invest in a proprietary AI product or resell third-party solutions?"`
+- Auto-identify uncertainties (e.g., "speed of AI commoditization" x "market willingness-to-pay")
 - 4 scenarios + cross-scenario analysis
 
-**User:** `/lens-scenarios "Espansione in Germania nei prossimi 2 anni" --uncertainty1 "economia europea: crescita vs recessione" --uncertainty2 "regolamentazione AI: permissiva vs restrittiva"`
+**User:** `/lens-scenarios "Expansion into Germany over the next 2 years" --uncertainty1 "European economy: growth vs recession" --uncertainty2 "AI regulation: permissive vs restrictive"`
 - Explicit uncertainties provided
 - 4 scenarios explore combinations
 
-**User:** `/lens-scenarios "Quale modello di pricing adottare per il nuovo SaaS?" --horizon "2028" --intensity 4`
+**User:** `/lens-scenarios "Which pricing model to adopt for the new SaaS?" --horizon "2028" --intensity 4`
 - Custom horizon
 - Higher intensity means more extreme scenario exploration
 
 ## Good vs Bad uncertainties
 
 **Good uncertainties:**
-- "AI commoditizzata vs AI differenziante" — genuinely uncertain, high impact
-- "Mercato in crescita vs contrazione" — independent from AI, high impact
-- "Regolamentazione stretta vs laissez-faire" — genuinely uncertain
+- "Commoditized AI vs differentiating AI" — genuinely uncertain, high impact
+- "Growing vs contracting market" — independent from AI, high impact
+- "Tight regulation vs laissez-faire" — genuinely uncertain
 
 **Bad uncertainties:**
-- "Il sole sorge domani vs non sorge" — not uncertain
-- "Competitor entra vs non entra" — too binary/simplistic
-- "AI migliora vs AI peggiora" — correlated with everything, not independent
+- "The sun rises tomorrow vs it doesn't" — not uncertain
+- "Competitor enters vs doesn't enter" — too binary/simplistic
+- "AI improves vs AI worsens" — correlated with everything, not independent

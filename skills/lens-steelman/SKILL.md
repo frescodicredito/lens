@@ -50,7 +50,7 @@ lens_compose_prompt(
   topic=argument,
   constraints=[
     {"type": "steelman"},
-    {"type": "limit", "constraint": "massimo 5 argomenti, ognuno con un dato concreto o un esempio specifico"}
+    {"type": "limit", "constraint": "at most 5 arguments, each with a concrete data point or a specific example"}
   ],
   output_format="perspective_card",
   intensity=intensity
@@ -63,10 +63,10 @@ Launch Agent 1 as Task subagent (subagent_type: "general-purpose").
 ```
 {system_prompt from lens_compose_prompt}
 
-ARGOMENTO DA RAFFORZARE:
+ARGUMENT TO STRENGTHEN:
 {argument}
 
-Costruisci la versione piu' forte possibile di questo argomento. Ogni punto deve essere supportato da evidenze concrete, dati o ragionamenti logici stringenti.
+Build the strongest possible version of this argument. Every point must be supported by concrete evidence, data, or rigorous logical reasoning.
 ```
 
 Wait for Agent 1 output, then...
@@ -77,11 +77,11 @@ lens_compose_prompt(
   topic="[Agent 1 output will be inserted]",
   constraints=[
     {"type": "steelman"},
-    {"type": "elm_route", "route": "central", "focus": "rigore logico e qualita' delle evidenze"}
+    {"type": "elm_route", "route": "central", "focus": "logical rigor and evidence quality"}
   ],
   output_format="raw",
   intensity=intensity,
-  extra_instructions="Hai ricevuto una difesa gia' costruita. Il tuo compito: (1) trovare i punti piu' deboli e RAFFORZARLI, (2) aggiungere evidenze mancanti, (3) anticipare obiezioni e includere contro-argomenti preventivi, (4) rendere la struttura argomentativa inattaccabile."
+  extra_instructions="You have received an already-built defense. Your task: (1) find the weakest points and STRENGTHEN them, (2) add missing evidence, (3) anticipate objections and include preemptive counter-arguments, (4) make the argumentative structure unassailable."
 )
 ```
 
@@ -89,18 +89,18 @@ lens_compose_prompt(
 ```
 {system_prompt}
 
-DIFESA DA RAFFORZARE:
+DEFENSE TO STRENGTHEN:
 ---
 {Agent 1's output}
 ---
 
-Migliora questa difesa. Non ripetere: rafforza i punti deboli, aggiungi evidenze, anticipa obiezioni.
+Improve this defense. Don't repeat: strengthen the weak points, add evidence, anticipate objections.
 ```
 
 Wait for Agent 2 output.
 
 **Agent 3 — Final Strengthener (if build_depth=3):**
-Same pattern, focusing on rhetorical coherence and closing any remaining gaps. Use constraints: `steelman` + `modal` with mode "solo rafforzamento, zero concessioni".
+Same pattern, focusing on rhetorical coherence and closing any remaining gaps. Use constraints: `steelman` + `modal` with mode "only strengthening, zero concessions".
 
 ### Step 3: Phase 2 — Test (adversarial attack on strongest version)
 
@@ -114,7 +114,7 @@ lens_compose_prompt(
   ],
   output_format="raw",
   intensity=intensity,
-  extra_instructions="Questa e' la versione PIU' FORTE dell'argomento, gia' rafforzata da 2 esperti. Il tuo compito: trovare falle anche nella versione blindata. Cerca: assunzioni non dichiarate, evidenze cherry-picked, salti logici mascherati, scenari dove l'argomento crolla."
+  extra_instructions="This is the STRONGEST version of the argument, already reinforced by 2 experts. Your task: find flaws even in the fortified version. Look for: undeclared assumptions, cherry-picked evidence, masked logical leaps, scenarios where the argument collapses."
 )
 ```
 
@@ -122,12 +122,12 @@ lens_compose_prompt(
 ```
 {system_prompt}
 
-ARGOMENTO BLINDATO (versione rafforzata da {build_depth} esperti):
+FORTIFIED ARGUMENT (version reinforced by {build_depth} experts):
 ---
 {Final Phase 1 output}
 ---
 
-Questo argomento e' gia' stato rafforzato al massimo. Trova comunque le falle.
+This argument has already been strengthened to the maximum. Find the flaws anyway.
 ```
 
 Wait for Agent A output.
@@ -138,33 +138,33 @@ A judge that evaluates what survived the attack on the steelmanned version.
 
 **Agent B prompt:**
 ```
-Sei un giudice imparziale. Hai visto un argomento costruito nella sua versione piu' forte e poi attaccato da un critico ostile.
+You are an impartial judge. You have seen an argument built in its strongest version and then attacked by a hostile critic.
 
-ARGOMENTO ORIGINALE: {argument}
+ORIGINAL ARGUMENT: {argument}
 
-VERSIONE RAFFORZATA:
+STRENGTHENED VERSION:
 ---
 {Final Phase 1 output}
 ---
 
-ATTACCO ALLA VERSIONE RAFFORZATA:
+ATTACK ON THE STRENGTHENED VERSION:
 ---
 {Agent A's output}
 ---
 
-Produci il tuo verdetto:
+Produce your verdict:
 
-## ARGOMENTO BLINDATO
-[La versione finale dell'argomento, incorporando le difese che hanno resistito all'attacco]
+## FORTIFIED ARGUMENT
+[The final version of the argument, incorporating the defenses that withstood the attack]
 
-## PUNTI VULNERABILI RESIDUI
-[Debolezze che restano anche nella versione piu' forte]
+## RESIDUAL VULNERABLE POINTS
+[Weaknesses that remain even in the strongest version]
 
-## OBIEZIONI DA PREPARARE
-[Le 3-5 obiezioni piu' probabili che qualcuno fara', con le risposte suggerite]
+## OBJECTIONS TO PREPARE FOR
+[The 3-5 most likely objections someone will raise, with suggested responses]
 
-## CONFIDENZA
-[Quanto e' robusto questo argomento dopo il processo? Alta/Media/Bassa, con spiegazione]
+## CONFIDENCE
+[How robust is this argument after the process? High/Medium/Low, with explanation]
 ```
 
 ### Step 4: Present output
@@ -172,23 +172,23 @@ Produci il tuo verdetto:
 ```markdown
 # Steelman Chain — {argument}
 
-> Build depth: {build_depth} | Intensita' attacco: {intensity}/5
+> Build depth: {build_depth} | Attack intensity: {intensity}/5
 
-## Argomento blindato
-{Final strengthened version or Agent B's "ARGOMENTO BLINDATO" section}
+## Fortified argument
+{Final strengthened version or Agent B's "FORTIFIED ARGUMENT" section}
 
-## Punti vulnerabili residui
+## Residual vulnerable points
 {From Agent A attack or Agent B verdict}
 
-## Obiezioni da preparare
+## Objections to prepare for
 {From Agent B if present, or extracted from Agent A's attack}
 
 ---
 
-### Processo
+### Process
 
 <details>
-<summary>Fase 1 — Costruzione ({build_depth} round)</summary>
+<summary>Phase 1 — Build ({build_depth} rounds)</summary>
 
 **Round 1 — Foundation:**
 {Agent 1 output}
@@ -199,18 +199,18 @@ Produci il tuo verdetto:
 </details>
 
 <details>
-<summary>Fase 2 — Stress test</summary>
+<summary>Phase 2 — Stress test</summary>
 
-**Attacco:**
+**Attack:**
 {Agent A output}
 
-**Verdetto:** (if present)
+**Verdict:** (if present)
 {Agent B output}
 
 </details>
 
 ---
-*Lens Steelman | Chain depth: {build_depth} + attack | Intensita': {intensity}/5*
+*Lens Steelman | Chain depth: {build_depth} + attack | Intensity: {intensity}/5*
 ```
 
 ### Step 5: Save session
@@ -221,15 +221,15 @@ lens_session_save(topology="steelman_chain", topic=argument, agents_count=build_
 
 ## Examples
 
-**User:** `/lens-steelman "L'AI generativa e' un vantaggio competitivo sostenibile per le agenzie creative"`
+**User:** `/lens-steelman "Generative AI is a sustainable competitive advantage for creative agencies"`
 - Build depth 2, intensity 4 (default)
 - 2 agents strengthen, 1 attacks, 1 judges
 
-**User:** `/lens-steelman "Dovremmo rifiutare clienti sotto i 50k/anno" --intensity 5`
+**User:** `/lens-steelman "We should turn down clients below 50k/year" --intensity 5`
 - Maximum attack intensity on the fortified version
 - 4 agents total: 2 build + 1 attack + 1 judge
 
-**User:** `/lens-steelman "Il remote-first e' migliore dell'ufficio per la produttivita'" --build-depth 3 --focus "dati e ricerche"`
+**User:** `/lens-steelman "Remote-first beats the office for productivity" --build-depth 3 --focus "data and research"`
 - 3 strengthening rounds focused on empirical evidence
 - Then adversarial test
 

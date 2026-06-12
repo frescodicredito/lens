@@ -26,7 +26,7 @@ Generate a **Perspective Card** on any topic using structural cognitive constrai
 1. The user provides a **topic** and optionally specifies **constraints** or a **persona**
 2. Lens composes a structured prompt with rigid cognitive constraints
 3. A single subagent runs with those constraints
-4. Output: a **Perspective Card** (claim, supporto, blind spot, confidenza)
+4. Output: a **Perspective Card** (claim, support, blind spot, confidence)
 
 ## Execution
 
@@ -78,14 +78,14 @@ The subagent will produce a Perspective Card following the embedded schema.
 
 Present the subagent's output directly to the user. It should already be a Perspective Card with:
 - **CLAIM**: the main position
-- **SUPPORTO**: evidence and reasoning
+- **SUPPORT**: evidence and reasoning
 - **BLIND SPOT**: what this perspective might miss
-- **CONFIDENZA**: high/medium/low with explanation
+- **CONFIDENCE**: high/medium/low with explanation
 
 Add a brief footer:
 ```
 ---
-*Lens Perspective | Vincoli: [list] | Intensita': [N]/5*
+*Lens Perspective | Constraints: [list] | Intensity: [N]/5*
 ```
 
 ### Step 5: Save session (optional)
@@ -97,15 +97,15 @@ lens_session_save(topology="single_perspective", topic, agents_count=1, rounds_c
 
 ## Examples
 
-**User:** `/lens-perspective L'AI sostituira' i copywriter entro 5 anni`
+**User:** `/lens-perspective AI will replace copywriters within 5 years`
 - Suggest constraints: `inversion` + `temporal(2030)`
 - Generate perspective card with opposite+future view
 
-**User:** `/lens-perspective "Il nostro pricing e' troppo alto" --persona cto-scettico`
-- Load CTO scettico persona
+**User:** `/lens-perspective "Our pricing is too high" --persona cto-skeptic`
+- Load the skeptical CTO persona
 - Generate perspective card from CTO's viewpoint
 
-**User:** `/lens-perspective "Dovremmo adottare microservizi" --constraints inversion,abductive`
+**User:** `/lens-perspective "Should we adopt microservices" --constraints inversion,abductive`
 - Compose prompt with inversion + abductive constraints
 - Generate perspective card with contrarian + non-obvious view
 

@@ -29,7 +29,7 @@ Star/Delphi topology: N personas respond independently (Round 1), see each other
 2. Round 1: each persona responds independently (NO cross-talk — Surowiecki condition)
 3. Round 2: each persona sees all Round 1 outputs, can revise their position
 4. Round 3: moderator synthesizes into a Field Map
-5. Output: Field Map (convergenze, divergenze, outlier, sintesi)
+5. Output: Field Map (convergences, divergences, outliers, synthesis)
 
 ## Execution
 
@@ -43,7 +43,7 @@ Extract:
 **Auto-selection logic** (if no personas specified):
 - Use `lens_list_personas()` to show available personas
 - Select 3-4 that provide maximum cognitive diversity for the topic
-- Good defaults: `cto-scettico` + `early-adopter` + `giornalista-critico` + `utente-finale`
+- Good defaults: `cto-skeptic` + `early-adopter` + `critical-journalist` + `end-user`
 - Tell the user which personas you selected and why
 
 ### Step 2: Round 1 — Independent perspectives
@@ -62,20 +62,20 @@ Launch ALL persona agents **in parallel** using the Task tool (subagent_type: "g
 Wait for all agents to complete.
 
 **Show Round 1 results to user:**
-Present each persona's Perspective Card. Ask: "Vuoi procedere con il Round 2 (cross-pollination) o hai domande su questi risultati?"
+Present each persona's Perspective Card. Ask: "Do you want to proceed with Round 2 (cross-pollination) or do you have questions about these results?"
 
 ### Step 3: Round 2 — Cross-pollination (optional but recommended)
 
 For each persona, compose a new prompt that includes all Round 1 outputs:
 
 ```
-Sei {persona_name}. Hai gia' espresso la tua posizione sul topic.
-Ora hai letto le posizioni degli altri partecipanti al focus group.
+You are {persona_name}. You have already expressed your position on the topic.
+Now you have read the positions of the other focus group participants.
 
-## Le tue posizioni originali (Round 1)
+## Your original positions (Round 1)
 {This persona's Round 1 output}
 
-## Posizioni degli altri partecipanti
+## Other participants' positions
 
 ### {Persona 2 name}
 {Persona 2 Round 1 output}
@@ -85,15 +85,15 @@ Ora hai letto le posizioni degli altri partecipanti al focus group.
 
 [...for each persona...]
 
-## Il tuo compito
+## Your task
 
-Alla luce delle posizioni degli altri:
-1. Cosa CONFERMI della tua posizione originale?
-2. Cosa RIVEDI o SFUMI?
-3. Quali NUOVI aspetti emergono dal confronto che non avevi considerato?
-4. Su cosa sei in DISACCORDO FORTE con gli altri partecipanti?
+In light of the others' positions:
+1. What do you CONFIRM of your original position?
+2. What do you REVISE or NUANCE?
+3. What NEW aspects emerge from the comparison that you hadn't considered?
+4. Where do you STRONGLY DISAGREE with the other participants?
 
-Mantieni il tuo ruolo e i tuoi bias. Non cercare consenso artificiale.
+Maintain your role and your biases. Do not seek artificial consensus.
 ```
 
 Launch all in parallel. Show Round 2 results to user.
@@ -103,34 +103,34 @@ Launch all in parallel. Show Round 2 results to user.
 Launch a final moderator agent:
 
 ```
-Sei il moderatore di un focus group cognitivo Lens. Il tuo compito e' produrre una Field Map che sintetizzi le prospettive senza forzare consenso.
+You are the moderator of a Lens cognitive focus group. Your task is to produce a Field Map that synthesizes the perspectives without forcing consensus.
 
 ## Topic
 {topic}
 
-## Partecipanti e loro posizioni
+## Participants and their positions
 
 {For each persona: name + Round 1 + Round 2 (if done)}
 
-## Produci la Field Map
+## Produce the Field Map
 
-### CONVERGENZE
-[Su cosa concordano 3+ partecipanti? Perche' e' significativo?]
+### CONVERGENCES
+[What do 3+ participants agree on? Why is it significant?]
 
-### DIVERGENZE
-[Dove il disaccordo e' sostanziale e irreducibile? Quali sono le posizioni?]
+### DIVERGENCES
+[Where is disagreement substantial and irreducible? What are the positions?]
 
-### OUTLIER
-[Insight sorprendenti emersi da UN solo partecipante ma potenzialmente preziosi]
+### OUTLIERS
+[Surprising insights raised by a SINGLE participant but potentially valuable]
 
-### TENSIONI PRODUTTIVE
-[Dove il disaccordo genera insight che nessuna singola prospettiva avrebbe prodotto?]
+### PRODUCTIVE TENSIONS
+[Where does disagreement generate insight that no single perspective would have produced?]
 
-### BLIND SPOT COLLETTIVO
-[Cosa NESSUN partecipante ha menzionato ma potrebbe essere rilevante?]
+### COLLECTIVE BLIND SPOT
+[What did NO participant mention that might be relevant?]
 
-### SINTESI
-[Integrazione che onora le divergenze senza forzare consenso. Non una media: una mappa del territorio.]
+### SYNTHESIS
+[An integration that honors the divergences without forcing consensus. Not an average: a map of the territory.]
 ```
 
 ### Step 5: Present output
@@ -138,7 +138,7 @@ Sei il moderatore di un focus group cognitivo Lens. Il tuo compito e' produrre u
 ```markdown
 # Focus Group — {topic}
 
-> Partecipanti: {persona_names} | Round: {2 or 3} | Intensita': {intensity}/5
+> Participants: {persona_names} | Rounds: {2 or 3} | Intensity: {intensity}/5
 
 ## Field Map
 
@@ -146,7 +146,7 @@ Sei il moderatore di un focus group cognitivo Lens. Il tuo compito e' produrre u
 
 ---
 
-## Prospettive individuali
+## Individual perspectives
 
 ### {Persona 1 name}
 **Round 1:** {output}
@@ -156,7 +156,7 @@ Sei il moderatore di un focus group cognitivo Lens. Il tuo compito e' produrre u
 [...]
 
 ---
-*Lens Focus Group | Star/Delphi | {N} persona | {rounds} round*
+*Lens Focus Group | Star/Delphi | {N} personas | {rounds} rounds*
 ```
 
 ### Step 6: Save session
@@ -167,13 +167,13 @@ lens_session_save(topology="star", topic, agents_count=N+1, rounds_count=rounds,
 
 ## Examples
 
-**User:** `/lens-focus-group "Dovremmo lanciare un piano enterprise a 50k/anno?"`
-- Auto-select: cto-scettico, early-adopter, regolatore, utente-finale
+**User:** `/lens-focus-group "Should we launch an enterprise plan at 50k/year?"`
+- Auto-select: cto-skeptic, early-adopter, regulator, end-user
 - 3 rounds (independent → cross-pollination → synthesis)
 
-**User:** `/lens-focus-group "Rebrand completo dell'azienda" --personas cto-scettico,giornalista-critico`
+**User:** `/lens-focus-group "Complete company rebrand" --personas cto-skeptic,critical-journalist`
 - Only 2 specific personas
 - Focused contrast between skeptic and investigator
 
-**User:** `/lens-focus-group "Nuova feature AI nel prodotto" --intensity 5`
+**User:** `/lens-focus-group "New AI feature in the product" --intensity 5`
 - Maximum intensity: personas will be extreme in their positions
