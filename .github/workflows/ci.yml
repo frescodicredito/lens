@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Byte-compile sources
+        run: uv run python -m py_compile server.py constraints/composer.py meta/analytics.py output/formatter.py integrations/miner.py
+
+      - name: Data-graph integrity tests
+        run: uv run python tests/test_integrity.py
+
+      - name: Security regression tests
+        run: uv run python tests/test_security.py
+
+      - name: Quickstart smoke test
+        run: uv run python examples/quickstart.py
+
+      - name: Reference docs are in sync
+        run: |
+          uv run python scripts/gen_docs.py
+          if ! git diff --quiet -- docs/; then
+            echo "::error::docs/ is out of date. Run 'python scripts/gen_docs.py' and commit the result."
+            git diff -- docs/
+            exit 1
+          fi

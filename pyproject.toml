@@ -1,0 +1,22 @@
+[project]
+name = "lens"
+version = "0.2.0"
+description = "Cognitive infrastructure for LLM reasoning — navigates distribution tails through structural constraints"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+readme = "README.md"
+authors = [
+    { name = "Francesco Di Credico" },
+]
+keywords = ["mcp", "llm", "cognitive", "constraints", "multi-agent", "claude", "reasoning"]
+dependencies = [
+    "fastmcp>=3.0.0,<4.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/frescodicredito/lens"
+Repository = "https://github.com/frescodicredito/lens"
+
+[tool.uv]
+package = false
+dev-dependencies = []

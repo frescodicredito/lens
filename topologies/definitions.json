@@ -1,0 +1,248 @@
+{
+  "version": "0.2.0",
+  "topologies": [
+    {
+      "id": "cascade",
+      "name": "Cascade (Dialettica Hegeliana)",
+      "description": "Sequenza dialettica: ogni agente attacca o raffina l'output del precedente. Tesi -> Antitesi -> Sintesi iterata.",
+      "theory": "Hegel, Boosting cognitivo (ensemble), Devil's Advocacy (CIA/IC)",
+      "agent_count": {"min": 2, "max": 4},
+      "rounds": {"min": 1, "max": 1},
+      "interaction_pattern": "sequential",
+      "mode": "QUICK",
+      "output_format": "perspective_card",
+      "workflow": {
+        "type": "sequential_handoff",
+        "description": "Agente 1 produce output -> Agente 2 riceve output e attacca/raffina -> Agente 3 sintetizza",
+        "steps": [
+          {"agent": 1, "role": "thesis", "receives": "topic", "constraint_focus": "position"},
+          {"agent": 2, "role": "antithesis", "receives": "agent_1_output", "constraint_focus": "attack"},
+          {"agent": 3, "role": "synthesis", "receives": "all_previous", "constraint_focus": "integration"}
+        ]
+      },
+      "recommended_constraints": ["inversion", "steelman", "limit"],
+      "best_for": ["stress-testing claims", "argomenti controversi", "decisioni binarie"]
+    },
+    {
+      "id": "star",
+      "name": "Star / Delphi",
+      "description": "Moderatore + N agenti indipendenti. Round 1 indipendente (no cross-talk), poi sintesi. Bagging cognitivo.",
+      "theory": "Wisdom of Crowds (Surowiecki), Delphi (RAND), Bagging (ensemble)",
+      "agent_count": {"min": 3, "max": 6},
+      "rounds": {"min": 2, "max": 3},
+      "interaction_pattern": "parallel_then_aggregate",
+      "mode": "DEEP",
+      "output_format": "field_map",
+      "workflow": {
+        "type": "parallel_independent",
+        "description": "Round 1: N agenti rispondono indipendentemente. Round 2: agenti vedono output altrui, rivedono posizioni. Moderatore sintetizza.",
+        "steps": [
+          {"round": 1, "agents": "all", "receives": "topic_only", "constraint": "independence_mandatory"},
+          {"round": 2, "agents": "all", "receives": "all_round1_outputs", "constraint": "revision_allowed"},
+          {"round": 3, "agent": "moderator", "receives": "all_outputs", "role": "synthesis"}
+        ]
+      },
+      "recommended_constraints": ["role", "modal", "elm_route", "concept_fan"],
+      "best_for": ["multi-prospettiva", "focus group", "analisi strategica"]
+    },
+    {
+      "id": "adversarial_jury",
+      "name": "Adversarial + Jury",
+      "description": "2 agenti dibattono, 3 giurati valutano indipendentemente. Separa argomentazione da giudizio.",
+      "theory": "Adversarial Collaboration, ACH (CIA), Argumentative Theory (Mercier-Sperber)",
+      "agent_count": {"min": 5, "max": 5},
+      "rounds": {"min": 2, "max": 3},
+      "interaction_pattern": "adversarial_then_judge",
+      "mode": "DEEP",
+      "output_format": "field_map",
+      "workflow": {
+        "type": "debate_then_jury",
+        "description": "2 avvocati dibattono per N round, poi 3 giurati con vincoli diversi valutano indipendentemente.",
+        "steps": [
+          {"round": 1, "agents": [1, 2], "role": "advocates", "constraint": "assigned_positions"},
+          {"round": 2, "agents": [1, 2], "role": "rebuttal", "receives": "opponent_round1"},
+          {"round": 3, "agents": [3, 4, 5], "role": "jury", "receives": "all_debate", "constraint": "independent_verdict"}
+        ]
+      },
+      "recommended_constraints": ["inversion", "steelman", "elm_route"],
+      "best_for": ["decisioni ad alto impatto", "valutazione imparziale", "controversie"]
+    },
+    {
+      "id": "ring",
+      "name": "Ring (Bisociazione Iterata)",
+      "description": "Catena circolare: ogni agente trasforma l'output nel proprio frame, l'ultimo riporta al primo.",
+      "theory": "Bisociazione (Koestler), Ring topology",
+      "agent_count": {"min": 3, "max": 5},
+      "rounds": {"min": 1, "max": 2},
+      "interaction_pattern": "circular_handoff",
+      "mode": "DEEP",
+      "output_format": "field_map",
+      "workflow": {
+        "type": "circular",
+        "description": "Agente 1 -> Agente 2 -> ... -> Agente N -> Agente 1. Ogni passaggio forza re-interpretazione nel frame dell'agente."
+      },
+      "recommended_constraints": ["bisociative", "defamiliarize", "synectics"],
+      "best_for": ["generazione creativa", "connessioni inedite", "innovazione radicale"]
+    },
+    {
+      "id": "parallel_hats",
+      "name": "Parallel Hats (De Bono)",
+      "description": "N agenti, ognuno vincolato a una modalita' cognitiva diversa, operano in parallelo.",
+      "theory": "Six Thinking Hats (De Bono), Cognitive Diversity (Ashby)",
+      "agent_count": {"min": 4, "max": 6},
+      "rounds": {"min": 1, "max": 2},
+      "interaction_pattern": "parallel_independent",
+      "mode": "QUICK",
+      "output_format": "field_map",
+      "workflow": {
+        "type": "parallel_modal",
+        "description": "Ogni agente opera in una modalita' cognitiva esclusiva. Output aggregato senza contaminazione."
+      },
+      "recommended_constraints": ["modal", "exclusion"],
+      "best_for": ["analisi completa", "decisioni strutturate", "evitare groupthink"]
+    },
+    {
+      "id": "steelman_chain",
+      "name": "Steelman Chain",
+      "description": "3 round di rafforzamento progressivo, poi 1-2 round adversariali sulla versione piu' forte.",
+      "theory": "Steelmanning, Principle of Charity + Adversarial Collaboration",
+      "agent_count": {"min": 3, "max": 5},
+      "rounds": {"min": 2, "max": 2},
+      "interaction_pattern": "strengthen_then_attack",
+      "mode": "QUICK",
+      "output_format": "perspective_card",
+      "workflow": {
+        "type": "build_then_stress",
+        "description": "Fase 1: N agenti rafforzano l'argomento in sequenza. Fase 2: 1-2 agenti attaccano la versione piu' forte."
+      },
+      "recommended_constraints": ["steelman", "inversion", "limit"],
+      "best_for": ["costruire argomenti robusti", "trovare debolezze nascoste", "preparazione a obiezioni"]
+    },
+    {
+      "id": "socratic_drill",
+      "name": "Socratic Drill",
+      "description": "Catena di domande che scavano fino alle assunzioni fondamentali.",
+      "theory": "Metodo Socratico / Elenchus, Key Assumptions Check (CIA)",
+      "agent_count": {"min": 2, "max": 3},
+      "rounds": {"min": 3, "max": 5},
+      "interaction_pattern": "iterative_questioning",
+      "mode": "QUICK",
+      "output_format": "perspective_card",
+      "workflow": {
+        "type": "question_cascade",
+        "description": "Agente interrogatore chiede 'perche'?'. Agente rispondente difende. L'interrogatore scava fino alle assunzioni non dichiarate."
+      },
+      "recommended_constraints": ["abductive", "assumption_reversal"],
+      "best_for": ["scoprire assunzioni nascoste", "chiarezza concettuale", "validazione logica"]
+    },
+    {
+      "id": "scenario_matrix",
+      "name": "Scenario Matrix",
+      "description": "2 incertezze critiche generano 4 quadranti. 4 agenti esplorano uno scenario ciascuno.",
+      "theory": "Scenario Planning (Shell/Schwartz), Quadrant Crunching (CIA)",
+      "agent_count": {"min": 4, "max": 5},
+      "rounds": {"min": 1, "max": 2},
+      "interaction_pattern": "parallel_independent",
+      "mode": "DEEP",
+      "output_format": "field_map",
+      "workflow": {
+        "type": "quadrant_exploration",
+        "description": "2 assi di incertezza -> 4 scenari. Ogni agente esplora uno scenario assumendolo come realta'. Poi confronto."
+      },
+      "recommended_constraints": ["temporal", "role", "assumption_reversal"],
+      "best_for": ["pianificazione strategica", "scenari futuri", "decisioni in incertezza"]
+    },
+    {
+      "id": "bisociation_engine",
+      "name": "Bisociation Engine",
+      "description": "Collisione forzata tra domini incompatibili per generare connessioni inedite.",
+      "theory": "Bisociazione (Koestler), Synectics (Gordon)",
+      "agent_count": {"min": 3, "max": 4},
+      "rounds": {"min": 1, "max": 2},
+      "interaction_pattern": "collision",
+      "mode": "QUICK",
+      "output_format": "perspective_card",
+      "workflow": {
+        "type": "domain_collision",
+        "description": "Ogni agente analizza il topic dal suo dominio forzato. Un sintetizzatore trova le connessioni strutturali."
+      },
+      "recommended_constraints": ["bisociative", "synectics", "defamiliarize"],
+      "best_for": ["innovazione radicale", "connessioni inedite", "pensiero laterale"]
+    },
+    {
+      "id": "wise_mind_topology",
+      "name": "Wise Mind",
+      "description": "Emotional Mind + Rational Mind -> Wise Mind synthesis. Non dialettica ma integrazione.",
+      "theory": "DBT Wise Mind (Linehan, 1993), Dual Process Theory",
+      "agent_count": {"min": 3, "max": 3},
+      "rounds": {"min": 1, "max": 1},
+      "interaction_pattern": "parallel_then_integrate",
+      "mode": "QUICK",
+      "output_format": "perspective_card",
+      "workflow": {
+        "type": "emotional_rational_integration",
+        "description": "Agente emotional produce prospettiva emotiva. Agente rational produce prospettiva razionale. Agente wise integra."
+      },
+      "recommended_constraints": ["wise_mind", "modal"],
+      "best_for": ["decisioni personali", "equilibrio emozione-logica", "dilemmi etici"]
+    },
+    {
+      "id": "scamper_parallel",
+      "name": "SCAMPER Parallel",
+      "description": "7 agenti, ognuno vincolato a una operazione SCAMPER diversa.",
+      "theory": "SCAMPER (Eberle/Osborn)",
+      "agent_count": {"min": 7, "max": 7},
+      "rounds": {"min": 1, "max": 1},
+      "interaction_pattern": "parallel_independent",
+      "mode": "DEEP",
+      "output_format": "field_map",
+      "workflow": {
+        "type": "parallel_operations",
+        "description": "7 agenti applicano S-C-A-M-P-E-R in parallelo. Moderatore sintetizza le migliori idee."
+      },
+      "recommended_constraints": ["scamper", "limit"],
+      "best_for": ["ideazione prodotto", "innovazione sistematica", "brainstorming strutturato"]
+    },
+    {
+      "id": "assumption_inversion",
+      "name": "Assumption Inversion",
+      "description": "Identifica assunzioni, le inverte sistematicamente, esplora le implicazioni.",
+      "theory": "SAST (Mason & Mitroff), Assumption Reversal",
+      "agent_count": {"min": 2, "max": 4},
+      "rounds": {"min": 2, "max": 3},
+      "interaction_pattern": "sequential",
+      "mode": "QUICK",
+      "output_format": "perspective_card",
+      "workflow": {
+        "type": "identify_then_invert",
+        "description": "Fase 1: Socratic Drill per elencare assunzioni. Fase 2: classificazione importanza/certezza. Fase 3: inversione top-K assunzioni."
+      },
+      "recommended_constraints": ["assumption_reversal", "abductive", "inversion"],
+      "best_for": ["sfidare lo status quo", "trovare blind spot strategici", "innovazione di processo"]
+    },
+    {
+      "id": "sequential_chain",
+      "name": "Sequential Deep Chain",
+      "description": "Vincoli concatenati in sequenza sullo stesso thread cognitivo. Ogni round riceve l'output di tutti i precedenti e lo integra con un nuovo vincolo.",
+      "theory": "Chain-of-Thought (Wei et al. 2022), Self-Consistency (Wang et al. 2023), Deliberative Alignment",
+      "agent_count": {"min": 1, "max": 1},
+      "rounds": {"min": 3, "max": 6},
+      "interaction_pattern": "sequential_self",
+      "mode": "DEEP",
+      "output_format": "chain_output",
+      "workflow": {
+        "type": "sequential_self_refinement",
+        "description": "Ogni round applica un vincolo diverso allo stesso problema. L'agente integra l'output dei round precedenti come contesto.",
+        "steps": [
+          {"round": 1, "receives": "topic", "constraint_focus": "primary_lens", "description": "Prima analisi con vincolo principale"},
+          {"round": 2, "receives": "round_1_output", "constraint_focus": "counter_lens", "description": "Contro-analisi che sfida il round 1"},
+          {"round": 3, "receives": "all_previous", "constraint_focus": "integration", "description": "Integrazione delle tensioni tra round 1 e 2"},
+          {"round": 4, "receives": "all_previous", "constraint_focus": "calibration", "description": "Calibrazione finale: cosa resta dopo lo stress-test?"}
+        ]
+      },
+      "anchor_break_positions": [2, 4],
+      "recommended_constraints": ["inversion", "steelman", "abductive", "assumption_reversal", "anchor_break"],
+      "best_for": ["approfondimento ipotesi", "coerenza argomentativa", "chain epistemica", "steelmanning profondo"]
+    }
+  ]
+}
