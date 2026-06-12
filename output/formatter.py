@@ -1,6 +1,5 @@
 """Lens Output Formatter — structures agent outputs into standardized formats."""
 
-import json
 from datetime import datetime
 from typing import Optional
 
@@ -242,7 +241,7 @@ def format_decision_brief(
         parts.append(f"> Topic: {topic}")
     parts.append(f"> Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     parts.append("")
-    parts.append(f"## Recommendation")
+    parts.append("## Recommendation")
     parts.append("")
     parts.append(recommendation)
     parts.append("")

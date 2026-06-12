@@ -382,7 +382,6 @@ def suggest_constraints(
     Simple heuristic-based suggestion. Meta-Lens (Phase 3) will replace this
     with data-driven suggestions.
     """
-    library = load_library()
     suggestions = []
 
     goal_lower = goal.lower()
