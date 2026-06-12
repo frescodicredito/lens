@@ -146,10 +146,17 @@ Sessions render into purpose-built shapes, not walls of text: **Perspective Card
 **2. Install the skills** so the `/lens*` commands are available:
 
 ```bash
+# macOS / Linux
 cp -R /path/to/lens/skills/* ~/.claude/skills/
+```
+```powershell
+# Windows (PowerShell)
+Copy-Item -Recurse path\to\lens\skills\* $env:USERPROFILE\.claude\skills\
 ```
 
 Then run `/lens` and let it suggest a topology.
+
+> **Cross-platform:** the server is pure Python (`pathlib`, explicit UTF-8, no shell calls) and is tested in CI on Linux, macOS, and Windows. On Windows, use a Windows path in the MCP config above (e.g. `C:\\path\\to\\lens`).
 
 ## Repository layout
 

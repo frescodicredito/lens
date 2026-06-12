@@ -49,5 +49,5 @@ parts.append(f'<text x="1716" y="283" fill="{GOLD}" font-family="Helvetica, Aria
              f'font-size="80" letter-spacing="14" font-weight="400">LENS</text>')
 
 svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">' + "".join(parts) + '</svg>'
-open("assets/lens-banner.svg","w").write(svg)
-print("svg scritto")
+open("assets/lens-banner.svg", "w", encoding="utf-8").write(svg)
+print("svg written")
